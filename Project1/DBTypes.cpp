@@ -1,6 +1,7 @@
 #include "DBTypes.h"
 #include <string.h>
 
+// extract string literal source type from enum
 int readSourcetype(Sourcetype type, char saveLocation[13]) {
 	switch (type) {
 

@@ -27,7 +27,7 @@ Field school = { "school", NULL };
 Field howpublished = { "howpublished", NULL };
 Field institution = { "institution", NULL };
 Field type = { "type", NULL };
-Field nullField = { NULL, NULL };  // Leeres Feld, um Reihung klar definiert aufzufüllen
+Field nullField = NULL;  // Leeres Feld, um Reihung klar definiert aufzufüllen
 
 // Reihungen leerer Felder um leere Quellen klar definieren zu können
 Field nullFields[6] = { nullField, nullField, nullField, nullField, nullField, nullField };
