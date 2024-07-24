@@ -5,6 +5,7 @@ Erweiterung des Programmes aus IFO1 um eine GUI.
 # Weekly Wednesdays
 
 KANBAN:
+Login: sharedkanban@maxim-walther.de Password: HermesDerGoetterbote187!
 https://maximwaltherifo3.kanbantool.com/b/1073149#?
 DIAGRAMMES:
 https://online.visual-paradigm.com/de/diagrams/solutions/free-uml-editor-online/
