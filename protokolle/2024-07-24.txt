@@ -3,5 +3,6 @@ Protokoll IFO3:
 Anwesenheit: N/A
 
 Tool vorschlag: visual paradigm online -> UML-Diagramme
+Kanban jzt gemeinsamer account siehe readme
 
 Keine weiteren Änderungen aufgrund von massiver Arbeitsverweigerung (Urlaub)
