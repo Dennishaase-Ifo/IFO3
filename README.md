@@ -6,6 +6,8 @@ Erweiterung des Programmes aus IFO1 um eine GUI.
 
 KANBAN:
 https://maximwaltherifo3.kanbantool.com/b/1073149#?
+DIAGRAMMES:
+https://online.visual-paradigm.com/de/diagrams/solutions/free-uml-editor-online/
 
 # Best practices
 
