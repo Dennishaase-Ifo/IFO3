@@ -1,0 +1,40 @@
+### general TODO ###
+ - refactor error-feedback into popup from stdout txt
+ - adjust header definitions of changed funcs
+
+# making new source
+main menu / output
+-> Button
+|-> initSource : new initialized empty source
+|-> appendDB : put it into DB
+=> enter change mode for new entry
+
+# search DB
+in any mode:
+search dropdown -> by author / key / ...
+enter String into popup
+-> searchDB : list of matching indices (int)
+filtered output (only indices from list)
+
+# save / load
+dropdown in toolbar
+-> call backend func
+? (maybe implement single export)
+
+# deleteEntry
+takes db + entry index -> delete and shuffle all after forwards to close gap
+
+### TODO ###
+# show sources
+for loop over fields
+  if good -> generate label + value
+  calculate next output x/y
+same for opt fields
+// possibly pre-generate grid -> unusedField : visible = false
+
+# change source
+like show, but value fields editable
++ save & cancel buttons
+(backend: dereference pointer + memcpy into value fields iteratively)
+
+

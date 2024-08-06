@@ -33,7 +33,7 @@ Field nullField = NULL;  // Leeres Feld, um Reihung klar definiert aufzufüllen
 Field nullFields[6] = { nullField, nullField, nullField, nullField, nullField, nullField };
 Field nullOptFields[8] = { nullField, nullField, nullField, nullField, nullField, nullField, nullField, nullField };
 
-int initSource(Source* DBEntry, Sourcetype variant, char* key) {
+int initSource(Source* DBEntry, Sourcetype variant) {
 
 	// Start der Definitionen der Quellentypen
 	if (variant == article) {
@@ -158,13 +158,15 @@ int initSource(Source* DBEntry, Sourcetype variant, char* key) {
 		DBEntry->variant = unpublished;
 	}
 	else {
+    // TODO change into popup
 		printf("Ung\x81ltige Auswahl...");
 		DBEntry = NULL;
 		return 0;
 	}
 
+  // deprecated in V2
 	// Zuweisen des Schlüssels
-	strcpy(DBEntry->key, key);
+	//strcpy(DBEntry->key, key);
 
 	return 1;
 }
