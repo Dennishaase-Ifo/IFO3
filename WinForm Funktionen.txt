@@ -1,0 +1,311 @@
+~Form Klasse~
+
+-------------------------------------------------------------------------------------------------
+
+Stellt ein Fenster oder ein Dialogfeld dar, das die Benutzeroberfläche einer Anwendung bildet.
+
+	public ref class Form : System::Windows::Forms::ContainerControl
+
+=> Beispiel:
+	public:
+   void CreateMyForm()
+   {
+      // Create a new instance of the form.
+      Form^ form1 = gcnew Form;
+      // Create two buttons to use as the accept and cancel buttons.
+      Button^ button1 = gcnew Button;
+      Button^ button2 = gcnew Button;
+      
+      // Set the text of button1 to "OK".
+      button1->Text = "OK";
+      // Set the position of the button on the form.
+      button1->Location = Point(10,10);
+      // Set the text of button2 to "Cancel".
+      button2->Text = "Cancel";
+      // Set the position of the button based on the location of button1.
+      button2->Location =
+         Point( button1->Left, button1->Height + button1->Top + 10 );
+      // Set the caption bar text of the form.   
+      form1->Text = "My Dialog Box";
+      // Display a help button on the form.
+      form1->HelpButton = true;
+      
+      // Define the border style of the form to a dialog box.
+      form1->FormBorderStyle = ::FormBorderStyle::FixedDialog;
+      // Set the MaximizeBox to false to remove the maximize box.
+      form1->MaximizeBox = false;      
+      // Set the MinimizeBox to false to remove the minimize box.
+      form1->MinimizeBox = false;
+      // Set the accept button of the form to button1.
+      form1->AcceptButton = button1;
+      // Set the cancel button of the form to button2.
+      form1->CancelButton = button2;
+      // Set the start position of the form to the center of the screen.
+      form1->StartPosition = FormStartPosition::CenterScreen;
+      
+      // Add button1 to the form.
+      form1->Controls->Add( button1 );
+      // Add button2 to the form.
+      form1->Controls->Add( button2 );
+      // Display the form as a modal dialog box.
+      form1->ShowDialog();
+   }
+
+-----------------------------------------------------------------------------------------------------------
+
+~Button "Akzeptieren"~
+
+-----------------------------------------------------------------------------------------------------------
+
+Ruft die Schaltfläche im Formular ab, die beim Drücken der EINGABETASTE betätigt wird, oder legt diese fest.
+	
+	public:
+ property System::Windows::Forms::IButtonControl ^ AcceptButton { System::Windows::Forms::IButtonControl ^ get(); void set(System::Windows::Forms::IButtonControl ^ value); };
+
+
+=> Beispiel:
+
+	public:
+   void CreateMyForm()
+   {
+      // Create a new instance of the form.
+      Form^ form1 = gcnew Form;
+      // Create two buttons to use as the accept and cancel buttons.
+      Button^ button1 = gcnew Button;
+      Button^ button2 = gcnew Button;
+      
+      // Set the text of button1 to "OK".
+      button1->Text = "OK";
+      // Set the position of the button on the form.
+      button1->Location = Point(10,10);
+      // Set the text of button2 to "Cancel".
+      button2->Text = "Cancel";
+      // Set the position of the button based on the location of button1.
+      button2->Location =
+         Point( button1->Left, button1->Height + button1->Top + 10 );
+      // Set the caption bar text of the form.   
+      form1->Text = "My Dialog Box";
+      // Display a help button on the form.
+      form1->HelpButton = true;
+      
+      // Define the border style of the form to a dialog box.
+      form1->FormBorderStyle = ::FormBorderStyle::FixedDialog;
+      // Set the MaximizeBox to false to remove the maximize box.
+      form1->MaximizeBox = false;      
+      // Set the MinimizeBox to false to remove the minimize box.
+      form1->MinimizeBox = false;
+      // Set the accept button of the form to button1.
+      form1->AcceptButton = button1;
+      // Set the cancel button of the form to button2.
+      form1->CancelButton = button2;
+      // Set the start position of the form to the center of the screen.
+      form1->StartPosition = FormStartPosition::CenterScreen;
+      
+      // Add button1 to the form.
+      form1->Controls->Add( button1 );
+      // Add button2 to the form.
+      form1->Controls->Add( button2 );
+      // Display the form as a modal dialog box.
+      form1->ShowDialog();
+   }
+
+
+----------------------------------------------------------------------------------------------------------
+
+~Form.Activate Methode~
+
+----------------------------------------------------------------------------------------------------------
+	
+Ruft die Schaltfläche im Formular ab, die beim Drücken der EINGABETASTE betätigt wird, oder legt diese fest.
+
+
+	public:
+ void Activate();
+
+=> Beispiel:
+	
+	static int x = 200;
+static int y = 200;
+void Button1_Click( System::Object^ sender, System::EventArgs^ e )
+{
+   
+   // Create a new Form1 and set its Visible property to true.
+   Form1^ form2 = gcnew Form1;
+   form2->Visible = true;
+   
+   // Set the new form's desktop location so it  
+   // appears below and to the right of the current form.
+   form2->SetDesktopLocation( x, y );
+   x += 30;
+   y += 30;
+   
+   // Keep the current form active by calling the Activate
+   // method.
+   this->Activate();
+   this->Button1->Enabled = false;
+}
+
+
+// Updates the label text to reflect the current values of x 
+// and y, which was were incremented in the Button1 control's 
+// click event.
+void Form1_Activated( Object^ sender, System::EventArgs^ e )
+{
+   Label1->Text = String::Format( "x: {0} y: {1}", x, y );
+   Label2->Text = String::Format( "Number of forms currently open: {0}", count );
+}
+
+static int count = 0;
+void Form1_Closed( Object^ sender, System::EventArgs^ e )
+{
+   count -= 1;
+}
+
+void Form1_Load( Object^ sender, System::EventArgs^ e )
+{
+   count += 1;
+}
+
+----------------------------------------------------------------------------------------------------
+
+~Control.BringToFront Methode~
+
+----------------------------------------------------------------------------------------------------
+
+Zeigt dieses Steuerelement am Anfang der z-Reihenfolge an.
+
+	public:
+ void BringToFront();
+
+=> Beispiel:
+
+	private:
+   void MakeLabelVisible()
+   {
+      
+      /* If the panel contains label1, bring it
+         * to the front to make sure it is visible. */
+      if ( panel1->Contains( label1 ) )
+      {
+         label1->BringToFront();
+      }
+   }
+
+--------------------------------------------------------------------------------------------------
+
+~Form.CenterToScreen Methode~
+
+--------------------------------------------------------------------------------------------------
+
+Zentriert das Formular für den aktuellen Bildschirm.
+
+	protected:
+ void CenterToScreen();
+
+--------------------------------------------------------------------------------------------------
+
+~Form.Close Methode~
+
+--------------------------------------------------------------------------------------------------
+
+Schließt das Formular.
+
+	public:
+ void Close();
+
+	
+--------------------------------------------------------------------------------------------------
+
+~Control.FindForm Methode~
+
+--------------------------------------------------------------------------------------------------
+
+Ruft das Formular ab, in dem sich das Steuerelement befindet.
+
+	public:
+ System::Windows::Forms::Form ^ FindForm();
+
+=> Beispiel: 
+
+	// This example uses the Parent property and the Find method of Control to set
+   // properties on the parent control of a Button and its Form. The example assumes
+   // that a Button control named button1 is located within a GroupBox control. The 
+   // example also assumes that the Click event of the Button control is connected to
+   // the event handler method defined in the example.
+private:
+   void button1_Click( Object^ /*sender*/, System::EventArgs^ /*e*/ )
+   {
+      // Get the control the Button control is located in. In this case a GroupBox.
+      Control^ control = button1->Parent;
+      
+      // Set the text and backcolor of the parent control.
+      control->Text = "My Groupbox";
+      control->BackColor = Color::Blue;
+      
+      // Get the form that the Button control is contained within.
+      Form^ myForm = button1->FindForm();
+      
+      // Set the text and color of the form containing the Button.
+      myForm->Text = "The Form of My Control";
+      myForm->BackColor = Color::Red;
+   }
+
+------------------------------------------------------------------------------------------------
+
+~Control.Focus Methode~
+
+-----------------------------------------------------------------------------------------------
+
+Setzt den Eingabefokus auf das Steuerelement.
+
+	public:
+ bool Focus();
+
+=> Beispiel: 
+
+	public:
+   void ControlSetFocus( Control^ control )
+   {
+      
+      // Set focus to the control, if it can receive focus.
+      if ( control->CanFocus )
+      {
+         control->Focus();
+      }
+   }
+
+------------------------------------------------------------------------------------------------
+
+~Control.Hide Methode~
+
+------------------------------------------------------------------------------------------------
+
+Verbirgt das Steuerelement vor dem Benutzer.
+
+	public:
+ void Hide();
+
+=> Beispiel: 
+
+	private:
+   void button1_Click( Object^ sender, System::EventArgs^ /*e*/ )
+   {
+      /* If the CTRL key is pressed when the
+         * control is clicked, hide the control. */
+      if ( Control::ModifierKeys == Keys::Control )
+      {
+         (dynamic_cast<Control^>(sender))->Hide();
+      }
+   }
+
+-------------------------------------------------------------------------------------------------
+
+~ScrollableControl.On Scroll Methode~
+
+-------------------------------------------------------------------------------------------------
+
+Löst das Scroll-Ereignis aus.
+
+
+	protected:
+ virtual void OnScroll(System::Windows::Forms::ScrollEventArgs ^ se);
