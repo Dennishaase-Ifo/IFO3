@@ -3,42 +3,13 @@
 #include <stdio.h>
 #include <corecrt_malloc.h>
 
-// Definition aller möglichen Felder für Quellen
-Field author = { "author", NULL };
-Field authororeditor = { "author or editor", NULL };
-Field title = { "title", NULL };
-Field journal = { "journal", NULL };
-Field year = { "year", NULL };
-Field volume = { "volume", NULL };
-Field number = { "number", NULL };
-Field pages = { "pages", NULL };
-Field month = { "month", NULL };
-Field note = { "note", NULL };
-Field publisher = { "publisher", NULL };
-Field editor = { "editor", NULL };
-Field series = { "series", NULL };
-Field address = { "address", NULL };
-Field edition = { "edition", NULL };
-Field booktitle = { "booktitle", NULL };
-Field chapter = { "chapter", NULL };
-Field chapterandorpages = { "chapter / pages", NULL };
-Field organization = { "organization", NULL };
-Field school = { "school", NULL };
-Field howpublished = { "howpublished", NULL };
-Field institution = { "institution", NULL };
-Field type = { "type", NULL };
-Field nullField = NULL;  // Leeres Feld, um Reihung klar definiert aufzufüllen
-
-// Reihungen leerer Felder um leere Quellen klar definieren zu können
-Field nullFields[6] = { nullField, nullField, nullField, nullField, nullField, nullField };
-Field nullOptFields[8] = { nullField, nullField, nullField, nullField, nullField, nullField, nullField, nullField };
 
 int initSource(Source* DBEntry, Sourcetype variant) {
 
 	// Start der Definitionen der Quellentypen
 	if (variant == article) {
-		static Field reqFields[] = {author, title, journal, year, nullField, nullField };  // Festlegen notwendiger Felder
-		static Field optFields[] = { volume, number, pages, month, note, nullField, nullField, nullField };  // Festlegen optionaler Felder
+		static Field reqFields[] = {author, title, journal, year, empty, empty };  // Festlegen notwendiger Felder
+		static Field optFields[] = { volume, number, pages, month, note, empty, empty, empty };  // Festlegen optionaler Felder
 
 		// Übertragen in die Quellenstruktur
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
@@ -49,8 +20,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 	}
 	// Und alles ganz oft wiederholen...
 	else if (variant == book) {
-		Field reqFields[] = {authororeditor, title, publisher, year, nullField, nullField };
-		Field optFields[] = { volume, series, address, edition, month, note, nullField, nullField };
+		Field reqFields[] = {authororeditor, title, publisher, year, empty, empty };
+		Field optFields[] = { volume, series, address, edition, month, note, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -58,8 +29,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = book;
 	}
 	else if (variant == booklet) {
-		Field reqFields[] = { title, nullField, nullField, nullField, nullField, nullField };
-		Field optFields[] = { author, howpublished, address, month, year, note, nullField, nullField };
+		Field reqFields[] = { title, empty, empty, empty, empty, empty };
+		Field optFields[] = { author, howpublished, address, month, year, note, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -67,8 +38,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = booklet;
 	}
 	else if (variant == conference) {
-		Field reqFields[] = { author, title, booktitle, year, nullField, nullField };
-		Field optFields[] = { editor, pages, organization, publisher, address, month, note, nullField };
+		Field reqFields[] = { author, title, booktitle, year, empty, empty };
+		Field optFields[] = { editor, pages, organization, publisher, address, month, note, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -76,8 +47,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = conference;
 	}
 	else if (variant == inbook) {
-		Field reqFields[] = { authororeditor, title, chapterandorpages, publisher, year, nullField };
-		Field optFields[] = { volume, series, address, edition, month, note, nullField, nullField };
+		Field reqFields[] = { authororeditor, title, chapterandorpages, publisher, year, empty };
+		Field optFields[] = { volume, series, address, edition, month, note, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -85,8 +56,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = inbook;
 	}
 	else if (variant == incollection) {
-		Field reqFields[] = { author, title, booktitle, publisher, year, nullField };
-		Field optFields[] = { editor, chapter, pages, address, month, note, nullField, nullField };
+		Field reqFields[] = { author, title, booktitle, publisher, year, empty };
+		Field optFields[] = { editor, chapter, pages, address, month, note, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -94,8 +65,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = incollection;
 	}
 	else if (variant == manual) {
-		Field reqFields[] = { title, nullField, nullField, nullField, nullField, nullField };
-		Field optFields[] = { author, organization, address, edition, month, year, note, nullField };
+		Field reqFields[] = { title, empty, empty, empty, empty, empty };
+		Field optFields[] = { author, organization, address, edition, month, year, note, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -103,8 +74,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = manual;
 	}
 	else if (variant == masterthesis) {
-		Field reqFields[] = { author, title, school, year, nullField, nullField };
-		Field optFields[] = { address, month, note, nullField, nullField, nullField, nullField, nullField };
+		Field reqFields[] = { author, title, school, year, empty, empty };
+		Field optFields[] = { address, month, note, empty, empty, empty, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -112,8 +83,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = masterthesis;
 	}
 	else if (variant == misc) {
-		Field reqFields[] = { nullField, nullField, nullField, nullField, nullField, nullField };
-		Field optFields[] = { author, title, howpublished, month, year, note, nullField, nullField };
+		Field reqFields[] = { empty, empty, empty, empty, empty, empty };
+		Field optFields[] = { author, title, howpublished, month, year, note, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -121,18 +92,17 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = misc;
 	}
 	else if (variant == phdthesis) {
-		Field reqFields[] = { author, title, school, year, nullField, nullField };
-		Field optFields[] = { address, month, note, nullField, nullField, nullField, nullField, nullField };
+		Field reqFields[] = { author, title, school, year, empty, empty };
+		Field optFields[] = { address, month, note, empty, empty, empty, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
 
 		DBEntry->variant = phdthesis;
-		strcpy(DBEntry->key, key);
 	}
 	else if (variant == proceedings) {
-		Field reqFields[] = { title, year, nullField, nullField, nullField, nullField };
-		Field optFields[] = { editor, publisher, organization, address, month, note, nullField, nullField };
+		Field reqFields[] = { title, year, empty, empty, empty, empty };
+		Field optFields[] = { editor, publisher, organization, address, month, note, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -140,8 +110,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = proceedings;
 	}
 	else if (variant == techreport) {
-		Field reqFields[] = { author, title, institution, year, nullField, nullField };
-		Field optFields[] = { type, number, address, month, note, nullField, nullField, nullField };
+		Field reqFields[] = { author, title, institution, year, empty, empty };
+		Field optFields[] = { type, number, address, month, note, empty, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -149,8 +119,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = techreport;
 	}
 	else if (variant == unpublished) {
-		Field reqFields[] = { author, title, note, nullField, nullField, nullField };
-		Field optFields[] = { month, year, nullField, nullField, nullField, nullField, nullField, nullField };
+		Field reqFields[] = { author, title, note, empty, empty, empty };
+		Field optFields[] = { month, year, empty, empty, empty, empty, empty, empty };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -176,7 +146,7 @@ bool sourceExists(Source* source) {  // standartüberprüfung, ob Quelle schon ang
 }
 
 bool fieldValid(Field* field) {  // standartüberprüfung, ob Feld angelegt
-	return (field->fieldName != NULL && strcmp(field->fieldName, "") != 0);
+	return (field->type != empty);
 }
 
 bool fieldHasContent(Field* field) {  // standartüberprüfung, ob Feld inhalt hat
@@ -184,9 +154,13 @@ bool fieldHasContent(Field* field) {  // standartüberprüfung, ob Feld inhalt hat
 }
 
 void setNullSource(Source* source) {  // klares Setzen der "leeren" Quellen
-	memcpy(source->fields, nullFields, sizeof(nullFields));
-	memcpy(source->optFields, nullOptFields, sizeof(nullOptFields));
-	source->variant = empty;  // Einfach auszulesende ID für undefinierte Quellenstruktur
+	for (int i = 0; i < 6; i++) {
+		source->fields[i].type = empty;
+		source->optFields[i].type = empty;
+	}
+	source->optFields[6].type = empty;
+	source->optFields[7].type = empty;
+	source->variant = nullSource;  // Einfach auszulesende ID für undefinierte Quellenstruktur
 	source->key[0] = EOF;
 }
 

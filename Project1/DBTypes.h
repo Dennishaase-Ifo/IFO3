@@ -20,14 +20,41 @@ typedef enum {  // Arten von Quellen zur besseren Lesbarkeit und eindeutigkeit (
 	techreport,
 	unpublished,
 	variantcount,
-	empty, // stellt leeren Quellentypen dar
+	nullSource, // stellt leeren Quellentypen dar
 } Sourcetype;
+
+typedef enum {
+	author,
+	authororeditor,
+    title,
+	journal,
+    year,
+    volume,
+    number,
+    pages,
+    month,
+    note,
+    publisher,
+    editor,
+    series,
+    address,
+    edition,
+    booktitle,
+    chapter,
+    chapterandorpages,
+    organization,
+    school,
+    howpublished,
+    institution,
+    type,
+	empty,
+} Fieldtype;
 
 extern int readSourcetype(Sourcetype type, char saveLocation[13]);
 
 // Einzelnes Feld, z.B. Autor
 typedef struct {
-	char fieldName[20];  // Bsp. "author"
+	Fieldtype type;  // Bsp. "author"
 	char content[100];    // Bsp. content = "Karl Marx"
 } Field;
 

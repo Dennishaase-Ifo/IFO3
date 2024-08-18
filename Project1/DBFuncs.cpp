@@ -9,7 +9,12 @@
 int DBinput(DataBank *db, Source* newSourc) {
 	Source* currSource = &db->sources[db->entries];
 
-	if (initSource(currSource, (Sourcetype)input)) { // Falls Quelle mit Feldern und Typ angelegt werden konnte, wollen wir reinschreiben
+	// pop-up quellentyp
+	// neues fenster erstellen + quellentype abfragen
+
+	Sourcetype chosenType;
+
+	if (initSource(currSource, chosenType)) { // Falls Quelle mit Feldern und Typ angelegt werden konnte, wollen wir reinschreiben
 		return appendDB(db, *currSource);  // fertige Quelle einfügen
 	}
 
