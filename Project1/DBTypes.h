@@ -51,6 +51,7 @@ typedef enum {
 } Fieldtype;
 
 extern int readSourcetype(Sourcetype type, char saveLocation[13]);
+int readFieldtype(Fieldtype readtype, char saveLocation[20]);
 
 // Einzelnes Feld, z.B. Autor
 typedef struct {

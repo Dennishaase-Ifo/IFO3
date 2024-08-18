@@ -12,11 +12,14 @@ int DBinput(DataBank *db, Source* newSourc) {
 	// pop-up quellentyp
 	// neues fenster erstellen + quellentype abfragen
 
-	Sourcetype chosenType;
+	Sourcetype chosenType; // aus popup
 
 	if (initSource(currSource, chosenType)) { // Falls Quelle mit Feldern und Typ angelegt werden konnte, wollen wir reinschreiben
 		return appendDB(db, *currSource);  // fertige Quelle einfügen
 	}
+
+	// neue quelle anzeigen und in ändern modus wechseln
+	DBoutput(db, db->entries - 1, true);
 
 	printf("Etwas ist schiefgelaufen...");
 	return 0;
@@ -237,7 +240,7 @@ void deleteEntry(DataBank* db, int index) {
 	else { printf("Ung\x81ltige Auswahl"); }
 }
 
-void DBoutput(DataBank* db, int index) {
+void DBoutput(DataBank* db, int index, bool changeMode) {
 
 	system("cls");
 
