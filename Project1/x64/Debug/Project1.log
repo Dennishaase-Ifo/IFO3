@@ -1,138 +1,17 @@
 ﻿  DBFuncs.cpp
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(22): error C3861: "DBoutput": Bezeichner wurde nicht gefunden.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(40): warning C4129: "c": nicht erkannte Folge von Escapesequenz
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(43): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(75): warning C4129: "c": nicht erkannte Folge von Escapesequenz
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(78): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(86): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(92): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(127): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(127): warning C4473: "printf": nicht genügend Argumente für Formatzeichenfolge übergeben
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(127): note: Platzhalter und deren Parameter erwarten 2 variadic-Argumente, es wurden aber 1 variadic-Argumente bereitgestellt.
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(127): note: Das fehlende variadic-Argument "2" ist für die Zeichenfolge "%s" erforderlich.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(136): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(136): warning C4473: "printf": nicht genügend Argumente für Formatzeichenfolge übergeben
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(136): note: Platzhalter und deren Parameter erwarten 2 variadic-Argumente, es wurden aber 1 variadic-Argumente bereitgestellt.
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(136): note: Das fehlende variadic-Argument "2" ist für die Zeichenfolge "%s" erforderlich.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(48): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(1274): note: Siehe Deklaration von "scanf"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(66): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(70): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(165): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(181): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(214): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(214): warning C4473: "fprintf": nicht genügend Argumente für Formatzeichenfolge übergeben
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(214): note: Platzhalter und deren Parameter erwarten 2 variadic-Argumente, es wurden aber 1 variadic-Argumente bereitgestellt.
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(214): note: Das fehlende variadic-Argument "2" ist für die Zeichenfolge "%s" erforderlich.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(220): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(220): warning C4473: "fprintf": nicht genügend Argumente für Formatzeichenfolge übergeben
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(220): note: Platzhalter und deren Parameter erwarten 2 variadic-Argumente, es wurden aber 1 variadic-Argumente bereitgestellt.
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(220): note: Das fehlende variadic-Argument "2" ist für die Zeichenfolge "%s" erforderlich.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(198): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(271): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(271): warning C4473: "printf": nicht genügend Argumente für Formatzeichenfolge übergeben
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(271): note: Platzhalter und deren Parameter erwarten 2 variadic-Argumente, es wurden aber 1 variadic-Argumente bereitgestellt.
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(271): note: Das fehlende variadic-Argument "2" ist für die Zeichenfolge "%s" erforderlich.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(280): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(280): warning C4473: "printf": nicht genügend Argumente für Formatzeichenfolge übergeben
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(280): note: Platzhalter und deren Parameter erwarten 2 variadic-Argumente, es wurden aber 1 variadic-Argumente bereitgestellt.
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(280): note: Das fehlende variadic-Argument "2" ist für die Zeichenfolge "%s" erforderlich.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(298): error C2660: "DBinput": Funktion akzeptiert keine 1 Argumente
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(9): note: Siehe Deklaration von "DBinput"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(301): error C3861: "DBchange": Bezeichner wurde nicht gefunden.
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(309): error C2660: "DBoutput": Funktion akzeptiert keine 2 Argumente
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(243): note: Siehe Deklaration von "DBoutput"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(310): error C2660: "DBoutput": Funktion akzeptiert keine 2 Argumente
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(243): note: Siehe Deklaration von "DBoutput"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(314): error C2660: "DBoutput": Funktion akzeptiert keine 2 Argumente
-  c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(243): note: Siehe Deklaration von "DBoutput"
-  DBTypes.cpp
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(9): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(13): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(17): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(21): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(25): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(29): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(33): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(37): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(41): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(45): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(49): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(53): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(57): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(61): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(76): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(83): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(87): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(91): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(95): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(99): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(103): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(107): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(111): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(115): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(119): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(123): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(127): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(131): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(135): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(139): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(146): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(150): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(154): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(158): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(162): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.cpp(166): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-  MyForm.cpp
-c:\users\thore\desktop\inf3\ifo3\project1\myform.cpp(7): warning C4829: Möglicherweise falsche Parameter für Main-Funktion. Verwenden Sie eventuell "int main(Platform::Array<Platform::String^>^ args)".
-  typeFuncs.cpp
-  Code wird generiert...
+s:\ifo3\ifo3\project1\dbfuncs.cpp(64): warning C4129: 'c': unrecognized character escape sequence
+s:\ifo3\ifo3\project1\dbfuncs.cpp(66): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+s:\ifo3\ifo3\project1\dbfuncs.cpp(74): error C2039: 'fieldName': is not a member of 'Field'
+  s:\ifo3\ifo3\project1\dbtypes.h(57): note: see declaration of 'Field'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(80): error C2039: 'fieldName': is not a member of 'Field'
+  s:\ifo3\ifo3\project1\dbtypes.h(57): note: see declaration of 'Field'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(55): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(59): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(113): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(129): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(146): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'

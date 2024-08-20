@@ -5,13 +5,9 @@
 
 extern int DBinput(DataBank *db);
 
-extern void DBoutput(DataBank* db, int index);
-
 extern int saveDB(DataBank* db);
 
 extern int loadDB(DataBank* db);
-
-extern void DBchange(DataBank* db, int index);
 
 extern int exportDB(DataBank* db);
 

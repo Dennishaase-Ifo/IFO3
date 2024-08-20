@@ -2,7 +2,6 @@
 #include "typeFuncs.h"
 #include "typeFuncs.h"
 #include <stdio.h>
-#include <conio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -21,7 +20,7 @@ int DBinput(DataBank *db, Source* newSourc) {
 	}
 
 	// neue quelle anzeigen und in ändern modus wechseln
-	DBoutput(db, db->entries - 1, true);
+	//DBoutput(db, db->entries - 1, true);
 
 	MessageBox::Show("Etwas ist schiefgelaufen...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	return 0;
@@ -32,6 +31,8 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 	int choice;
 	int currIndex = 0;
 	char searchTerm[40];
+
+	int results = 0;
 
 	Source* searchResults[1000];
 
@@ -62,7 +63,6 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 			printf("Ung\x81ltige Eingabe. Versuche es erneut... \n\n");
 			printf("Wonach m\x94\chtest du suchen?\n(1) Schl\x81ssel\n(2) Name\n(3) Titel\n");
 
-			searchFor = _getch();
 			choice = atof(&searchFor);
 			continue;
 		} ;
@@ -98,47 +98,7 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 
 	// Suchergebnisse analog zur normalen Ausgabe ausgeben
 	if (results > 0 && searchResults[index] != NULL) {
-		do {
-			system("cls");
-
-			currSource = searchResults[index];
-
-			char SourcetypeName[13];
-			// Quellentyp ausgeben
-			printf("+ ======= ( %i / %i ) ======= ---\n", index + 1, results);
-			readSourcetype(currSource->variant, SourcetypeName);
-			printf("| Quellentyp: %s, Schl\x81ssel: %s\n", SourcetypeName, currSource->key);
-			printf("+ ========================= ---\n");
-			// Notwendige Felder ausgeben
-			int i = 0; // iterationsparameter
-			while (fieldValid(&currSource->fields[i]) && fieldHasContent(&currSource->fields[i])) { // Pointerarithmetik um alle existenten Felder durchzuiterieren
-				printf("| %s: %s\n", currSource->fields[i].fieldName, currSource->fields[i].content);
-				i++;
-			}
-			// Optionale Felder ausgeben
-			printf("+ ========================= ---\n");
-			printf("| Optionale Felder:\n");
-			printf("+ ========================= ---\n");
-			int j = 0; // iterationsparameter
-			while (fieldValid(&currSource->optFields[j])) { // Pointerarithmetik um alle existenten Felder durchzuiterieren
-				printf("| %s: %s\n", currSource->optFields[j].fieldName, currSource->optFields[j].content); 
-				j++;
-			}
-
-			printf("+ ========================= ---\n");
-			printf("<- (4) ===  quit (q) === (6) ->\n");
-			printf("+ ========================= ---\n");
-			char userInput = _getch();
-			if (userInput == 'q') { return; }
-			else if (userInput == '4') {
-				if (index == 0) { index = results; }  // Randbedingungen abfangen
-				index--;;
-			}
-			else if (userInput == '6') {
-				if (index + 1 >= results) { index = -1; }  // Randbedingungen abfangen
-				index++;
-			}
-		} while (true);
+		
 	}
 	else {
 		MessageBox::Show("Keine Ergebnisse gefunden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
