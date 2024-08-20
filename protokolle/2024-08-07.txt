@@ -1,9 +1,9 @@
-Protokol_IFO3_05
+Protokoll_IFO3_05
 Datum:07.08.2024
 Anwesehend: Maxim, Jona, Dennis, Thore, Felix, Lena
 
 Themen:
-- GUI-Oberfl‰che besprechen (weitere Vorschl‰ge)
+- GUI-Oberfl√§che besprechen (weitere Vorschl√§ge)
 - Funktional Mockup
 - Vorbereitung Diagramm 
 - Einarbeitung Github
