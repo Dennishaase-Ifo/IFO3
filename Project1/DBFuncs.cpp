@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+using namespace System::Windows::Forms;
+
 int DBinput(DataBank *db, Source* newSourc) {
 	Source* currSource = &db->sources[db->entries];
 
@@ -21,7 +23,7 @@ int DBinput(DataBank *db, Source* newSourc) {
 	// neue quelle anzeigen und in ändern modus wechseln
 	DBoutput(db, db->entries - 1, true);
 
-	printf("Etwas ist schiefgelaufen...");
+	MessageBox::Show("Etwas ist schiefgelaufen...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	return 0;
 } // Eingabe optionale Felder optimieren
 
@@ -32,20 +34,6 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 	char searchTerm[40];
 
 	Source* searchResults[1000];
-
-	int results = 0;
-
-	system("cls");
-
-	printf("Wonach m\x94\chtest du suchen?\n(1) Schl\x81ssel\n(2) Name\n(3) Titel\n");
-
-	searchFor = _getch();
-	choice = atof(&searchFor);
-
-	system("cls");
-
-	printf("Suchterm: ");
-	scanf(" %[^\n]s", &searchTerm);
 
 	Source* currSource = &db->sources[currIndex];
 
@@ -153,7 +141,7 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 		} while (true);
 	}
 	else {
-		printf("Keine Ergebnisse gefunden...");
+		MessageBox::Show("Keine Ergebnisse gefunden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
 }
 
@@ -163,7 +151,7 @@ int saveDB(DataBank* db) {
 	system("cls");
 
 	if ((fp = fopen("Quellenverzeichnis.dat", "wb")) == NULL) {  // Versuchen Datei zu öffnen
-		printf("Datei konnte nicht ge\x94\\ffnet werden...");
+		MessageBox::Show("Datei konnte nicht ge\x94\\ffnet werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		return 0;
 	}
 
@@ -179,7 +167,7 @@ int loadDB(DataBank* db) {
 	system("cls");
 
 	if ((fp = fopen("Quellenverzeichnis.dat", "rb")) == NULL) {  // Versuchen Datei zu öffnen
-		printf("Datei konnte nicht ge\x94\\ffnet werden...");
+		MessageBox::Show("Datei konnte nicht ge\x94\\ffnet werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		return 0;
 	}
 
@@ -196,7 +184,7 @@ int exportDB(DataBank* db) {
 	system("cls");
 
 	if ((fp = fopen("Quellenverzeichnis.bib", "w")) == NULL) {  // Versuchen Datei zu öffnen
-		printf("Quellenverzeichnis konnte nicht angelegt werden...");
+		MessageBox::Show("Quellenverzeichnis konnte nicht angelegt werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		return 0;
 	}
 
@@ -211,16 +199,20 @@ int exportDB(DataBank* db) {
 		// Notwendige Felder ausgeben
 		int m = 0; // iterationsparameter
 		while (fieldValid(&currSource->fields[m]) && fieldHasContent(&currSource->fields[m])) { // Pointerarithmetik um alle existenten Felder durchzuiterieren
-			fprintf(fp, "\t%s = {%s},\n", currSource->fields[m].fieldName, currSource->fields[m].content);
+			char fieldname[20];
+			readFieldtype(currSource->fields[m].type, fieldname);
+			fprintf(fp, "\t%s = {%s},\n", fieldname, currSource->fields[m].content);
 			m++;
 		}
 		// Optionale Felder ausgeben
 		int j = 0; // iterationsparameter
 		while (fieldValid(&currSource->optFields[j])) { // Pointerarithmetik um alle existenten Felder durchzuiterieren
-			if (fieldHasContent(&currSource->optFields[j])) { fprintf(fp, "\t%s = \"%s\",\n", currSource->optFields[j].fieldName, currSource->optFields[j].content); }
+			char fieldname[20];
+			readFieldtype(currSource->optFields[j].type, fieldname);
+			if (fieldHasContent(&currSource->optFields[j])) { fprintf(fp, "\t%s = \"%s\",\n", fieldname, currSource->optFields[j].content); }
 			j++;
 		}
-
+		
 		fprintf(fp, "}\n\n");  
 	}
 
@@ -237,81 +229,5 @@ void deleteEntry(DataBank* db, int index) {
 		}
 		db->entries--;  // Anzahl Einträge um 1 verringern
 	}
-	else { printf("Ung\x81ltige Auswahl"); }
-}
-
-void DBoutput(DataBank* db, int index, bool changeMode) {
-
-	system("cls");
-
-	Source* currSource = &db->sources[index];  // Pointer zu erstem element anlegen
-	if (currSource == NULL) {  // Gibt es diesen?
-		printf("Ung\x81ltige Eingabe...");
-		_getch();
-		return;
-	}
-
-	if (db->entries == 0) {
-		printf("Die Datenbank ist aktuell leer...");
-		_getch();
-		return;
-	}
-
-	char SourcetypeName[13];
-	// Quellentyp ausgeben
-	printf("+===============================--------\n");
-	printf("| Eintrag %i\n", index + 1);
-	printf("+---------------------------------------\n");
-	readSourcetype(currSource->variant, SourcetypeName);
-	printf("| Quellentyp: %s, Schl\x81ssel: %s\n", SourcetypeName, currSource->key);
-	printf("+---------------------------------------\n");
-	// Notwendige Felder ausgeben
-	int i = 0; // iterationsparameter
-	while (fieldValid(&currSource->fields[i])) { // Pointerarithmetik um alle existenten Felder durchzuiterieren
-		printf("| - %s: %s\n", currSource->fields[i].fieldName, currSource->fields[i].content);
-		i++;
-	}
-	// Optionale Felder ausgeben
-	printf("+===============================--------\n");
-	printf("| Optionale Felder:\n");
-	printf("+---------------------------------------\n");
-	int j = 0; // iterationsparameter
-	while (fieldValid(&currSource->optFields[j])) { // Pointerarithmetik um alle existenten Felder durchzuiterieren
-		printf("| - %s: %s\n", currSource->optFields[j].fieldName, currSource->optFields[j].content);
-		j++;
-	}
-
-	// kleines Menü zum blättern und andere Funktionen
-	printf("+=================================+\n");
-	printf("<- (4) ====  men\x81 (m)   ==== (6) ->\n");
-	printf("+=================================+\n");
-	printf("| (e) eingabe   -----   (s) suche |\n");
-	printf("| (x) export    -----  (v) \x84ndern |\n");
-	printf("| (p) speichern -----   (l) laden |\n");
-	printf("| (d) l\x94schen                     |\n");
-	printf("+=================================+\n");
-
-	char userInput = _getch();
-	if (userInput == 'm') { return; }  // geht zurück zum Hauptmenü
-
-	// Funktionen wie im Hauptmenü
-	else if (userInput == 'e') { DBinput(db); }
-	else if (userInput == 's') { searchDB(db); }
-	else if (userInput == 'x') { exportDB(db); }
-	else if (userInput == 'v') { DBchange(db, index + 1); }
-	else if (userInput == 's') { saveDB(db); }
-	else if (userInput == 'l') { loadDB(db); }
-	else if (userInput == 'd') { deleteEntry(db, index); }
-
-	// Logik zum "Blättern"
-	else if (userInput == '4') {
-		if (index == 0) { index = db->entries; }
-		if (db->entries == 1) { DBoutput(db, 0); }
-		else { DBoutput(db, index - 1); }
-	}
-	else if (userInput == '6') {
-		if (index + 1 >= db->entries) { index = -1; }
-		DBoutput(db, index + 1);
-	}
-	return;
+	else { MessageBox::Show("Ung\x81ltige Auswahl", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning); }
 }
