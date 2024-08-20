@@ -1,0 +1,14 @@
+Protokol_IFO3_05
+Datum:07.08.2024
+Anwesehend: Maxim, Jona, Dennis, Thore, Felix, Lena
+
+Themen:
+- GUI-Oberfläche besprechen (weitere Vorschläge)
+- Funktional Mockup
+- Vorbereitung Diagramm 
+- Einarbeitung Github
+
+Im Anschluss Code Review
+
+
+Sprint Review 14.08 
