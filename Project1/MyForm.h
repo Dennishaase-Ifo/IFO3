@@ -62,6 +62,9 @@ namespace Project1 {
 		void output(int index, bool isEditable) {
 			Source* currSource = &db->sources[index];
 
+			// Alles erstmal blank zurücksetzen
+			resetFields();
+
 			if (currSource->variant != nullSource) {
 				// TODO für weitere Felder ausführen (bei optionalen Feldern logik einführen, dass von links nach recht, von oben nach unten populiert wird, dazwischen keine leeren Felder, da sieht kacke aus)
 				//erstes feld populieren
@@ -87,8 +90,18 @@ namespace Project1 {
 			}
 		}
 
+		// TODO fill all other fields
+		void resetFields() {
+			field1->Text = "";
+			field1->ReadOnly = true;
+		}
+
 	protected: 
 		DataBank* db;
+	private: System::Windows::Forms::Button^  saveChangeButton;
+	protected:
+
+	protected:
 		int currEntry;
 
 	protected:
@@ -241,6 +254,7 @@ namespace Project1 {
 			this->_field7 = (gcnew System::Windows::Forms::TextBox());
 			this->_field6 = (gcnew System::Windows::Forms::TextBox());
 			this->_field5 = (gcnew System::Windows::Forms::TextBox());
+			this->saveChangeButton = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -330,6 +344,7 @@ namespace Project1 {
 			this->changeButton->TabIndex = 3;
 			this->changeButton->Text = L"Ändern";
 			this->changeButton->UseVisualStyleBackColor = true;
+			this->changeButton->Click += gcnew System::EventHandler(this, &MyForm::changeButton_Click);
 			// 
 			// deleteButton
 			// 
@@ -614,11 +629,24 @@ namespace Project1 {
 			this->_field5->Size = System::Drawing::Size(182, 26);
 			this->_field5->TabIndex = 31;
 			// 
+			// saveChangeButton
+			// 
+			this->saveChangeButton->Location = System::Drawing::Point(414, 757);
+			this->saveChangeButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->saveChangeButton->Name = L"saveChangeButton";
+			this->saveChangeButton->Size = System::Drawing::Size(168, 54);
+			this->saveChangeButton->TabIndex = 39;
+			this->saveChangeButton->Text = L"Speichern";
+			this->saveChangeButton->UseVisualStyleBackColor = true;
+			this->saveChangeButton->Visible = false;
+			this->saveChangeButton->Click += gcnew System::EventHandler(this, &MyForm::saveChangeButton_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->Controls->Add(this->saveChangeButton);
 			this->Controls->Add(this->_value8);
 			this->Controls->Add(this->_field8);
 			this->Controls->Add(this->_value7);
@@ -689,6 +717,7 @@ private: System::Void exportToolStripMenuItem_Click(System::Object^  sender, Sys
 	MessageBox::Show("Erfolgreich exportiert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 }
+// TODO abfangen, ob in ändern modu? -> nutzer hinweisen erst zu speichern / möglichkeit cancel? bieten
 private: System::Void nextButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	currEntry = (currEntry >= db->entries) ? 0 : currEntry++;
 	output(currEntry, false);
@@ -696,6 +725,19 @@ private: System::Void nextButton_Click(System::Object^  sender, System::EventArg
 private: System::Void lastButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	currEntry = (currEntry <= 0) ? db->entries : currEntry--;
 	output(currEntry, false);
+}
+private: System::Void changeButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	output(currEntry, true);
+	saveChangeButton->Visible = true;
+	changeButton->Visible = false;
+}
+private: System::Void saveChangeButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	// TODO Speichern der neuen Eingaben
+
+	// wieder in Ausgabe wechseln
+	output(currEntry, false);
+	saveChangeButton->Visible = false;
+	changeButton->Visible = true;
 }
 };
 }
