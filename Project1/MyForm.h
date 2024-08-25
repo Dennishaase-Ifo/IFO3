@@ -101,70 +101,73 @@ namespace Project1 {
 			}
 		}
 
-	protected:
 	private: System::Windows::Forms::MenuStrip^  menuStrip1;
+
 	private: System::Windows::Forms::ToolStripMenuItem^  dateiToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^  helpButton;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  searchButton;
 
 	private: System::Windows::Forms::ToolStripMenuItem^  neuToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^  speichernToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^  ladenToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^  exportToolStripMenuItem;
 
 	private: System::Windows::Forms::Button^  lastButton;
-	private: System::Windows::Forms::Button^  changeButton;
 
+	private: System::Windows::Forms::Button^  changeButton;
 
 	private: System::Windows::Forms::Button^  deleteButton;
 
 	private: System::Windows::Forms::Button^  nextButton;
 
 	private: System::Windows::Forms::PictureBox^  pictureBox1;
+
 	private: System::Windows::Forms::TextBox^  field1;
+
 	private: System::Windows::Forms::TextBox^  field2;
+
 	private: System::Windows::Forms::TextBox^  field3;
 
-
-
-
-
 	private: System::Windows::Forms::TextBox^  value1;
+
 	private: System::Windows::Forms::TextBox^  value2;
+
 	private: System::Windows::Forms::TextBox^  value3;
+
 	private: System::Windows::Forms::TextBox^  value6;
-
-
-
 
 	private: System::Windows::Forms::TextBox^  value5;
 
 	private: System::Windows::Forms::TextBox^  value4;
-	private: System::Windows::Forms::TextBox^  field6;
 
+	private: System::Windows::Forms::TextBox^  field6;
 
 	private: System::Windows::Forms::TextBox^  field5;
 
 	private: System::Windows::Forms::TextBox^  field4;
-	private: System::Windows::Forms::TextBox^  _value3;
 
+	private: System::Windows::Forms::TextBox^  _value3;
 
 	private: System::Windows::Forms::TextBox^  _value2;
 
 	private: System::Windows::Forms::TextBox^  _value1;
-	private: System::Windows::Forms::TextBox^  _field3;
 
+	private: System::Windows::Forms::TextBox^  _field3;
 
 	private: System::Windows::Forms::TextBox^  _field2;
 
 	private: System::Windows::Forms::TextBox^  _field1;
+
 	private: System::Windows::Forms::TextBox^  _value4;
 
-
 	private: System::Windows::Forms::TextBox^  _field4;
-	private: System::Windows::Forms::TextBox^  _value8;
 
+	private: System::Windows::Forms::TextBox^  _value8;
 
 	private: System::Windows::Forms::TextBox^  _field8;
 
@@ -173,19 +176,12 @@ namespace Project1 {
 	private: System::Windows::Forms::TextBox^  _value6;
 
 	private: System::Windows::Forms::TextBox^  _value5;
-	private: System::Windows::Forms::TextBox^  _field7;
 
+	private: System::Windows::Forms::TextBox^  _field7;
 
 	private: System::Windows::Forms::TextBox^  _field6;
 
 	private: System::Windows::Forms::TextBox^  _field5;
-
-
-
-
-
-
-
 
 	private: System::ComponentModel::IContainer^  components;
 
