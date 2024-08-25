@@ -87,7 +87,9 @@ namespace Project1 {
 			}
 		}
 
-	protected: DataBank* db;
+	protected: 
+		DataBank* db;
+		int currEntry;
 
 	protected:
 		/// <summary>
@@ -317,6 +319,7 @@ namespace Project1 {
 			this->lastButton->TabIndex = 2;
 			this->lastButton->Text = L"<---";
 			this->lastButton->UseVisualStyleBackColor = true;
+			this->lastButton->Click += gcnew System::EventHandler(this, &MyForm::lastButton_Click);
 			// 
 			// changeButton
 			// 
@@ -347,6 +350,7 @@ namespace Project1 {
 			this->nextButton->TabIndex = 5;
 			this->nextButton->Text = L"--->";
 			this->nextButton->UseVisualStyleBackColor = true;
+			this->nextButton->Click += gcnew System::EventHandler(this, &MyForm::nextButton_Click);
 			// 
 			// pictureBox1
 			// 
@@ -684,6 +688,14 @@ private: System::Void exportToolStripMenuItem_Click(System::Object^  sender, Sys
 
 	MessageBox::Show("Erfolgreich exportiert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
+}
+private: System::Void nextButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	currEntry = (currEntry >= db->entries) ? 0 : currEntry++;
+	output(currEntry, false);
+}
+private: System::Void lastButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	currEntry = (currEntry <= 0) ? db->entries : currEntry--;
+	output(currEntry, false);
 }
 };
 }
