@@ -26,7 +26,7 @@ int DBinput(DataBank *db, Source* newSourc) {
 	return 0;
 } // Eingabe optionale Felder optimieren
 
-void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausgabe Ergebnisse Anzahl
+void searchDB(DataBank* db, Source* searchResults[1000]) {  // weitere Felderoptionen und über strstr | Ausgabe Ergebnisse Anzahl
 	char searchFor;
 	int choice;
 	int currIndex = 0;
@@ -34,14 +34,14 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 
 	int results = 0;
 
-	Source* searchResults[1000];
+	searchResults = { 0 }; // leer initialisieren
 
 	Source* currSource = &db->sources[currIndex];
 
 	while (sourceExists(currSource)) {
 		int i;
 		int j;
-		char chosenField[20];
+		int chosenField = -1;
 
 		switch (choice) {  // unterscheidung der Suchoptionen
 		case 1:  // nach Schlüssel
@@ -52,38 +52,35 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 			break;
 
 		case 2:
-			strcpy(chosenField, "author");  // setzen der Variable für später
+			chosenField = author;  // setzen der Variable für später
 			break;
 
 		case 3:
-			strcpy(chosenField, "title");  // setzen der Variable für später (2)
+			chosenField = title;  // setzen der Variable für später (2)
 			break;
 
 		default:
-			printf("Ung\x81ltige Eingabe. Versuche es erneut... \n\n");
-			printf("Wonach m\x94\chtest du suchen?\n(1) Schl\x81ssel\n(2) Name\n(3) Titel\n");
-
-			choice = atof(&searchFor);
-			continue;
+			MessageBox::Show("Ung\x81ltige Eingabe. Versuche es erneut...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			return;
 		} ;
 
-		if (strlen(chosenField) > 0) {  // hier werden Optionen 2 & 3 verarbeitet
+		if (chosenField > 0) {  // hier werden Optionen 2 & 3 verarbeitet
 			// entsprechendes Feld raussuchen
-			Field* authorField = NULL;
+			Field* searchedField = NULL;
 			for (i = 0; i < 6; i++) {  // alle notwendigen Felder ausprobieren
-				if (&currSource->fields[i] != NULL && strstr(currSource->fields[i].fieldName, chosenField) != NULL) { // ist es das gesuchte Feld? (findet auch athor in author or editor)
-					authorField = &currSource->fields[i];  // Feld merken
+				if (&currSource->fields[i] != NULL && currSource->fields[i].type == chosenField) { // ist es das gesuchte Feld? (findet auch athor in author or editor)
+					searchedField = &currSource->fields[i];  // Feld merken
 					break;
 				}
 			}
 			for (i = 0; i < 8; i++) {  // alle optionalen Felder ausprobieren
-				if (&currSource->optFields[i] != NULL && strstr(currSource->optFields[i].fieldName, chosenField) != NULL) {
-					authorField = &currSource->optFields[i];
+				if (&currSource->optFields[i] != NULL && currSource->optFields[i].type == chosenField) {
+					searchedField = &currSource->optFields[i];
 					break;
 				}
 			}
-			if (authorField != NULL) { // Falls Feld gefunden suchbegriff überprüfen
-				if (strstr(authorField->content, searchTerm) != NULL) {
+			if (searchedField != NULL) { // Falls Feld gefunden suchbegriff überprüfen
+				if (strstr(searchedField->content, searchTerm) != NULL) {
 					searchResults[results] = currSource;
 					results++;
 				}
@@ -97,18 +94,13 @@ void searchDB(DataBank* db) {  // weitere Felderoptionen und über strstr | Ausga
 	int index = 0;
 
 	// Suchergebnisse analog zur normalen Ausgabe ausgeben
-	if (results > 0 && searchResults[index] != NULL) {
-		
-	}
-	else {
+	if (results < 0 ) {
 		MessageBox::Show("Keine Ergebnisse gefunden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
 }
 
 int saveDB(DataBank* db) {
 	FILE* fp;
-
-	system("cls");
 
 	if ((fp = fopen("Quellenverzeichnis.dat", "wb")) == NULL) {  // Versuchen Datei zu öffnen
 		MessageBox::Show("Datei konnte nicht ge\x94\\ffnet werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -177,7 +169,7 @@ int exportDB(DataBank* db) {
 	}
 
 	fclose(fp);
-	printf("Exportieren erfolgreich!\n");
+	MessageBox::Show("Exportieren erfolgreich!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 
 	return 1;  // Erfolg!
 }

@@ -1,20 +1,22 @@
 ﻿  DBFuncs.cpp
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(64): warning C4129: "c": nicht erkannte Folge von Escapesequenz
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(66): warning C4244: "=": Konvertierung von "double" in "int", möglicher Datenverlust
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(74): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(80): error C2039: "fieldName": Ist kein Element von "Field"
-  c:\users\thore\desktop\inf3\ifo3\project1\dbtypes.h(57): note: Siehe Deklaration von "Field"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(55): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(59): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: Siehe Deklaration von "strcpy"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(113): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(129): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
-c:\users\thore\desktop\inf3\ifo3\project1\dbfuncs.cpp(146): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
+s:\ifo3\ifo3\project1\dbfuncs.cpp(64): warning C4129: 'c': unrecognized character escape sequence
+s:\ifo3\ifo3\project1\dbfuncs.cpp(66): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+s:\ifo3\ifo3\project1\dbfuncs.cpp(74): error C2039: 'fieldName': is not a member of 'Field'
+  s:\ifo3\ifo3\project1\dbtypes.h(57): note: see declaration of 'Field'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(80): error C2039: 'fieldName': is not a member of 'Field'
+  s:\ifo3\ifo3\project1\dbtypes.h(57): note: see declaration of 'Field'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(55): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(59): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\string.h(133): note: see declaration of 'strcpy'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(113): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(129): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(146): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
   MyForm.cpp
-c:\users\thore\desktop\inf3\ifo3\project1\myform.cpp(7): warning C4829: Möglicherweise falsche Parameter für Main-Funktion. Verwenden Sie eventuell "int main(Platform::Array<Platform::String^>^ args)".
-  Code wird generiert...
+s:\ifo3\ifo3\project1\myform.h(479): error C2535: 'void Project1::MyForm::InitializeComponent(void)': member function already defined or declared
+  s:\ifo3\ifo3\project1\myform.h(145): note: see declaration of 'Project1::MyForm::InitializeComponent'
+s:\ifo3\ifo3\project1\myform.cpp(7): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  Generating Code...
