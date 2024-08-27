@@ -6,6 +6,8 @@
 #include "DBTypes.h"
 #include "typeFuncs.h"
 
+#include "MyForm1.h"
+
 namespace Project1 {
 
 	using namespace System;
@@ -268,8 +270,7 @@ namespace Project1 {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(9, 3, 0, 3);
-			this->menuStrip1->Size = System::Drawing::Size(1203, 35);
+			this->menuStrip1->Size = System::Drawing::Size(802, 24);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -280,33 +281,34 @@ namespace Project1 {
 					this->speichernToolStripMenuItem, this->ladenToolStripMenuItem, this->exportToolStripMenuItem
 			});
 			this->dateiToolStripMenuItem->Name = L"dateiToolStripMenuItem";
-			this->dateiToolStripMenuItem->Size = System::Drawing::Size(65, 29);
+			this->dateiToolStripMenuItem->Size = System::Drawing::Size(46, 20);
 			this->dateiToolStripMenuItem->Text = L"Datei";
 			// 
 			// neuToolStripMenuItem
 			// 
 			this->neuToolStripMenuItem->Name = L"neuToolStripMenuItem";
-			this->neuToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->neuToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->neuToolStripMenuItem->Text = L"Neu";
+			this->neuToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::neuToolStripMenuItem_Click);
 			// 
 			// speichernToolStripMenuItem
 			// 
 			this->speichernToolStripMenuItem->Name = L"speichernToolStripMenuItem";
-			this->speichernToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->speichernToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->speichernToolStripMenuItem->Text = L"Speichern";
 			this->speichernToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::speichernToolStripMenuItem_Click);
 			// 
 			// ladenToolStripMenuItem
 			// 
 			this->ladenToolStripMenuItem->Name = L"ladenToolStripMenuItem";
-			this->ladenToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->ladenToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->ladenToolStripMenuItem->Text = L"Laden";
 			this->ladenToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ladenToolStripMenuItem_Click);
 			// 
 			// exportToolStripMenuItem
 			// 
 			this->exportToolStripMenuItem->Name = L"exportToolStripMenuItem";
-			this->exportToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->exportToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->exportToolStripMenuItem->Text = L"Export";
 			this->exportToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exportToolStripMenuItem_Click);
 			// 
@@ -314,22 +316,22 @@ namespace Project1 {
 			// 
 			this->helpButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
 			this->helpButton->Name = L"helpButton";
-			this->helpButton->Size = System::Drawing::Size(32, 29);
+			this->helpButton->Size = System::Drawing::Size(24, 20);
 			this->helpButton->Text = L"\?";
 			// 
 			// searchButton
 			// 
 			this->searchButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
 			this->searchButton->Name = L"searchButton";
-			this->searchButton->Size = System::Drawing::Size(49, 29);
+			this->searchButton->Size = System::Drawing::Size(31, 20);
 			this->searchButton->Text = L"🔍";
 			// 
 			// lastButton
 			// 
-			this->lastButton->Location = System::Drawing::Point(230, 760);
-			this->lastButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->lastButton->Location = System::Drawing::Point(153, 494);
+			this->lastButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->lastButton->Name = L"lastButton";
-			this->lastButton->Size = System::Drawing::Size(168, 54);
+			this->lastButton->Size = System::Drawing::Size(112, 35);
 			this->lastButton->TabIndex = 2;
 			this->lastButton->Text = L"<---";
 			this->lastButton->UseVisualStyleBackColor = true;
@@ -337,10 +339,10 @@ namespace Project1 {
 			// 
 			// changeButton
 			// 
-			this->changeButton->Location = System::Drawing::Point(414, 757);
-			this->changeButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->changeButton->Location = System::Drawing::Point(276, 492);
+			this->changeButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->changeButton->Name = L"changeButton";
-			this->changeButton->Size = System::Drawing::Size(168, 54);
+			this->changeButton->Size = System::Drawing::Size(112, 35);
 			this->changeButton->TabIndex = 3;
 			this->changeButton->Text = L"Ändern";
 			this->changeButton->UseVisualStyleBackColor = true;
@@ -348,20 +350,20 @@ namespace Project1 {
 			// 
 			// deleteButton
 			// 
-			this->deleteButton->Location = System::Drawing::Point(597, 757);
-			this->deleteButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->deleteButton->Location = System::Drawing::Point(398, 492);
+			this->deleteButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->deleteButton->Name = L"deleteButton";
-			this->deleteButton->Size = System::Drawing::Size(168, 54);
+			this->deleteButton->Size = System::Drawing::Size(112, 35);
 			this->deleteButton->TabIndex = 4;
 			this->deleteButton->Text = L"Löschen";
 			this->deleteButton->UseVisualStyleBackColor = true;
 			// 
 			// nextButton
 			// 
-			this->nextButton->Location = System::Drawing::Point(780, 755);
-			this->nextButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->nextButton->Location = System::Drawing::Point(520, 491);
+			this->nextButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->nextButton->Name = L"nextButton";
-			this->nextButton->Size = System::Drawing::Size(168, 54);
+			this->nextButton->Size = System::Drawing::Size(112, 35);
 			this->nextButton->TabIndex = 5;
 			this->nextButton->Text = L"--->";
 			this->nextButton->UseVisualStyleBackColor = true;
@@ -370,271 +372,271 @@ namespace Project1 {
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->pictureBox1->Location = System::Drawing::Point(150, 366);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->pictureBox1->Location = System::Drawing::Point(100, 238);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(879, 23);
+			this->pictureBox1->Size = System::Drawing::Size(586, 15);
 			this->pictureBox1->TabIndex = 6;
 			this->pictureBox1->TabStop = false;
 			// 
 			// field1
 			// 
-			this->field1->Location = System::Drawing::Point(134, 137);
-			this->field1->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->field1->Location = System::Drawing::Point(89, 89);
+			this->field1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->field1->Name = L"field1";
 			this->field1->ReadOnly = true;
-			this->field1->Size = System::Drawing::Size(182, 26);
+			this->field1->Size = System::Drawing::Size(123, 20);
 			this->field1->TabIndex = 9;
 			// 
 			// field2
 			// 
-			this->field2->Location = System::Drawing::Point(134, 202);
-			this->field2->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->field2->Location = System::Drawing::Point(89, 131);
+			this->field2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->field2->Name = L"field2";
 			this->field2->ReadOnly = true;
-			this->field2->Size = System::Drawing::Size(182, 26);
+			this->field2->Size = System::Drawing::Size(123, 20);
 			this->field2->TabIndex = 10;
 			// 
 			// field3
 			// 
-			this->field3->Location = System::Drawing::Point(134, 265);
-			this->field3->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->field3->Location = System::Drawing::Point(89, 172);
+			this->field3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->field3->Name = L"field3";
 			this->field3->ReadOnly = true;
-			this->field3->Size = System::Drawing::Size(182, 26);
+			this->field3->Size = System::Drawing::Size(123, 20);
 			this->field3->TabIndex = 11;
 			// 
 			// value1
 			// 
-			this->value1->Location = System::Drawing::Point(358, 137);
-			this->value1->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->value1->Location = System::Drawing::Point(239, 89);
+			this->value1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->value1->Name = L"value1";
 			this->value1->ReadOnly = true;
-			this->value1->Size = System::Drawing::Size(182, 26);
+			this->value1->Size = System::Drawing::Size(123, 20);
 			this->value1->TabIndex = 12;
 			// 
 			// value2
 			// 
-			this->value2->Location = System::Drawing::Point(358, 202);
-			this->value2->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->value2->Location = System::Drawing::Point(239, 131);
+			this->value2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->value2->Name = L"value2";
 			this->value2->ReadOnly = true;
-			this->value2->Size = System::Drawing::Size(182, 26);
+			this->value2->Size = System::Drawing::Size(123, 20);
 			this->value2->TabIndex = 13;
 			// 
 			// value3
 			// 
-			this->value3->Location = System::Drawing::Point(358, 265);
-			this->value3->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->value3->Location = System::Drawing::Point(239, 172);
+			this->value3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->value3->Name = L"value3";
 			this->value3->ReadOnly = true;
-			this->value3->Size = System::Drawing::Size(182, 26);
+			this->value3->Size = System::Drawing::Size(123, 20);
 			this->value3->TabIndex = 14;
 			// 
 			// value6
 			// 
-			this->value6->Location = System::Drawing::Point(870, 265);
-			this->value6->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->value6->Location = System::Drawing::Point(580, 172);
+			this->value6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->value6->Name = L"value6";
 			this->value6->ReadOnly = true;
-			this->value6->Size = System::Drawing::Size(182, 26);
+			this->value6->Size = System::Drawing::Size(123, 20);
 			this->value6->TabIndex = 20;
 			// 
 			// value5
 			// 
-			this->value5->Location = System::Drawing::Point(870, 202);
-			this->value5->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->value5->Location = System::Drawing::Point(580, 131);
+			this->value5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->value5->Name = L"value5";
 			this->value5->ReadOnly = true;
-			this->value5->Size = System::Drawing::Size(182, 26);
+			this->value5->Size = System::Drawing::Size(123, 20);
 			this->value5->TabIndex = 19;
 			// 
 			// value4
 			// 
-			this->value4->Location = System::Drawing::Point(870, 137);
-			this->value4->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->value4->Location = System::Drawing::Point(580, 89);
+			this->value4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->value4->Name = L"value4";
 			this->value4->ReadOnly = true;
-			this->value4->Size = System::Drawing::Size(182, 26);
+			this->value4->Size = System::Drawing::Size(123, 20);
 			this->value4->TabIndex = 18;
 			// 
 			// field6
 			// 
-			this->field6->Location = System::Drawing::Point(645, 265);
-			this->field6->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->field6->Location = System::Drawing::Point(430, 172);
+			this->field6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->field6->Name = L"field6";
 			this->field6->ReadOnly = true;
-			this->field6->Size = System::Drawing::Size(182, 26);
+			this->field6->Size = System::Drawing::Size(123, 20);
 			this->field6->TabIndex = 17;
 			// 
 			// field5
 			// 
-			this->field5->Location = System::Drawing::Point(645, 202);
-			this->field5->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->field5->Location = System::Drawing::Point(430, 131);
+			this->field5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->field5->Name = L"field5";
 			this->field5->ReadOnly = true;
-			this->field5->Size = System::Drawing::Size(182, 26);
+			this->field5->Size = System::Drawing::Size(123, 20);
 			this->field5->TabIndex = 16;
 			// 
 			// field4
 			// 
-			this->field4->Location = System::Drawing::Point(645, 137);
-			this->field4->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->field4->Location = System::Drawing::Point(430, 89);
+			this->field4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->field4->Name = L"field4";
 			this->field4->ReadOnly = true;
-			this->field4->Size = System::Drawing::Size(182, 26);
+			this->field4->Size = System::Drawing::Size(123, 20);
 			this->field4->TabIndex = 15;
 			// 
 			// _value3
 			// 
-			this->_value3->Location = System::Drawing::Point(358, 549);
-			this->_value3->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value3->Location = System::Drawing::Point(239, 357);
+			this->_value3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value3->Name = L"_value3";
 			this->_value3->ReadOnly = true;
-			this->_value3->Size = System::Drawing::Size(182, 26);
+			this->_value3->Size = System::Drawing::Size(123, 20);
 			this->_value3->TabIndex = 26;
 			// 
 			// _value2
 			// 
-			this->_value2->Location = System::Drawing::Point(358, 486);
-			this->_value2->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value2->Location = System::Drawing::Point(239, 316);
+			this->_value2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value2->Name = L"_value2";
 			this->_value2->ReadOnly = true;
-			this->_value2->Size = System::Drawing::Size(182, 26);
+			this->_value2->Size = System::Drawing::Size(123, 20);
 			this->_value2->TabIndex = 25;
 			// 
 			// _value1
 			// 
-			this->_value1->Location = System::Drawing::Point(358, 422);
-			this->_value1->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value1->Location = System::Drawing::Point(239, 274);
+			this->_value1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value1->Name = L"_value1";
 			this->_value1->ReadOnly = true;
-			this->_value1->Size = System::Drawing::Size(182, 26);
+			this->_value1->Size = System::Drawing::Size(123, 20);
 			this->_value1->TabIndex = 24;
 			// 
 			// _field3
 			// 
-			this->_field3->Location = System::Drawing::Point(134, 549);
-			this->_field3->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field3->Location = System::Drawing::Point(89, 357);
+			this->_field3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field3->Name = L"_field3";
 			this->_field3->ReadOnly = true;
-			this->_field3->Size = System::Drawing::Size(182, 26);
+			this->_field3->Size = System::Drawing::Size(123, 20);
 			this->_field3->TabIndex = 23;
 			// 
 			// _field2
 			// 
-			this->_field2->Location = System::Drawing::Point(134, 486);
-			this->_field2->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field2->Location = System::Drawing::Point(89, 316);
+			this->_field2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field2->Name = L"_field2";
 			this->_field2->ReadOnly = true;
-			this->_field2->Size = System::Drawing::Size(182, 26);
+			this->_field2->Size = System::Drawing::Size(123, 20);
 			this->_field2->TabIndex = 22;
 			// 
 			// _field1
 			// 
-			this->_field1->Location = System::Drawing::Point(134, 422);
-			this->_field1->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field1->Location = System::Drawing::Point(89, 274);
+			this->_field1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field1->Name = L"_field1";
 			this->_field1->ReadOnly = true;
-			this->_field1->Size = System::Drawing::Size(182, 26);
+			this->_field1->Size = System::Drawing::Size(123, 20);
 			this->_field1->TabIndex = 21;
 			// 
 			// _value4
 			// 
-			this->_value4->Location = System::Drawing::Point(358, 622);
-			this->_value4->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value4->Location = System::Drawing::Point(239, 404);
+			this->_value4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value4->Name = L"_value4";
 			this->_value4->ReadOnly = true;
-			this->_value4->Size = System::Drawing::Size(182, 26);
+			this->_value4->Size = System::Drawing::Size(123, 20);
 			this->_value4->TabIndex = 30;
 			// 
 			// _field4
 			// 
-			this->_field4->Location = System::Drawing::Point(134, 622);
-			this->_field4->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field4->Location = System::Drawing::Point(89, 404);
+			this->_field4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field4->Name = L"_field4";
 			this->_field4->ReadOnly = true;
-			this->_field4->Size = System::Drawing::Size(182, 26);
+			this->_field4->Size = System::Drawing::Size(123, 20);
 			this->_field4->TabIndex = 27;
 			// 
 			// _value8
 			// 
-			this->_value8->Location = System::Drawing::Point(870, 622);
-			this->_value8->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value8->Location = System::Drawing::Point(580, 404);
+			this->_value8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value8->Name = L"_value8";
 			this->_value8->ReadOnly = true;
-			this->_value8->Size = System::Drawing::Size(182, 26);
+			this->_value8->Size = System::Drawing::Size(123, 20);
 			this->_value8->TabIndex = 38;
 			// 
 			// _field8
 			// 
-			this->_field8->Location = System::Drawing::Point(645, 622);
-			this->_field8->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field8->Location = System::Drawing::Point(430, 404);
+			this->_field8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field8->Name = L"_field8";
 			this->_field8->ReadOnly = true;
-			this->_field8->Size = System::Drawing::Size(182, 26);
+			this->_field8->Size = System::Drawing::Size(123, 20);
 			this->_field8->TabIndex = 37;
 			// 
 			// _value7
 			// 
-			this->_value7->Location = System::Drawing::Point(870, 549);
-			this->_value7->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value7->Location = System::Drawing::Point(580, 357);
+			this->_value7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value7->Name = L"_value7";
 			this->_value7->ReadOnly = true;
-			this->_value7->Size = System::Drawing::Size(182, 26);
+			this->_value7->Size = System::Drawing::Size(123, 20);
 			this->_value7->TabIndex = 36;
 			// 
 			// _value6
 			// 
-			this->_value6->Location = System::Drawing::Point(870, 486);
-			this->_value6->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value6->Location = System::Drawing::Point(580, 316);
+			this->_value6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value6->Name = L"_value6";
 			this->_value6->ReadOnly = true;
-			this->_value6->Size = System::Drawing::Size(182, 26);
+			this->_value6->Size = System::Drawing::Size(123, 20);
 			this->_value6->TabIndex = 35;
 			// 
 			// _value5
 			// 
-			this->_value5->Location = System::Drawing::Point(870, 422);
-			this->_value5->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_value5->Location = System::Drawing::Point(580, 274);
+			this->_value5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_value5->Name = L"_value5";
 			this->_value5->ReadOnly = true;
-			this->_value5->Size = System::Drawing::Size(182, 26);
+			this->_value5->Size = System::Drawing::Size(123, 20);
 			this->_value5->TabIndex = 34;
 			// 
 			// _field7
 			// 
-			this->_field7->Location = System::Drawing::Point(645, 549);
-			this->_field7->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field7->Location = System::Drawing::Point(430, 357);
+			this->_field7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field7->Name = L"_field7";
 			this->_field7->ReadOnly = true;
-			this->_field7->Size = System::Drawing::Size(182, 26);
+			this->_field7->Size = System::Drawing::Size(123, 20);
 			this->_field7->TabIndex = 33;
 			// 
 			// _field6
 			// 
-			this->_field6->Location = System::Drawing::Point(645, 486);
-			this->_field6->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field6->Location = System::Drawing::Point(430, 316);
+			this->_field6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field6->Name = L"_field6";
 			this->_field6->ReadOnly = true;
-			this->_field6->Size = System::Drawing::Size(182, 26);
+			this->_field6->Size = System::Drawing::Size(123, 20);
 			this->_field6->TabIndex = 32;
 			// 
 			// _field5
 			// 
-			this->_field5->Location = System::Drawing::Point(645, 422);
-			this->_field5->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->_field5->Location = System::Drawing::Point(430, 274);
+			this->_field5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->_field5->Name = L"_field5";
 			this->_field5->ReadOnly = true;
-			this->_field5->Size = System::Drawing::Size(182, 26);
+			this->_field5->Size = System::Drawing::Size(123, 20);
 			this->_field5->TabIndex = 31;
 			// 
 			// saveChangeButton
 			// 
-			this->saveChangeButton->Location = System::Drawing::Point(414, 757);
-			this->saveChangeButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->saveChangeButton->Location = System::Drawing::Point(276, 492);
+			this->saveChangeButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->saveChangeButton->Name = L"saveChangeButton";
-			this->saveChangeButton->Size = System::Drawing::Size(168, 54);
+			this->saveChangeButton->Size = System::Drawing::Size(112, 35);
 			this->saveChangeButton->TabIndex = 39;
 			this->saveChangeButton->Text = L"Speichern";
 			this->saveChangeButton->UseVisualStyleBackColor = true;
@@ -643,9 +645,9 @@ namespace Project1 {
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->ClientSize = System::Drawing::Size(802, 591);
 			this->Controls->Add(this->saveChangeButton);
 			this->Controls->Add(this->_value8);
 			this->Controls->Add(this->_field8);
@@ -681,6 +683,7 @@ namespace Project1 {
 			this->Controls->Add(this->changeButton);
 			this->Controls->Add(this->lastButton);
 			this->Controls->Add(this->menuStrip1);
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->Name = L"MyForm";
 			this->Text = L"Quellenverwaltung";
 			this->menuStrip1->ResumeLayout(false);
@@ -738,6 +741,12 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 	output(currEntry, false);
 	saveChangeButton->Visible = false;
 	changeButton->Visible = true;
+}
+private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	Form^ f2 = gcnew MyForm1();
+	f2->Show();
+
 }
 };
 }
