@@ -4,8 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <iostream>
+#include <cliext/adapter>
 
 using namespace System::Windows::Forms;
+
+using namespace System;
 
 int DBinput(DataBank *db, Source* newSourc) {
 	Source* currSource = &db->sources[db->entries];
@@ -182,4 +186,16 @@ void deleteEntry(DataBank* db, int index) {
 		db->entries--;  // Anzahl Einträge um 1 verringern
 	}
 	else { MessageBox::Show("Ung\x81ltige Auswahl", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning); }
+}
+
+
+void convert(DataBank *db) { //Auf was muss die Funktion zugreifen?
+	
+	//Beispiel Char[]
+	char Eingangschar[] = "Hello, World!";
+
+	//Konvertierung von char[] zu string^ 
+	String^ Ausgangsstring = gcnew String(Eingangschar);
+
+
 }

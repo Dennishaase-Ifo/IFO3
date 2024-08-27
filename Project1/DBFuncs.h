@@ -15,4 +15,6 @@ extern void searchDB(DataBank* db);
 
 extern void deleteEntry(DataBank* db, int index);
 
+extern void convert(DataBank *db);
+
 #endif
