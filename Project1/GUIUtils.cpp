@@ -1,7 +1,7 @@
 #include "GUIUtils.h"
 
-void charToString(char in[20], String^ out) {
-	out = gcnew String(in);
+void charToString(char in[20], String^ *out) {
+	*out = gcnew String(in);
 }
 
 void StringToChar(char out[20], String^ in) {

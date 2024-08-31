@@ -8,8 +8,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 
 	// Start der Definitionen der Quellentypen
 	if (variant == article) {
-		static Field reqFields[] = {author, title, journal, year, empty, empty };  // Festlegen notwendiger Felder
-		static Field optFields[] = { volume, number, pages, month, note, empty, empty, empty };  // Festlegen optionaler Felder
+		Field reqFields[] = { {author, ""}, {title, ""}, {journal, ""}, {year, ""}, {empty, ""}, {empty, ""} };  // Festlegen notwendiger Felder
+		Field optFields[] = { {volume, ""}, {number, ""}, {pages, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""}, {empty, ""} };  // Festlegen optionaler Felder
 
 		// Übertragen in die Quellenstruktur
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
@@ -20,8 +20,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 	}
 	// Und alles ganz oft wiederholen...
 	else if (variant == book) {
-		Field reqFields[] = {authororeditor, title, publisher, year, empty, empty };
-		Field optFields[] = { volume, series, address, edition, month, note, empty, empty };
+		Field reqFields[] = { {authororeditor, ""}, {title, ""}, {publisher, ""}, {year, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {volume, ""}, {series, ""}, {address, ""}, {edition, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -29,8 +29,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = book;
 	}
 	else if (variant == booklet) {
-		Field reqFields[] = { title, empty, empty, empty, empty, empty };
-		Field optFields[] = { author, howpublished, address, month, year, note, empty, empty };
+		Field reqFields[] = { {title, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {author, ""}, {howpublished, ""}, {address, ""}, {month, ""}, {year, ""}, {note, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -38,8 +38,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = booklet;
 	}
 	else if (variant == conference) {
-		Field reqFields[] = { author, title, booktitle, year, empty, empty };
-		Field optFields[] = { editor, pages, organization, publisher, address, month, note, empty };
+		Field reqFields[] = { {author, ""}, {title, ""}, {booktitle, ""}, {year, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {editor, ""}, {pages, ""}, {organization, ""}, {publisher, ""}, {address, ""}, {month, ""}, {note, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -47,8 +47,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = conference;
 	}
 	else if (variant == inbook) {
-		Field reqFields[] = { authororeditor, title, chapterandorpages, publisher, year, empty };
-		Field optFields[] = { volume, series, address, edition, month, note, empty, empty };
+		Field reqFields[] = { {authororeditor, ""}, {title, ""}, {chapterandorpages, ""}, {publisher, ""}, {year, ""}, {empty, ""} };
+		Field optFields[] = { {volume, ""}, {series, ""}, {address, ""}, {edition, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -56,8 +56,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = inbook;
 	}
 	else if (variant == incollection) {
-		Field reqFields[] = { author, title, booktitle, publisher, year, empty };
-		Field optFields[] = { editor, chapter, pages, address, month, note, empty, empty };
+		Field reqFields[] = { {author, ""}, {title, ""}, {booktitle, ""}, {publisher, ""}, {year, ""}, {empty, ""} };
+		Field optFields[] = { {editor, ""}, {chapter, ""}, {pages, ""}, {address, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -65,8 +65,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = incollection;
 	}
 	else if (variant == manual) {
-		Field reqFields[] = { title, empty, empty, empty, empty, empty };
-		Field optFields[] = { author, organization, address, edition, month, year, note, empty };
+		Field reqFields[] = { {title, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {author, ""}, {organization, ""}, {address, ""}, {edition, ""}, {month, ""}, {year, ""}, {note, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -74,8 +74,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = manual;
 	}
 	else if (variant == masterthesis) {
-		Field reqFields[] = { author, title, school, year, empty, empty };
-		Field optFields[] = { address, month, note, empty, empty, empty, empty, empty };
+		Field reqFields[] = { {author, ""}, {title, ""}, {school, ""}, {year, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {address, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -83,8 +83,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = masterthesis;
 	}
 	else if (variant == misc) {
-		Field reqFields[] = { empty, empty, empty, empty, empty, empty };
-		Field optFields[] = { author, title, howpublished, month, year, note, empty, empty };
+		Field reqFields[] = { {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {author, ""}, {title, ""}, {howpublished, ""}, {month, ""}, {year, ""}, {note, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -92,8 +92,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = misc;
 	}
 	else if (variant == phdthesis) {
-		Field reqFields[] = { author, title, school, year, empty, empty };
-		Field optFields[] = { address, month, note, empty, empty, empty, empty, empty };
+		Field reqFields[] = { {author, ""}, {title, ""}, {school, ""}, {year, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {address, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -101,8 +101,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = phdthesis;
 	}
 	else if (variant == proceedings) {
-		Field reqFields[] = { title, year, empty, empty, empty, empty };
-		Field optFields[] = { editor, publisher, organization, address, month, note, empty, empty };
+		Field reqFields[] = { {title, ""}, {year, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {editor, ""}, {publisher, ""}, {organization, ""}, {address, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -110,8 +110,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = proceedings;
 	}
 	else if (variant == techreport) {
-		Field reqFields[] = { author, title, institution, year, empty, empty };
-		Field optFields[] = { type, number, address, month, note, empty, empty, empty };
+		Field reqFields[] = { {author, ""}, {title, ""}, {institution, ""}, {year, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {type, ""}, {number, ""}, {address, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -119,8 +119,8 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = techreport;
 	}
 	else if (variant == unpublished) {
-		Field reqFields[] = { author, title, note, empty, empty, empty };
-		Field optFields[] = { month, year, empty, empty, empty, empty, empty, empty };
+		Field reqFields[] = { {author, ""}, {title, ""}, {note, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {month, ""}, {year, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""}, {empty, ""} };
 
 		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
 		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
@@ -128,15 +128,15 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 		DBEntry->variant = unpublished;
 	}
 	else {
-    // TODO change into popup
+		// TODO change into popup
 		printf("Ung\x81ltige Auswahl...");
 		DBEntry = NULL;
 		return 0;
 	}
 
-  // deprecated in V2
-	// Zuweisen des Schlüssels
-	//strcpy(DBEntry->key, key);
+	// deprecated in V2
+	  // Zuweisen des Schlüssels
+	  //strcpy(DBEntry->key, key);
 
 	return 1;
 }
@@ -167,6 +167,6 @@ void setNullSource(Source* source) {  // klares Setzen der "leeren" Quellen
 // Neues Element an Datenbank anhängen
 int appendDB(DataBank *db, Source newSource) {
 	db->sources[db->entries] = newSource;  // neue Quelle einfügen
-	db->entries ++;  // Zahl der Einträge erhöhen
-	return 1; 
+	db->entries++;  // Zahl der Einträge erhöhen
+	return 1;
 }

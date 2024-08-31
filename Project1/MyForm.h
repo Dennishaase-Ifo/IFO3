@@ -7,6 +7,7 @@
 #include "typeFuncs.h"
 
 #include "MyForm1.h"
+#include "GUIUtils.h"
 
 
 namespace Project1 {
@@ -79,25 +80,168 @@ namespace Project1 {
 			if (currSource->variant != nullSource) {
 				// TODO für weitere Felder ausführen (bei optionalen Feldern logik einführen, dass von links nach recht, von oben nach unten populiert wird, dazwischen keine leeren Felder, da sieht kacke aus)
 				//erstes feld populieren
-				if (currSource->fields[0].type != empty) {
-					// key feld populieren
+
+
+
+                if (currSource->fields[0].type != empty) {
+
+					String^ tmp;
+					charToString(currSource->fields[0].content, &tmp);
+					value1->Text = tmp;
+
 					char buff[20];
 					readFieldtype(currSource->fields[0].type, buff);
-					// TODO String^ aus char[] machen...
-					//strcpy(field1->Text, buff);
 
-					// value feld populieren
-					//strcpy(field1->Text, currSource->fields[0].content);
-					if (isEditable) { field1->IsAccessible = true; }
+					charToString(buff, &tmp);
+					field1->Text = tmp;
+
+					if (!isEditable) { field1->ReadOnly = true; }
 				}
 				else {
-					// editierbar machen
-					field1->ReadOnly = false;
+
+					value1->Visible = false;
+					field1->Visible = false;
 				}
+
+				if (currSource->fields[1].type != empty) {
+
+					String^ tmp;
+					charToString(currSource->fields[1].content, &tmp);
+					value2->Text = tmp;
+
+					char buff[20];
+					readFieldtype(currSource->fields[1].type, buff);
+
+					charToString(buff, &tmp);
+					field2->Text = tmp;
+
+					if (!isEditable) { field2->ReadOnly = true; }
+				}
+				else {
+
+					value2->Visible = false;
+					field2->Visible = false;
+				}
+
+				if (currSource->fields[2].type != empty) {
+
+					String^ tmp;
+					charToString(currSource->fields[2].content, &tmp);
+					value3->Text = tmp;
+
+					char buff[20];
+					readFieldtype(currSource->fields[2].type, buff);
+
+					charToString(buff, &tmp);
+					field3->Text = tmp;
+
+					if (!isEditable) { field3->ReadOnly = true; }
+				}
+				else {
+
+					value3->Visible = false;
+					field3->Visible = false;
+				}
+
+				if (currSource->fields[3].type != empty) {
+
+					String^ tmp;
+					charToString(currSource->fields[3].content, &tmp);
+					value4->Text = tmp;
+
+					char buff[20];
+					readFieldtype(currSource->fields[3].type, buff);
+
+					charToString(buff, &tmp);
+					field4->Text = tmp;
+
+					if (!isEditable) { field3->ReadOnly = true; }
+				}
+				else {
+
+					value4->Visible = false;
+					field4->Visible = false;
+				}
+
+				if (currSource->fields[4].type != empty) {
+
+					String^ tmp;
+					charToString(currSource->fields[4].content, &tmp);
+					value5->Text = tmp;
+
+					char buff[20];
+					readFieldtype(currSource->fields[4].type, buff);
+
+					charToString(buff, &tmp);
+					field5->Text = tmp;
+
+					if (!isEditable) { field3->ReadOnly = true; }
+				}
+				else {
+
+					value5->Visible = false;
+					field5->Visible = false;
+				}
+
+				if (currSource->fields[5].type != empty) {
+
+					String^ tmp;
+					charToString(currSource->fields[5].content, &tmp);
+					value6->Text = tmp;
+
+					char buff[20];
+					readFieldtype(currSource->fields[5].type, buff);
+
+					charToString(buff, &tmp);
+					field6->Text = tmp;
+
+					if (!isEditable) { field3->ReadOnly = true; }
+				}
+				else {
+
+					value6->Visible = false;
+					field6->Visible = false;
+				}
+				
+
+
+
 			}
 
 			else { // kein Inhalt in der Quelle
 				// alle ausgabe felder verstecken, ein neues einblenden als placeholder
+
+				field1->Text = "keine Daten vorhanden";
+				field2->Text = "keine Daten vorhanden";
+				field3->Text = "keine Daten vorhanden";
+				field4->Text = "keine Daten vorhanden";
+				field5->Text = "keine Daten vorhanden";
+				field6->Text = "keine Daten vorhanden";
+				_field1->Text = "keine Daten vorhanden";
+				_field2->Text = "keine Daten vorhanden";
+				_field3->Text = "keine Daten vorhanden";
+				_field4->Text = "keine Daten vorhanden";
+				_field5->Text = "keine Daten vorhanden";
+				_field6->Text = "keine Daten vorhanden";
+				_field7->Text = "keine Daten vorhanden";
+				_field8->Text = "keine Daten vorhanden";
+
+				value1->Text = "keine Daten vorhanden";
+				value2->Text = "keine Daten vorhanden";
+				value3->Text = "keine Daten vorhanden";
+				value4->Text = "keine Daten vorhanden";
+				value5->Text = "keine Daten vorhanden";
+				value6->Text = "keine Daten vorhanden";
+				_value1->Text = "keine Daten vorhanden";
+				_value2->Text = "keine Daten vorhanden";
+				_value3->Text = "keine Daten vorhanden";
+				_value4->Text = "keine Daten vorhanden";
+				_value5->Text = "keine Daten vorhanden";
+				_value6->Text = "keine Daten vorhanden";
+				_value7->Text = "keine Daten vorhanden";
+				_value8->Text = "keine Daten vorhanden";
+
+
 			}
 		}
 
@@ -105,6 +249,103 @@ namespace Project1 {
 		void resetFields() {
 			field1->Text = "";
 			field1->ReadOnly = true;
+
+			field2->Text = "";
+			field2->ReadOnly = true;
+
+			field3->Text = "";
+			field3->ReadOnly = true;
+
+			field4->Text = "";
+			field4->ReadOnly = true;
+
+			field5->Text = "";
+			field5->ReadOnly = true;
+
+			field6->Text = "";
+			field6->ReadOnly = true;
+
+
+
+
+			value1->Text = "";
+			value1->ReadOnly = true;
+
+			value2->Text = "";
+			value2->ReadOnly = true;
+
+			value3->Text = "";
+			value3->ReadOnly = true;
+
+			value4->Text = "";
+			field4->ReadOnly = true;
+
+			value5->Text = "";
+			value5->ReadOnly = true;
+
+			value6->Text = "";
+			value6->ReadOnly = true;
+
+
+
+
+
+
+
+
+
+
+
+			_field1->Text = "";
+			_field1->ReadOnly = true;
+
+			_field2->Text = "";
+			_field2->ReadOnly = true;
+
+			_field3->Text = "";
+			_field3->ReadOnly = true;
+
+			_field4->Text = "";
+			_field4->ReadOnly = true;
+
+			_field5->Text = "";
+			_field5->ReadOnly = true;
+
+			_field6->Text = "";
+			_field6->ReadOnly = true;
+
+			_field7->Text = "";
+			_field7->ReadOnly = true;
+
+			_field8->Text = "";
+			_field8->ReadOnly = true;
+
+
+
+
+			_value1->Text = "";
+			_value1->ReadOnly = true;
+
+			_value2->Text = "";
+			_value2->ReadOnly = true;
+
+			_value3->Text = "";
+			_value3->ReadOnly = true;
+
+			_value4->Text = "";
+			_field4->ReadOnly = true;
+
+			_value5->Text = "";
+			_value5->ReadOnly = true;
+
+			_value6->Text = "";
+			_value6->ReadOnly = true;
+
+			_value7->Text = "";
+			_value7->ReadOnly = true;
+
+			_value8->Text = "";
+			_value8->ReadOnly = true;
 		}
 
 	protected: 
