@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="DBFuncs.cpp" />
     <ClCompile Include="DBTypes.cpp" />
+    <ClCompile Include="GUIUtils.cpp" />
     <ClCompile Include="MyForm.cpp" />
     <ClCompile Include="MyForm1.cpp" />
     <ClCompile Include="typeFuncs.cpp" />
@@ -142,6 +143,7 @@
   <ItemGroup>
     <ClInclude Include="DBFuncs.h" />
     <ClInclude Include="DBTypes.h" />
+    <ClInclude Include="GUIUtils.h" />
     <ClInclude Include="MyForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
