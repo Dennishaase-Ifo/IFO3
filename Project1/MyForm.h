@@ -58,11 +58,13 @@ namespace Project1 {
 			strcpy(tmp->fields[2].content, "Überall");
 			strcpy(tmp->fields[3].content, "hin");
 
-			output(0, false);
+			currEntry = 0;
 
 			isInited = true;
 			newSorceCreated = (bool*)malloc(sizeof(bool));
 			*newSorceCreated = false;
+
+			output(currEntry, false);
 		}
 
 		// overloading um spezifische Quellen auszugeben
@@ -244,6 +246,44 @@ namespace Project1 {
 			}
 		}
 
+		int saveToSource() {
+			// TODO extend to filter out faulty/empty non-optional field entries
+			Source* currSource = &db->sources[currEntry];
+
+			Field* currField = &currSource->fields[0];
+			if (fieldValid(currField) && value1->Text->Length > 0) {
+				StringToChar(currField->content, value1->Text);
+			}
+
+			currField = &currSource->fields[1];
+			if (fieldValid(currField) && value2->Text->Length > 0) {
+				StringToChar(currField->content, value2->Text);
+			}
+
+			currField = &currSource->fields[2];
+			if (fieldValid(currField) && value3->Text->Length > 0) {
+				StringToChar(currField->content, value3->Text);
+			}
+
+			currField = &currSource->fields[3];
+			if (fieldValid(currField) && value4->Text->Length > 0) {
+				StringToChar(currField->content, value4->Text);
+			}
+
+			currField = &currSource->fields[4];
+			if (fieldValid(currField) && value5->Text->Length > 0) {
+				StringToChar(currField->content, value5->Text);
+			}
+
+			currField = &currSource->fields[5];
+			if (fieldValid(currField) && value6->Text->Length > 0) {
+				StringToChar(currField->content, value6->Text);
+			}
+
+			// TODO extend for optFields
+			return 1;
+		}
+		
 		// TODO fill all other fields
 		void resetFields() {
 			field1->Text = "";
@@ -991,9 +1031,11 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 	// TODO Speichern der neuen Eingaben
 
 	// wieder in Ausgabe wechseln
-	output(currEntry, false);
-	saveChangeButton->Visible = false;
-	changeButton->Visible = true;
+	if (this->saveToSource()) {
+		output(currEntry, false);
+		saveChangeButton->Visible = false;
+		changeButton->Visible = true;
+	}
 }
 private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
@@ -1012,6 +1054,9 @@ private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::Eve
 		output(db->entries, true);
 		// Merker zurücksetzen
 		*newSorceCreated = false;
+		// Speicher Button anzeigen
+		saveChangeButton->Visible = true;
+		changeButton->Visible = false;
 	}
 }
 };

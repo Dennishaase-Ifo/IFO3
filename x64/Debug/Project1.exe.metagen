@@ -29,4 +29,5 @@ Class Project1.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Boolean* newSorceCreated : Public
   Methods:
     output(Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
+    saveToSource(): PrivateScope, Public, HideBySig
     resetFields(): PrivateScope, Public, HideBySig
