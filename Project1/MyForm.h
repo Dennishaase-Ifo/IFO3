@@ -662,6 +662,7 @@ private: System::Windows::Forms::Button^  cancelButton;
 			this->deleteButton->TabIndex = 4;
 			this->deleteButton->Text = L"Löschen";
 			this->deleteButton->UseVisualStyleBackColor = true;
+			this->deleteButton->Click += gcnew System::EventHandler(this, &MyForm::deleteButton_Click);
 			// 
 			// nextButton
 			// 
@@ -950,7 +951,7 @@ private: System::Windows::Forms::Button^  cancelButton;
 			// 
 			// cancelButton
 			// 
-			this->cancelButton->Location = System::Drawing::Point(600, 755);
+			this->cancelButton->Location = System::Drawing::Point(597, 699);
 			this->cancelButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
 			this->cancelButton->Name = L"cancelButton";
 			this->cancelButton->Size = System::Drawing::Size(168, 54);
@@ -1094,6 +1095,12 @@ private: System::Void cancelButton_Click(System::Object^  sender, System::EventA
 	saveChangeButton->Visible = false;
 	changeButton->Visible = true;
 	cancelButton->Visible = false;
+}
+private: System::Void deleteButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	deleteEntry(db, currEntry);
+	if (currEntry >= db->entries) { currEntry -= 1; }
+	if (currEntry < 0) { currEntry = (db->entries <= 0)? 0 : db->entries - 1; }
+	output(currEntry, false);
 }
 };
 }

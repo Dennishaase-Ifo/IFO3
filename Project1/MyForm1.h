@@ -305,7 +305,7 @@ private: System::Void articleButton_Click(System::Object^  sender, System::Event
 
 private: System::Void book_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], book);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -313,7 +313,7 @@ private: System::Void book_Click(System::Object^  sender, System::EventArgs^  e)
 
 private: System::Void booklet_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], booklet);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -321,7 +321,7 @@ private: System::Void booklet_Click(System::Object^  sender, System::EventArgs^ 
 
 private: System::Void conference_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], conference);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -329,7 +329,7 @@ private: System::Void conference_Click(System::Object^  sender, System::EventArg
 
 private: System::Void inbook_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], inbook);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -337,7 +337,7 @@ private: System::Void inbook_Click(System::Object^  sender, System::EventArgs^  
 
 private: System::Void incollection_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], incollection);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -345,7 +345,7 @@ private: System::Void incollection_Click(System::Object^  sender, System::EventA
 
 private: System::Void manual_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], manual);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -353,7 +353,7 @@ private: System::Void manual_Click(System::Object^  sender, System::EventArgs^  
 
 private: System::Void masterthesis_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], masterthesis);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -361,7 +361,7 @@ private: System::Void masterthesis_Click(System::Object^  sender, System::EventA
 
 private: System::Void misc_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], misc);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -369,7 +369,7 @@ private: System::Void misc_Click(System::Object^  sender, System::EventArgs^  e)
 
 private: System::Void phdthesis_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], phdthesis);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -377,7 +377,7 @@ private: System::Void phdthesis_Click(System::Object^  sender, System::EventArgs
 
 private: System::Void proceedings_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], proceedings);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -385,7 +385,7 @@ private: System::Void proceedings_Click(System::Object^  sender, System::EventAr
 
 private: System::Void techreport_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], techreport);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
@@ -393,7 +393,7 @@ private: System::Void techreport_Click(System::Object^  sender, System::EventArg
 
 private: System::Void unpublished_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], unpublished);
-	db->entries++;
+	db->entries += 1; 
 	*newSourceMarker = true;
 	mainForm->Show();
 	this->Close();
