@@ -235,11 +235,379 @@ namespace Project1 {
 					field6->Visible = false;
 				}
 
+				// Optionale Felder ausgeben
+				int optFieldIndex = 0;
+
+				if (!isEditable) {
+					// Set visibility to false for _field1 through _field8
+					_field1->Visible = false;
+					_value1->Visible = false;
+
+					_field2->Visible = false;
+					_value2->Visible = false;
+
+					_field3->Visible = false;
+					_value3->Visible = false;
+
+					_field4->Visible = false;
+					_value4->Visible = false;
+
+					_field5->Visible = false;
+					_value5->Visible = false;
+
+					_field6->Visible = false;
+					_value6->Visible = false;
+
+					_field7->Visible = false;
+					_value7->Visible = false;
+
+					_field8->Visible = false;
+					_value8->Visible = false;
+
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field1->Visible = true;
+					_value1->Visible = true;
+
+					String^ tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value1->Text = tmp;
+
+					char buff[20];
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field1->Text = tmp;
+					optFieldIndex++;
+
+					// _field2
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field2->Visible = true;
+					_value2->Visible = true;
+
+					tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value2->Text = tmp;
+
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field2->Text = tmp;
+					optFieldIndex++;
+
+					// _field3
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field3->Visible = true;
+					_value3->Visible = true;
+
+					tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value3->Text = tmp;
+
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field3->Text = tmp;
+					optFieldIndex++;
+
+					// _field4
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field4->Visible = true;
+					_value4->Visible = true;
+
+					tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value4->Text = tmp;
+
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field4->Text = tmp;
+					optFieldIndex++;
+
+					// _field4
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field5->Visible = true;
+					_value5->Visible = true;
+
+					tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value5->Text = tmp;
+
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field5->Text = tmp;
+					optFieldIndex++;
+
+					// _field6
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field6->Visible = true;
+					_value6->Visible = true;
+
+					tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value6->Text = tmp;
+
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field6->Text = tmp;
+					optFieldIndex++;
+
+					// _field7
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field7->Visible = true;
+					_value7->Visible = true;
+
+					tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value7->Text = tmp;
+
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field7->Text = tmp;
+					optFieldIndex++;
+
+					// _field8
+					// alle leeren vor dem nächsten nicht leeren überspringen
+					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
+						optFieldIndex++;
+
+						if (optFieldIndex >= 8) { return; }
+					}
+					_field8->Visible = true;
+					_value8->Visible = true;
+
+					tmp;
+					charToString(currSource->optFields[optFieldIndex].content, &tmp);
+					_value8->Text = tmp;
+
+					readFieldtype(currSource->optFields[optFieldIndex].type, buff);
+
+					charToString(buff, &tmp);
+					_field8->Text = tmp;
+					optFieldIndex++;
+				}
+				else {
+					// _field 1
+					if (currSource->optFields[0].type != empty) {
+						_field1->Visible = true;
+						_value1->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[0].content, &tmp);
+						_value1->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[0].type, buff);
+
+						charToString(buff, &tmp);
+						_field1->Text = tmp;
+
+						_value1->ReadOnly = !isEditable;
+					}
+					else {
+						_field1->Visible = false;
+						_value1->Visible = false;
+					}
+
+					// _field 2
+					if (currSource->optFields[1].type != empty) {
+						_field2->Visible = true;
+						_value2->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[1].content, &tmp);  // Incremented index for optFields array
+						_value2->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[1].type, buff);  // Incremented index for optFields array
+
+						charToString(buff, &tmp);
+						_field2->Text = tmp;
+
+						_value2->ReadOnly = !isEditable;
+					}
+					else {
+						_field2->Visible = false;
+						_value2->Visible = false;
+					}
+
+					// _field 3
+					if (currSource->optFields[2].type != empty) {
+						_field3->Visible = true;
+						_value3->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[2].content, &tmp);  // Incremented index for optFields array
+						_value3->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[2].type, buff);  // Incremented index for optFields array
+
+						charToString(buff, &tmp);
+						_field3->Text = tmp;
+
+						_value3->ReadOnly = !isEditable;
+					}
+					else {
+						_field3->Visible = false;
+						_value3->Visible = false;
+					}
+
+					// _field 4
+					if (currSource->optFields[3].type != empty) {
+						_field4->Visible = true;
+						_value4->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[3].content, &tmp);  // Incremented index for optFields array
+						_value4->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[3].type, buff);  // Incremented index for optFields array
+
+						charToString(buff, &tmp);
+						_field4->Text = tmp;
+
+						_value4->ReadOnly = !isEditable;
+					}
+					else {
+						_field4->Visible = false;
+						_value4->Visible = false;
+					}
+
+					// _field 5
+					if (currSource->optFields[4].type != empty) {
+						_field5->Visible = true;
+						_value5->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[4].content, &tmp);  // Incremented index for optFields array
+						_value5->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[4].type, buff);  // Incremented index for optFields array
+
+						charToString(buff, &tmp);
+						_field5->Text = tmp;
+
+						_value5->ReadOnly = !isEditable;
+					}
+					else {
+						_field5->Visible = false;
+						_value5->Visible = false;
+					}
+
+					// _field 6
+					if (currSource->optFields[5].type != empty) {
+						_field6->Visible = true;
+						_value6->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[5].content, &tmp);  // Incremented index for optFields array
+						_value6->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[5].type, buff);  // Incremented index for optFields array
+
+						charToString(buff, &tmp);
+						_field6->Text = tmp;
+
+						_value6->ReadOnly = !isEditable;
+					}
+					else {
+						_field6->Visible = false;
+						_value6->Visible = false;
+					}
+
+					// _field 7
+					if (currSource->optFields[6].type != empty) {
+						_field7->Visible = true;
+						_value7->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[6].content, &tmp);  // Incremented index for optFields array
+						_value7->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[6].type, buff);  // Incremented index for optFields array
+
+						charToString(buff, &tmp);
+						_field7->Text = tmp;
+
+						_value7->ReadOnly = !isEditable;
+					}
+					else {
+						_field7->Visible = false;
+						_value7->Visible = false;
+					}
+
+					// _field 8
+					if (currSource->optFields[7].type != empty) {
+						_field8->Visible = true;
+						_value8->Visible = true;
+
+						String^ tmp;
+						charToString(currSource->optFields[7].content, &tmp);  // Incremented index for optFields array
+						_value8->Text = tmp;
+
+						char buff[20];
+						readFieldtype(currSource->optFields[7].type, buff);  // Incremented index for optFields array
+
+						charToString(buff, &tmp);
+						_field8->Text = tmp;
+
+						_value8->ReadOnly = !isEditable;
+					}
+					else {
+						_field8->Visible = false;
+						_value8->Visible = false;
+					}
+
+
+				}
+
 			}
 
 			else { // kein Inhalt in der Quelle
 				// alle ausgabe felder verstecken, ein neues einblenden als placeholder
-
 				field1->Text = "keine Daten vorhanden";
 				field2->Text = "keine Daten vorhanden";
 				field3->Text = "keine Daten vorhanden";
@@ -269,8 +637,6 @@ namespace Project1 {
 				_value6->Text = "keine Daten vorhanden";
 				_value7->Text = "keine Daten vorhanden";
 				_value8->Text = "keine Daten vorhanden";
-
-
 			}
 		}
 
@@ -311,6 +677,56 @@ namespace Project1 {
 			if (fieldValid(currField) && value6->Text->Length > 0) {
 				StringToChar(currField->content, value6->Text);
 			}
+
+			// opt fields speichern
+			// _field1
+			currField = &currSource->optFields[0];
+			if (fieldValid(currField) && _value1->Text->Length > 0) {
+				StringToChar(currField->content, _value1->Text);
+			}
+
+			// _field2
+			currField = &currSource->optFields[1];
+			if (fieldValid(currField) && _value2->Text->Length > 0) {
+				StringToChar(currField->content, _value2->Text);
+			}
+
+			// _field3
+			currField = &currSource->optFields[2];
+			if (fieldValid(currField) && _value3->Text->Length > 0) {
+				StringToChar(currField->content, _value3->Text);
+			}
+
+			// _field4
+			currField = &currSource->optFields[3];
+			if (fieldValid(currField) && _value4->Text->Length > 0) {
+				StringToChar(currField->content, _value4->Text);
+			}
+
+			// _field5
+			currField = &currSource->optFields[4];
+			if (fieldValid(currField) && _value5->Text->Length > 0) {
+				StringToChar(currField->content, _value5->Text);
+			}
+
+			// _field6
+			currField = &currSource->optFields[5];
+			if (fieldValid(currField) && _value6->Text->Length > 0) {
+				StringToChar(currField->content, _value6->Text);
+			}
+
+			// _field7
+			currField = &currSource->optFields[6];
+			if (fieldValid(currField) && _value7->Text->Length > 0) {
+				StringToChar(currField->content, _value7->Text);
+			}
+
+			// _field8
+			currField = &currSource->optFields[7];
+			if (fieldValid(currField) && _value8->Text->Length > 0) {
+				StringToChar(currField->content, _value8->Text);
+			}
+
 
 			// TODO extend for optFields
 			return 1;
