@@ -24,9 +24,6 @@ namespace Project1 {
 		MyForm1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Konstruktorcode hier hinzufügen.
-			//
 		}
 
 		MyForm1(Form^ _mainForm, DataBank* _db, bool* _newSourceMarker) {
@@ -52,38 +49,34 @@ namespace Project1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  articleButton;
-	private: System::Windows::Forms::Button^  bookletButton;
-	protected:
 
-	protected:
+	private: System::Windows::Forms::Button^  articleButton;
+
+	private: System::Windows::Forms::Button^  bookletButton;
 
 	private: System::Windows::Forms::Button^  bookButton;
+
 	private: System::Windows::Forms::Button^  conferenceButton;
+
 	private: System::Windows::Forms::Button^  masterthesisButton;
 
-
-
 	private: System::Windows::Forms::Button^  incollectionButton;
+
 	private: System::Windows::Forms::Button^  manualButton;
 
-
 	private: System::Windows::Forms::Button^  inbookButton;
+
 	private: System::Windows::Forms::Button^  variantcountButton;
 
-
 	private: System::Windows::Forms::Button^  techreportButton;
-	private: System::Windows::Forms::Button^  unpublishedButton;
 
+	private: System::Windows::Forms::Button^  unpublishedButton;
 
 	private: System::Windows::Forms::Button^  proceedingsButton;
 
 	private: System::Windows::Forms::Button^  phdthesisButton;
 
 	private: System::Windows::Forms::Button^  miscButton;
-
-
-	protected:
 
 	private:
 		/// <summary>
@@ -295,6 +288,8 @@ namespace Project1 {
 
 		}
 #pragma endregion
+
+
 private: System::Void articleButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], article);
 	db->entries += 1;  

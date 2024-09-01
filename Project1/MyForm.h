@@ -49,15 +49,6 @@ namespace Project1 {
 			else { // Fehler beim Laden
 				MessageBox::Show("Datenbank konnte nicht automatisch geladen werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			}
-			/*Source* tmp = &db->sources[0];
-			initSource(tmp, article);
-			strcpy(tmp->key, "test");
-			db->entries++;
-
-			strcpy(tmp->fields[0].content, "Thore");
-			strcpy(tmp->fields[1].content, "Coded");
-			strcpy(tmp->fields[2].content, "Überall");
-			strcpy(tmp->fields[3].content, "hin");*/
 
 			currEntry = 0;
 
@@ -600,10 +591,7 @@ namespace Project1 {
 						_field8->Visible = false;
 						_value8->Visible = false;
 					}
-
-
 				}
-
 			}
 
 			else { // kein Inhalt in der Quelle
@@ -727,7 +715,6 @@ namespace Project1 {
 				StringToChar(currField->content, _value8->Text);
 			}
 
-
 			// TODO extend for optFields
 			return 1;
 		}
@@ -752,9 +739,6 @@ namespace Project1 {
 			field6->Text = "";
 			field6->ReadOnly = true;
 
-
-
-
 			value1->Text = "";
 			value1->ReadOnly = true;
 
@@ -772,16 +756,6 @@ namespace Project1 {
 
 			value6->Text = "";
 			value6->ReadOnly = true;
-
-
-
-
-
-
-
-
-
-
 
 			_field1->Text = "";
 			_field1->ReadOnly = true;
@@ -806,9 +780,6 @@ namespace Project1 {
 
 			_field8->Text = "";
 			_field8->ReadOnly = true;
-
-
-
 
 			_value1->Text = "";
 			_value1->ReadOnly = true;
@@ -1465,10 +1436,9 @@ private: System::Windows::Forms::TextBox^  keyField;
 
 
 private: System::Void toolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
-
+	// TODO einbindung pdf machen/testen?
 	System::String^ pdfPath = "Bedienungsanleitung.pdf";
 	System::Diagnostics::Process::Start(pdfPath);
-
 }
 
 private: System::Void speichernToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1505,8 +1475,6 @@ private: System::Void changeButton_Click(System::Object^  sender, System::EventA
 	cancelButton->Visible = true;
 }
 private: System::Void saveChangeButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	// TODO Speichern der neuen Eingaben
-
 	// wieder in Ausgabe wechseln
 	if (this->saveToSource()) {
 		output(currEntry, false);
@@ -1516,18 +1484,15 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 	}
 }
 private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
 	Form^ f2 = gcnew MyForm1(this, db, newSorceCreated);
 	f2->Show();
 	this->Visible = false;
-
 }
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {
 	// triggert, wenn zweites Fenster zurückmeldet, dass neue Quelle angelegt wurde
 	if (isInited && *newSorceCreated && Visible == true) {
-		//MessageBox::Show("Visible change event raised!!!");
 		// die Neue Quelle direkt bearbeiten
 		currEntry = db->entries - 1;
 		output(currEntry, true);
@@ -1539,7 +1504,6 @@ private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::Eve
 	}
 }
 private: System::Void cancelButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	//TODO add functionality
 	output(currEntry, false);
 	saveChangeButton->Visible = false;
 	changeButton->Visible = true;
