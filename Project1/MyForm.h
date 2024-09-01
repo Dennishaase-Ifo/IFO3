@@ -49,14 +49,15 @@ namespace Project1 {
 			else { // Fehler beim Laden
 				MessageBox::Show("Datenbank konnte nicht automatisch geladen werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			}
-			Source* tmp = &db->sources[0];
+			/*Source* tmp = &db->sources[0];
 			initSource(tmp, article);
 			strcpy(tmp->key, "test");
+			db->entries++;
 
 			strcpy(tmp->fields[0].content, "Thore");
 			strcpy(tmp->fields[1].content, "Coded");
 			strcpy(tmp->fields[2].content, "Überall");
-			strcpy(tmp->fields[3].content, "hin");
+			strcpy(tmp->fields[3].content, "hin");*/
 
 			currEntry = 0;
 
@@ -91,9 +92,9 @@ namespace Project1 {
 				// TODO für weitere Felder ausführen (bei optionalen Feldern logik einführen, dass von links nach recht, von oben nach unten populiert wird, dazwischen keine leeren Felder, da sieht kacke aus)
 				//erstes feld populieren
 
-
-
 				if (currSource->fields[0].type != empty) {
+					value1->Visible = true;
+					field1->Visible = true;
 
 					String^ tmp;
 					charToString(currSource->fields[0].content, &tmp);
@@ -113,6 +114,8 @@ namespace Project1 {
 				}
 
 				if (currSource->fields[1].type != empty) {
+					value2->Visible = true;
+					field2->Visible = true;
 
 					String^ tmp;
 					charToString(currSource->fields[1].content, &tmp);
@@ -132,6 +135,8 @@ namespace Project1 {
 				}
 
 				if (currSource->fields[2].type != empty) {
+					value3->Visible = true;
+					field3->Visible = true;
 
 					String^ tmp;
 					charToString(currSource->fields[2].content, &tmp);
@@ -151,6 +156,8 @@ namespace Project1 {
 				}
 
 				if (currSource->fields[3].type != empty) {
+					value4->Visible = true;
+					field4->Visible = true;
 
 					String^ tmp;
 					charToString(currSource->fields[3].content, &tmp);
@@ -170,6 +177,8 @@ namespace Project1 {
 				}
 
 				if (currSource->fields[4].type != empty) {
+					value5->Visible = true;
+					field5->Visible = true;
 
 					String^ tmp;
 					charToString(currSource->fields[4].content, &tmp);
@@ -189,6 +198,8 @@ namespace Project1 {
 				}
 
 				if (currSource->fields[5].type != empty) {
+					value6->Visible = true;
+					field6->Visible = true;
 
 					String^ tmp;
 					charToString(currSource->fields[5].content, &tmp);
@@ -392,6 +403,7 @@ namespace Project1 {
 		bool isInited;
 	public: bool* newSorceCreated;
 	private: System::Windows::Forms::Button^  saveChangeButton;
+private: System::Windows::Forms::Button^  cancelButton;
 	protected:
 
 	protected:
@@ -548,6 +560,7 @@ namespace Project1 {
 			this->_field6 = (gcnew System::Windows::Forms::TextBox());
 			this->_field5 = (gcnew System::Windows::Forms::TextBox());
 			this->saveChangeButton = (gcnew System::Windows::Forms::Button());
+			this->cancelButton = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -935,11 +948,23 @@ namespace Project1 {
 			this->saveChangeButton->Visible = false;
 			this->saveChangeButton->Click += gcnew System::EventHandler(this, &MyForm::saveChangeButton_Click);
 			// 
+			// cancelButton
+			// 
+			this->cancelButton->Location = System::Drawing::Point(600, 755);
+			this->cancelButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
+			this->cancelButton->Name = L"cancelButton";
+			this->cancelButton->Size = System::Drawing::Size(168, 54);
+			this->cancelButton->TabIndex = 40;
+			this->cancelButton->Text = L"Abbrechen";
+			this->cancelButton->UseVisualStyleBackColor = true;
+			this->cancelButton->Click += gcnew System::EventHandler(this, &MyForm::cancelButton_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->Controls->Add(this->cancelButton);
 			this->Controls->Add(this->saveChangeButton);
 			this->Controls->Add(this->_value8);
 			this->Controls->Add(this->_field8);
@@ -997,35 +1022,37 @@ private: System::Void toolStripMenuItem1_Click(System::Object^  sender, System::
 }
 
 private: System::Void speichernToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
-	MessageBox::Show("Erfolgreich gespeichert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
+	if (saveDB(db)) {
+		MessageBox::Show("Erfolgreich gespeichert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
 }
 
 private: System::Void ladenToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
-	MessageBox::Show("Erfolgreich geladen", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
+	if (loadDB(db)) {
+		MessageBox::Show("Erfolgreich geladen", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
 }
 
 private: System::Void exportToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-
-	MessageBox::Show("Erfolgreich exportiert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
-
+	if (exportDB(db)) {
+		MessageBox::Show("Erfolgreich exportiert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
 }
+
 // TODO abfangen, ob in ändern modu? -> nutzer hinweisen erst zu speichern / möglichkeit cancel? bieten
 private: System::Void nextButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	currEntry = (currEntry >= db->entries) ? 0 : currEntry++;
+	currEntry = (currEntry >= db->entries-1) ? 0 : currEntry + 1;
 	output(currEntry, false);
 }
 private: System::Void lastButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	currEntry = (currEntry <= 0) ? db->entries : currEntry--;
+	currEntry = (currEntry <= 0) ? db->entries-1 : currEntry - 1;
 	output(currEntry, false);
 }
 private: System::Void changeButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	output(currEntry, true);
 	saveChangeButton->Visible = true;
 	changeButton->Visible = false;
+	cancelButton->Visible = true;
 }
 private: System::Void saveChangeButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	// TODO Speichern der neuen Eingaben
@@ -1035,6 +1062,7 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 		output(currEntry, false);
 		saveChangeButton->Visible = false;
 		changeButton->Visible = true;
+		cancelButton->Visible = false;
 	}
 }
 private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -1051,13 +1079,21 @@ private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::Eve
 	if (isInited && *newSorceCreated && Visible == true) {
 		//MessageBox::Show("Visible change event raised!!!");
 		// die Neue Quelle direkt bearbeiten
-		output(db->entries, true);
+		currEntry = db->entries - 1;
+		output(currEntry, true);
 		// Merker zurücksetzen
 		*newSorceCreated = false;
 		// Speicher Button anzeigen
 		saveChangeButton->Visible = true;
 		changeButton->Visible = false;
 	}
+}
+private: System::Void cancelButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	//TODO add functionality
+	output(currEntry, false);
+	saveChangeButton->Visible = false;
+	changeButton->Visible = true;
+	cancelButton->Visible = false;
 }
 };
 }
