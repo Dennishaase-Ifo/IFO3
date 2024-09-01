@@ -951,13 +951,14 @@ private: System::Windows::Forms::Button^  cancelButton;
 			// 
 			// cancelButton
 			// 
-			this->cancelButton->Location = System::Drawing::Point(597, 699);
+			this->cancelButton->Location = System::Drawing::Point(597, 757);
 			this->cancelButton->Margin = System::Windows::Forms::Padding(6, 8, 6, 8);
 			this->cancelButton->Name = L"cancelButton";
 			this->cancelButton->Size = System::Drawing::Size(168, 54);
 			this->cancelButton->TabIndex = 40;
 			this->cancelButton->Text = L"Abbrechen";
 			this->cancelButton->UseVisualStyleBackColor = true;
+			this->cancelButton->Visible = false;
 			this->cancelButton->Click += gcnew System::EventHandler(this, &MyForm::cancelButton_Click);
 			// 
 			// MyForm
