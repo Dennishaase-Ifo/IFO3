@@ -91,6 +91,12 @@ namespace Project1 {
 			if (currSource->variant != nullSource) {
 				// TODO für weitere Felder ausführen (bei optionalen Feldern logik einführen, dass von links nach recht, von oben nach unten populiert wird, dazwischen keine leeren Felder, da sieht kacke aus)
 				//erstes feld populieren
+				
+				// Name
+				String^ name;
+				charToString(currSource->key, &name);
+				keyField->Text = name;
+				keyField->ReadOnly = !isEditable;
 
 				if (currSource->fields[0].type != empty) {
 					value1->Visible = true;
@@ -101,10 +107,21 @@ namespace Project1 {
 					value1->Text = tmp;
 
 					char buff[20];
-					readFieldtype(currSource->fields[0].type, buff);
+					
+					if (int callback = readFieldtype(currSource->fields[0].type, buff) == 1) {
+						charToString(buff, &tmp);
+						field1->Text = tmp;
+					}
+					else {
+						// hier oder Felder verarbeiten
+						// dropdown statt feld erstellen
 
-					charToString(buff, &tmp);
-					field1->Text = tmp;
+						// dropdown optionen füllen
+						switch (callback) {
+						case authororeditor:
+							break;
+						}
+					}
 
 					value1->ReadOnly = !isEditable;
 				}
@@ -261,6 +278,10 @@ namespace Project1 {
 			// TODO extend to filter out faulty/empty non-optional field entries
 			Source* currSource = &db->sources[currEntry];
 
+			// save key
+			StringToChar(currSource->key, keyField->Text);
+
+			// save needed fields
 			Field* currField = &currSource->fields[0];
 			if (fieldValid(currField) && value1->Text->Length > 0) {
 				StringToChar(currField->content, value1->Text);
@@ -404,6 +425,7 @@ namespace Project1 {
 	public: bool* newSorceCreated;
 	private: System::Windows::Forms::Button^  saveChangeButton;
 private: System::Windows::Forms::Button^  cancelButton;
+private: System::Windows::Forms::TextBox^  keyField;
 	protected:
 
 	protected:
@@ -561,6 +583,7 @@ private: System::Windows::Forms::Button^  cancelButton;
 			this->_field5 = (gcnew System::Windows::Forms::TextBox());
 			this->saveChangeButton = (gcnew System::Windows::Forms::Button());
 			this->cancelButton = (gcnew System::Windows::Forms::Button());
+			this->keyField = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -961,11 +984,20 @@ private: System::Windows::Forms::Button^  cancelButton;
 			this->cancelButton->Visible = false;
 			this->cancelButton->Click += gcnew System::EventHandler(this, &MyForm::cancelButton_Click);
 			// 
+			// keyField
+			// 
+			this->keyField->Location = System::Drawing::Point(436, 63);
+			this->keyField->Name = L"keyField";
+			this->keyField->ReadOnly = true;
+			this->keyField->Size = System::Drawing::Size(329, 26);
+			this->keyField->TabIndex = 41;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->Controls->Add(this->keyField);
 			this->Controls->Add(this->cancelButton);
 			this->Controls->Add(this->saveChangeButton);
 			this->Controls->Add(this->_value8);
