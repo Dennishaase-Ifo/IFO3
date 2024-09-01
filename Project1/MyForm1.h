@@ -1,5 +1,11 @@
 #pragma once
 
+#include "DBFuncs.h"	
+#include "DBTypes.h"
+#include "typeFuncs.h"
+
+#include "GUIUtils.h"
+
 namespace Project1 {
 
 	using namespace System;
@@ -23,6 +29,18 @@ namespace Project1 {
 			//
 		}
 
+		MyForm1(Form^ _mainForm, DataBank* _db, bool* _newSourceMarker) {
+			InitializeComponent();
+			db = _db;
+			mainForm = _mainForm;
+			newSourceMarker = _newSourceMarker;
+		}
+
+	private: 
+		DataBank* db;
+		Form^ mainForm;
+		bool* newSourceMarker;
+
 	protected:
 		/// <summary>
 		/// Verwendete Ressourcen bereinigen.
@@ -34,7 +52,7 @@ namespace Project1 {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Button^  article;
+	private: System::Windows::Forms::Button^  articleButton;
 	private: System::Windows::Forms::Button^  booklet;
 	protected:
 
@@ -80,7 +98,7 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->article = (gcnew System::Windows::Forms::Button());
+			this->articleButton = (gcnew System::Windows::Forms::Button());
 			this->booklet = (gcnew System::Windows::Forms::Button());
 			this->book = (gcnew System::Windows::Forms::Button());
 			this->conference = (gcnew System::Windows::Forms::Button());
@@ -98,19 +116,21 @@ namespace Project1 {
 			// 
 			// article
 			// 
-			this->article->Location = System::Drawing::Point(60, 33);
-			this->article->Name = L"article";
-			this->article->Size = System::Drawing::Size(75, 23);
-			this->article->TabIndex = 0;
-			this->article->Text = L"article";
-			this->article->UseVisualStyleBackColor = true;
-			this->article->Click += gcnew System::EventHandler(this, &MyForm1::article_Click);
+			this->articleButton->Location = System::Drawing::Point(90, 51);
+			this->articleButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->articleButton->Name = L"article";
+			this->articleButton->Size = System::Drawing::Size(112, 35);
+			this->articleButton->TabIndex = 0;
+			this->articleButton->Text = L"article";
+			this->articleButton->UseVisualStyleBackColor = true;
+			this->articleButton->Click += gcnew System::EventHandler(this, &MyForm1::articleButton_Click);
 			// 
 			// booklet
 			// 
-			this->booklet->Location = System::Drawing::Point(60, 62);
+			this->booklet->Location = System::Drawing::Point(90, 95);
+			this->booklet->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->booklet->Name = L"booklet";
-			this->booklet->Size = System::Drawing::Size(75, 23);
+			this->booklet->Size = System::Drawing::Size(112, 35);
 			this->booklet->TabIndex = 1;
 			this->booklet->Text = L"booklet";
 			this->booklet->UseVisualStyleBackColor = true;
@@ -118,9 +138,10 @@ namespace Project1 {
 			// 
 			// book
 			// 
-			this->book->Location = System::Drawing::Point(141, 33);
+			this->book->Location = System::Drawing::Point(212, 51);
+			this->book->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->book->Name = L"book";
-			this->book->Size = System::Drawing::Size(75, 23);
+			this->book->Size = System::Drawing::Size(112, 35);
 			this->book->TabIndex = 2;
 			this->book->Text = L"book";
 			this->book->UseVisualStyleBackColor = true;
@@ -128,9 +149,10 @@ namespace Project1 {
 			// 
 			// conference
 			// 
-			this->conference->Location = System::Drawing::Point(141, 62);
+			this->conference->Location = System::Drawing::Point(212, 95);
+			this->conference->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->conference->Name = L"conference";
-			this->conference->Size = System::Drawing::Size(75, 23);
+			this->conference->Size = System::Drawing::Size(112, 35);
 			this->conference->TabIndex = 3;
 			this->conference->Text = L"conference";
 			this->conference->UseVisualStyleBackColor = true;
@@ -138,9 +160,10 @@ namespace Project1 {
 			// 
 			// masterthesis
 			// 
-			this->masterthesis->Location = System::Drawing::Point(141, 120);
+			this->masterthesis->Location = System::Drawing::Point(212, 185);
+			this->masterthesis->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->masterthesis->Name = L"masterthesis";
-			this->masterthesis->Size = System::Drawing::Size(75, 23);
+			this->masterthesis->Size = System::Drawing::Size(112, 35);
 			this->masterthesis->TabIndex = 7;
 			this->masterthesis->Text = L"masterthesis";
 			this->masterthesis->UseVisualStyleBackColor = true;
@@ -148,9 +171,10 @@ namespace Project1 {
 			// 
 			// incollection
 			// 
-			this->incollection->Location = System::Drawing::Point(141, 91);
+			this->incollection->Location = System::Drawing::Point(212, 140);
+			this->incollection->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->incollection->Name = L"incollection";
-			this->incollection->Size = System::Drawing::Size(75, 23);
+			this->incollection->Size = System::Drawing::Size(112, 35);
 			this->incollection->TabIndex = 6;
 			this->incollection->Text = L"incollection";
 			this->incollection->UseVisualStyleBackColor = true;
@@ -158,9 +182,10 @@ namespace Project1 {
 			// 
 			// manual
 			// 
-			this->manual->Location = System::Drawing::Point(60, 120);
+			this->manual->Location = System::Drawing::Point(90, 185);
+			this->manual->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->manual->Name = L"manual";
-			this->manual->Size = System::Drawing::Size(75, 23);
+			this->manual->Size = System::Drawing::Size(112, 35);
 			this->manual->TabIndex = 5;
 			this->manual->Text = L"manual";
 			this->manual->UseVisualStyleBackColor = true;
@@ -168,9 +193,10 @@ namespace Project1 {
 			// 
 			// inbook
 			// 
-			this->inbook->Location = System::Drawing::Point(60, 91);
+			this->inbook->Location = System::Drawing::Point(90, 140);
+			this->inbook->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->inbook->Name = L"inbook";
-			this->inbook->Size = System::Drawing::Size(75, 23);
+			this->inbook->Size = System::Drawing::Size(112, 35);
 			this->inbook->TabIndex = 4;
 			this->inbook->Text = L"inbook";
 			this->inbook->UseVisualStyleBackColor = true;
@@ -178,9 +204,10 @@ namespace Project1 {
 			// 
 			// variantcount
 			// 
-			this->variantcount->Location = System::Drawing::Point(141, 205);
+			this->variantcount->Location = System::Drawing::Point(212, 315);
+			this->variantcount->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->variantcount->Name = L"variantcount";
-			this->variantcount->Size = System::Drawing::Size(75, 23);
+			this->variantcount->Size = System::Drawing::Size(112, 35);
 			this->variantcount->TabIndex = 13;
 			this->variantcount->Text = L"variantcount";
 			this->variantcount->UseVisualStyleBackColor = true;
@@ -188,9 +215,10 @@ namespace Project1 {
 			// 
 			// techreport
 			// 
-			this->techreport->Location = System::Drawing::Point(141, 176);
+			this->techreport->Location = System::Drawing::Point(212, 271);
+			this->techreport->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->techreport->Name = L"techreport";
-			this->techreport->Size = System::Drawing::Size(75, 23);
+			this->techreport->Size = System::Drawing::Size(112, 35);
 			this->techreport->TabIndex = 12;
 			this->techreport->Text = L"techreport";
 			this->techreport->UseVisualStyleBackColor = true;
@@ -198,9 +226,10 @@ namespace Project1 {
 			// 
 			// unpublished
 			// 
-			this->unpublished->Location = System::Drawing::Point(60, 205);
+			this->unpublished->Location = System::Drawing::Point(90, 315);
+			this->unpublished->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->unpublished->Name = L"unpublished";
-			this->unpublished->Size = System::Drawing::Size(75, 23);
+			this->unpublished->Size = System::Drawing::Size(112, 35);
 			this->unpublished->TabIndex = 11;
 			this->unpublished->Text = L"unpublished";
 			this->unpublished->UseVisualStyleBackColor = true;
@@ -208,9 +237,10 @@ namespace Project1 {
 			// 
 			// proceedings
 			// 
-			this->proceedings->Location = System::Drawing::Point(60, 176);
+			this->proceedings->Location = System::Drawing::Point(90, 271);
+			this->proceedings->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->proceedings->Name = L"proceedings";
-			this->proceedings->Size = System::Drawing::Size(75, 23);
+			this->proceedings->Size = System::Drawing::Size(112, 35);
 			this->proceedings->TabIndex = 10;
 			this->proceedings->Text = L"proceedings";
 			this->proceedings->UseVisualStyleBackColor = true;
@@ -218,9 +248,10 @@ namespace Project1 {
 			// 
 			// phdthesis
 			// 
-			this->phdthesis->Location = System::Drawing::Point(141, 147);
+			this->phdthesis->Location = System::Drawing::Point(212, 226);
+			this->phdthesis->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->phdthesis->Name = L"phdthesis";
-			this->phdthesis->Size = System::Drawing::Size(75, 23);
+			this->phdthesis->Size = System::Drawing::Size(112, 35);
 			this->phdthesis->TabIndex = 9;
 			this->phdthesis->Text = L"phdthesis";
 			this->phdthesis->UseVisualStyleBackColor = true;
@@ -228,9 +259,10 @@ namespace Project1 {
 			// 
 			// misc
 			// 
-			this->misc->Location = System::Drawing::Point(60, 147);
+			this->misc->Location = System::Drawing::Point(90, 226);
+			this->misc->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->misc->Name = L"misc";
-			this->misc->Size = System::Drawing::Size(75, 23);
+			this->misc->Size = System::Drawing::Size(112, 35);
 			this->misc->TabIndex = 8;
 			this->misc->Text = L"misc";
 			this->misc->UseVisualStyleBackColor = true;
@@ -238,9 +270,9 @@ namespace Project1 {
 			// 
 			// MyForm1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(284, 261);
+			this->ClientSize = System::Drawing::Size(426, 402);
 			this->Controls->Add(this->variantcount);
 			this->Controls->Add(this->techreport);
 			this->Controls->Add(this->unpublished);
@@ -254,14 +286,21 @@ namespace Project1 {
 			this->Controls->Add(this->conference);
 			this->Controls->Add(this->book);
 			this->Controls->Add(this->booklet);
-			this->Controls->Add(this->article);
+			this->Controls->Add(this->articleButton);
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"MyForm1";
 			this->Text = L"Auswahl Quellentyp";
+			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-private: System::Void article_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void articleButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	initSource(&db->sources[db->entries], article);
+	*newSourceMarker = true;
+	mainForm->Show();
+	//*mainForm->output(0, true);
+	this->Close();
 }
 private: System::Void book_Click(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -288,6 +327,8 @@ private: System::Void techreport_Click(System::Object^  sender, System::EventArg
 private: System::Void unpublished_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void variantcount_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void MyForm1_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }

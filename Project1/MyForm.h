@@ -6,8 +6,8 @@
 #include "DBTypes.h"
 #include "typeFuncs.h"
 
-#include "MyForm1.h"
 #include "GUIUtils.h"
+#include "MyForm1.h"
 
 
 namespace Project1 {
@@ -59,9 +59,14 @@ namespace Project1 {
 			strcpy(tmp->fields[3].content, "hin");
 
 			output(0, false);
+
+			isInited = true;
+			newSorceCreated = (bool*)malloc(sizeof(bool));
+			*newSorceCreated = false;
 		}
 
 		// overloading um spezifische Quellen auszugeben
+		// vllt überflüssig
 		MyForm(DataBank* suppliedDB, int index, bool isEdit)
 		{
 			InitializeComponent();
@@ -69,6 +74,9 @@ namespace Project1 {
 			db = suppliedDB;
 
 			output(index, isEdit);
+
+			isInited = true;
+			*newSorceCreated = false;
 		}
 
 		void output(int index, bool isEditable) {
@@ -83,7 +91,7 @@ namespace Project1 {
 
 
 
-                if (currSource->fields[0].type != empty) {
+				if (currSource->fields[0].type != empty) {
 
 					String^ tmp;
 					charToString(currSource->fields[0].content, &tmp);
@@ -95,10 +103,9 @@ namespace Project1 {
 					charToString(buff, &tmp);
 					field1->Text = tmp;
 
-					if (!isEditable) { field1->ReadOnly = true; }
+					value1->ReadOnly = !isEditable;
 				}
 				else {
-
 					value1->Visible = false;
 					field1->Visible = false;
 				}
@@ -115,10 +122,9 @@ namespace Project1 {
 					charToString(buff, &tmp);
 					field2->Text = tmp;
 
-					if (!isEditable) { field2->ReadOnly = true; }
+					value2->ReadOnly = !isEditable;
 				}
 				else {
-
 					value2->Visible = false;
 					field2->Visible = false;
 				}
@@ -135,10 +141,9 @@ namespace Project1 {
 					charToString(buff, &tmp);
 					field3->Text = tmp;
 
-					if (!isEditable) { field3->ReadOnly = true; }
+					value3->ReadOnly = !isEditable;
 				}
 				else {
-
 					value3->Visible = false;
 					field3->Visible = false;
 				}
@@ -155,10 +160,9 @@ namespace Project1 {
 					charToString(buff, &tmp);
 					field4->Text = tmp;
 
-					if (!isEditable) { field3->ReadOnly = true; }
+					value4->ReadOnly = !isEditable;
 				}
 				else {
-
 					value4->Visible = false;
 					field4->Visible = false;
 				}
@@ -175,10 +179,9 @@ namespace Project1 {
 					charToString(buff, &tmp);
 					field5->Text = tmp;
 
-					if (!isEditable) { field3->ReadOnly = true; }
+					value5->ReadOnly = !isEditable;
 				}
 				else {
-
 					value5->Visible = false;
 					field5->Visible = false;
 				}
@@ -195,16 +198,12 @@ namespace Project1 {
 					charToString(buff, &tmp);
 					field6->Text = tmp;
 
-					if (!isEditable) { field3->ReadOnly = true; }
+					value6->ReadOnly = !isEditable;
 				}
 				else {
-
 					value6->Visible = false;
 					field6->Visible = false;
 				}
-				
-
-
 
 			}
 
@@ -350,6 +349,8 @@ namespace Project1 {
 
 	protected: 
 		DataBank* db;
+		bool isInited;
+	public: bool* newSorceCreated;
 	private: System::Windows::Forms::Button^  saveChangeButton;
 	protected:
 
@@ -937,6 +938,7 @@ namespace Project1 {
 			this->Name = L"MyForm";
 			this->Text = L"Quellenverwaltung";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
+			this->VisibleChanged += gcnew System::EventHandler(this, &MyForm::MyForm_VisibleChanged);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
@@ -995,12 +997,22 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 }
 private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 
-	Form^ f2 = gcnew MyForm1();
+	Form^ f2 = gcnew MyForm1(this, db, newSorceCreated);
 	f2->Show();
-
+	this->Visible = false;
 
 }
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {
+	// triggert, wenn zweites Fenster zurückmeldet, dass neue Quelle angelegt wurde
+	if (isInited && *newSorceCreated && Visible == true) {
+		//MessageBox::Show("Visible change event raised!!!");
+		// die Neue Quelle direkt bearbeiten
+		output(db->entries, true);
+		// Merker zurücksetzen
+		*newSorceCreated = false;
+	}
 }
 };
 }
