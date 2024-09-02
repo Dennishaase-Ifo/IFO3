@@ -1,8 +1,19 @@
-﻿  MyForm.cpp
-s:\ifo3\ifo3\project1\myform2.h(155): warning C4553: '==': result of expression not used; did you intend '='?
+﻿  DBFuncs.cpp
+s:\ifo3\ifo3\project1\dbfuncs.cpp(34): warning C4101: 'searchFor': unreferenced local variable
+s:\ifo3\ifo3\project1\dbfuncs.cpp(46): warning C4101: 'j': unreferenced local variable
+s:\ifo3\ifo3\project1\dbfuncs.cpp(112): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(128): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+s:\ifo3\ifo3\project1\dbfuncs.cpp(145): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: see declaration of 'fopen'
+  MyForm.cpp
+s:\ifo3\ifo3\project1\myform2.h(157): warning C4553: '==': result of expression not used; did you intend '='?
 s:\ifo3\ifo3\project1\myform.cpp(7): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  MyForm1.cpp
   MyForm2.cpp
-s:\ifo3\ifo3\project1\myform2.h(155): warning C4553: '==': result of expression not used; did you intend '='?
+s:\ifo3\ifo3\project1\myform2.h(157): warning C4553: '==': result of expression not used; did you intend '='?
   Generating Code...
+s:\ifo3\ifo3\project1\dbfuncs.cpp(22): warning C4700: uninitialized local variable 'chosenType' used
   DBFuncs.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Project1.vcxproj -> S:\IFO3\IFO3\x64\Debug\Project1.exe

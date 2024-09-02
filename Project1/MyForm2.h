@@ -143,7 +143,9 @@ namespace Project1 {
 		}
 #pragma endregion
 	private: System::Void startSearchButton_Click(System::Object^  sender, System::EventArgs^  e) {
-		searchDB(db, sRes, searchOptionsComboBox->SelectedIndex);
+		char buff[30];
+		StringToChar(buff, textBox1->Text);
+		searchDB(db, sRes, searchOptionsComboBox->SelectedIndex, buff);
 		*searching = true;
 		stopSearchButton->Visible = true;
 	}

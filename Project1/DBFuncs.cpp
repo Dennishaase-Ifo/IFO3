@@ -30,11 +30,10 @@ int DBinput(DataBank *db, Source* newSourc) {
 	return 0;
 } // Eingabe optionale Felder optimieren
 
-void searchDB(DataBank* db, SearchResults *sResults, int choice) {  // weitere Felderoptionen und über strstr | Ausgabe Ergebnisse Anzahl
+void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm[30]) {  // weitere Felderoptionen und über strstr | Ausgabe Ergebnisse Anzahl
 	char searchFor;
 
 	int currIndex = 0;
-	char searchTerm[40];
 
 	int results = 0;
 
@@ -68,17 +67,17 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice) {  // weitere F
 			return;
 		} ;
 
-		if (chosenField > 0) {  // hier werden Optionen 2 & 3 verarbeitet
+		if (chosenField != -1) {  // hier werden Optionen 2 & 3 verarbeitet
 			// entsprechendes Feld raussuchen
 			Field* searchedField = NULL;
 			for (i = 0; i < 6; i++) {  // alle notwendigen Felder ausprobieren
-				if (&currSource->fields[i] != NULL && currSource->fields[i].type == chosenField) { // ist es das gesuchte Feld? (findet auch athor in author or editor)
+				if (&currSource->fields[i] != NULL && currSource->fields[i].type == (Fieldtype)chosenField) { // ist es das gesuchte Feld? (findet auch athor in author or editor)
 					searchedField = &currSource->fields[i];  // Feld merken
 					break;
 				}
 			}
 			for (i = 0; i < 8; i++) {  // alle optionalen Felder ausprobieren
-				if (&currSource->optFields[i] != NULL && currSource->optFields[i].type == chosenField) {
+				if (&currSource->optFields[i] != NULL && currSource->optFields[i].type == (Fieldtype)chosenField) {
 					searchedField = &currSource->optFields[i];
 					break;
 				}

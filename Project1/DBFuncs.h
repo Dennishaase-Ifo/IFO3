@@ -11,7 +11,7 @@ extern int loadDB(DataBank* db);
 
 extern int exportDB(DataBank* db);
 
-extern void searchDB(DataBank* db, SearchResults* sResults, int choice);
+extern void searchDB(DataBank* db, SearchResults* sResults, int choice, char searchTerm[30]);
 
 extern void deleteEntry(DataBank* db, int index);
 

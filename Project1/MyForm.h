@@ -1697,6 +1697,10 @@ private: System::Void deleteButton_Click(System::Object^  sender, System::EventA
 private: System::Void searchButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	Form^ searchForm = gcnew MyForm2(db, searchResults, isSearching);
 	searchForm->Show();
+	// TODO
+	// irgendwie den Nutzer zwinden auf eine der Pfeiltasten zu drücken, damit Suchergebnisse auch angezeigt werden...
+	// alles ausblenden? mit Hinweis -> Taste drücken?
+	// suche doch in eine combobox quetschen?
 }
 };
 }
