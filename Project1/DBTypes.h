@@ -74,4 +74,9 @@ typedef struct {
 	int entries;  // Anzahl eingepflegter Quellen
 } DataBank;
 
+typedef struct {
+	Source* searchResults[1000];
+	int entries;
+} SearchResults;
+
 #endif

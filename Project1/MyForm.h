@@ -8,6 +8,7 @@
 
 #include "GUIUtils.h"
 #include "MyForm1.h"
+#include "MyForm2.h"
 
 
 namespace Project1 {
@@ -55,6 +56,20 @@ namespace Project1 {
 			isInited = true;
 			newSorceCreated = (bool*)malloc(sizeof(bool));
 			*newSorceCreated = false;
+
+			// Suchparameter initialisieren
+			isSearching = (bool*)malloc(sizeof(bool));
+			*isSearching = false;
+			searchResults = (SearchResults*)malloc(sizeof(SearchResults));  // Zu groß für Stack, also ab aufn heap
+			if (searchResults == NULL) {
+				// Falls nicht anlegbar...
+				MessageBox::Show("Speicherplatz f\x81r Suchergebnisse konnte nicht angelegt werden...\n", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				return;
+			}
+
+			for (int i = 0; i < 1000; i++) { searchResults->searchResults[i] = NULL; }  // leere Quellen vorbereiten
+
+			searchResults->entries = 0;
 
 			output(currEntry, false);
 		}
@@ -906,7 +921,10 @@ namespace Project1 {
 	protected: 
 		DataBank* db;
 		bool isInited;
-	public: bool* newSorceCreated;
+		SearchResults* searchResults;
+	public: 
+		bool* newSorceCreated;
+		bool* isSearching;
 	private: System::Windows::Forms::Button^  saveChangeButton;
 private: System::Windows::Forms::Button^  cancelButton;
 private: System::Windows::Forms::TextBox^  keyField;
@@ -918,8 +936,6 @@ private: System::Windows::Forms::ComboBox^  authororeditorDropdownComboBox;
 private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
 
 	protected:
-
-	protected:
 		int currEntry;
 
 	protected:
@@ -928,6 +944,12 @@ private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
 		/// </summary>
 		~MyForm()
 		{
+			// Alloziierten Speicherplatz freigeben
+			//TODO, warum nix funzt?
+			//free(db);
+			//free(searchResults);
+			//free(newSorceCreated);
+			//free(isSearching);
 			if (components)
 			{
 				delete components;
@@ -1149,6 +1171,7 @@ private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
 			this->searchButton->Name = L"searchButton";
 			this->searchButton->Size = System::Drawing::Size(49, 31);
 			this->searchButton->Text = L"🔍";
+			this->searchButton->Click += gcnew System::EventHandler(this, &MyForm::searchButton_Click);
 			// 
 			// searchTextBox
 			// 
@@ -1670,6 +1693,10 @@ private: System::Void deleteButton_Click(System::Object^  sender, System::EventA
 	if (currEntry >= db->entries) { currEntry -= 1; }
 	if (currEntry < 0) { currEntry = (db->entries <= 0)? 0 : db->entries - 1; }
 	output(currEntry, false);
+}
+private: System::Void searchButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	Form^ searchForm = gcnew MyForm2(db, searchResults, isSearching);
+	searchForm->Show();
 }
 };
 }

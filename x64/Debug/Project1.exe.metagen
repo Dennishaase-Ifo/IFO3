@@ -1,5 +1,6 @@
   Project1.MyForm.resources - Embedded, ContainedInManifestFile, 
   Project1.MyForm1.resources - Embedded, ContainedInManifestFile, 
+  Project1.MyForm2.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly Project1, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
@@ -21,12 +22,17 @@ Class Project1.MyForm1: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.Form, DataBank*, Boolean*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class Project1.MyForm2: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(DataBank*, SearchResults*, Boolean*): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class Project1.MyForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(DataBank*, Int32, Boolean): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean* newSorceCreated : Public
+    Boolean* isSearching : Public
   Methods:
     output(Int32, Boolean(HasFieldMarshal)): PrivateScope, Public, HideBySig
     saveToSource(): PrivateScope, Public, HideBySig

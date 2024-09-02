@@ -1,3 +1,5 @@
+#pragma once
+
 #include "DBTypes.h"
 #include "typeFuncs.h"
 #include "typeFuncs.h"
@@ -8,8 +10,6 @@
 #include <cliext/adapter>
 
 using namespace System::Windows::Forms;
-
-using namespace System;
 
 int DBinput(DataBank *db, Source* newSourc) {
 	Source* currSource = &db->sources[db->entries];
@@ -30,36 +30,36 @@ int DBinput(DataBank *db, Source* newSourc) {
 	return 0;
 } // Eingabe optionale Felder optimieren
 
-void searchDB(DataBank* db, Source* searchResults[1000]) {  // weitere Felderoptionen und über strstr | Ausgabe Ergebnisse Anzahl
+void searchDB(DataBank* db, SearchResults *sResults, int choice) {  // weitere Felderoptionen und über strstr | Ausgabe Ergebnisse Anzahl
 	char searchFor;
-	int choice;
+
 	int currIndex = 0;
 	char searchTerm[40];
 
 	int results = 0;
 
-	searchResults = { 0 }; // leer initialisieren
+	Source* searchResults[1000] = { }; // leer initialisieren
 
 	Source* currSource = &db->sources[currIndex];
 
-	while (sourceExists(currSource)) {
+	while (sourceExists(currSource) && currIndex < 1000) {
 		int i;
 		int j;
 		int chosenField = -1;
 
 		switch (choice) {  // unterscheidung der Suchoptionen
-		case 1:  // nach Schlüssel
+		case 0:  // nach Schlüssel
 			if (strstr(currSource->key, searchTerm) != NULL) {  // Falls kein Pointer zu einem Vorkommen des Suchterms gefunden werden kann
 				searchResults[results] = currSource;  // Pointer zu treffer speichern
 				results++;
 			}
 			break;
 
-		case 2:
+		case 1:
 			chosenField = author;  // setzen der Variable für später
 			break;
 
-		case 3:
+		case 2:
 			chosenField = title;  // setzen der Variable für später (2)
 			break;
 
@@ -98,8 +98,12 @@ void searchDB(DataBank* db, Source* searchResults[1000]) {  // weitere Felderopt
 	int index = 0;
 
 	// Suchergebnisse analog zur normalen Ausgabe ausgeben
-	if (results < 0 ) {
+	if (results <= 0 ) {
 		MessageBox::Show("Keine Ergebnisse gefunden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+	}
+	else {
+		memcpy(sResults->searchResults, searchResults, sizeof(searchResults));
+		sResults->entries = results;
 	}
 }
 
@@ -186,16 +190,4 @@ void deleteEntry(DataBank* db, int index) {
 		db->entries--;  // Anzahl Einträge um 1 verringern
 	}
 	else { MessageBox::Show("Ung\x81ltige Auswahl", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning); }
-}
-
-
-void convert(DataBank *db) { //Auf was muss die Funktion zugreifen?
-	
-	//Beispiel Char[]
-	char Eingangschar[] = "Hello, World!";
-
-	//Konvertierung von char[] zu string^ 
-	String^ Ausgangsstring = gcnew String(Eingangschar);
-
-
 }
