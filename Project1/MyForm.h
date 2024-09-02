@@ -110,21 +110,10 @@ namespace Project1 {
 					value1->Text = tmp;
 
 					char buff[20];
-					
-					if (int callback = readFieldtype(currSource->fields[0].type, buff) == 1) {
-						charToString(buff, &tmp);
-						field1->Text = tmp;
-					}
-					else {
-						// hier oder Felder verarbeiten
-						// dropdown statt feld erstellen
+					readFieldtype(currSource->fields[0].type, buff);
 
-						// dropdown optionen füllen
-						switch (callback) {
-						case authororeditor:
-							break;
-						}
-					}
+					charToString(buff, &tmp);
+					field1->Text = tmp;
 
 					value1->ReadOnly = !isEditable;
 				}
@@ -237,6 +226,74 @@ namespace Project1 {
 					value6->Visible = false;
 					field6->Visible = false;
 				}
+
+				/*
+					special "or"-field possible at:
+					- inbook 0:authororeditor; 2:chapterandorpages
+					- book 0:authororeditor
+				*/
+				if (isEditable && currSource->variant == book) {
+					// put Dropdown at location of output field
+					authororeditorDropdownComboBox->Visible = true;
+					authororeditorDropdownComboBox->Location = field1->Location;
+					authororeditorDropdownComboBox->Size = field1->Size;
+					// disable output field
+					field1->Visible = false;
+					// set standart value
+					switch (currSource->fields[0].type) {
+					case author:
+						authororeditorDropdownComboBox->SelectedIndex = 0;
+						break;
+					case editor:
+						authororeditorDropdownComboBox->SelectedIndex = 1;
+						break;
+					default:
+						authororeditorDropdownComboBox->SelectedIndex = 0;
+						break;
+					}
+				}
+				if (!isEditable) { authororeditorDropdownComboBox->Visible = false; }
+
+				if (isEditable && currSource->variant == inbook) {
+					// put Dropdown at location of output field
+					authororeditorDropdownComboBox->Visible = true;
+					authororeditorDropdownComboBox->Location = field1->Location;
+					authororeditorDropdownComboBox->Size = field1->Size;
+					// disable output field
+					field1->Visible = false;
+					// set standart value
+					switch (currSource->fields[0].type) {
+					case author:
+						authororeditorDropdownComboBox->SelectedIndex = 0;
+						break;
+					case editor:
+						authororeditorDropdownComboBox->SelectedIndex = 1;
+						break;
+					default:
+						authororeditorDropdownComboBox->SelectedIndex = 0;
+						break;
+					}
+
+					// put Dropdown at location of output field
+					chapterandorpageDropdownComboBox->Visible = true;
+					chapterandorpageDropdownComboBox->Location = field3->Location;
+					chapterandorpageDropdownComboBox->Size = field3->Size;
+					// disable output field
+					field3->Visible = false;
+					// set standart value
+					switch (currSource->fields[2].type) {
+					case chapter:
+						chapterandorpageDropdownComboBox->SelectedIndex = 0;
+						break;
+					case pages:
+						chapterandorpageDropdownComboBox->SelectedIndex = 1;
+						break;
+					default:
+						chapterandorpageDropdownComboBox->SelectedIndex = 0;
+						break;
+					}
+				}
+				if (!isEditable) { chapterandorpageDropdownComboBox->Visible = false; }
 
 				// Optionale Felder ausgeben
 				int optFieldIndex = 0;
@@ -652,6 +709,20 @@ namespace Project1 {
 			if (fieldValid(currField) && value1->Text->Length > 0) {
 				StringToChar(currField->content, value1->Text);
 			}
+			
+			if (currSource->variant == book || currSource->variant == inbook) {
+				switch (authororeditorDropdownComboBox->SelectedIndex) {
+				case 0:
+					currField->type = author;
+					break;
+				case 1:
+					currField->type = editor;
+					break;
+				default:
+					currField->type = author;
+					break;
+				}
+			}
 
 			currField = &currSource->fields[1];
 			if (fieldValid(currField) && value2->Text->Length > 0) {
@@ -661,6 +732,20 @@ namespace Project1 {
 			currField = &currSource->fields[2];
 			if (fieldValid(currField) && value3->Text->Length > 0) {
 				StringToChar(currField->content, value3->Text);
+			}
+
+			if (currSource->variant == inbook) {
+				switch (chapterandorpageDropdownComboBox->SelectedIndex) {
+				case 0:
+					currField->type = chapter;
+					break;
+				case 1:
+					currField->type = pages;
+					break;
+				default:
+					currField->type = chapter;
+					break;
+				}
 			}
 
 			currField = &currSource->fields[3];
@@ -828,6 +913,10 @@ private: System::Windows::Forms::TextBox^  keyField;
 private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
 private: System::Windows::Forms::TextBox^  sourceTypeTextBox;
 private: System::Windows::Forms::TextBox^  currIndexTextBox;
+private: System::Windows::Forms::ComboBox^  authororeditorDropdownComboBox;
+
+private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
+
 	protected:
 
 	protected:
@@ -989,6 +1078,8 @@ private: System::Windows::Forms::TextBox^  currIndexTextBox;
 			this->keyField = (gcnew System::Windows::Forms::TextBox());
 			this->sourceTypeTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->currIndexTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->authororeditorDropdownComboBox = (gcnew System::Windows::Forms::ComboBox());
+			this->chapterandorpageDropdownComboBox = (gcnew System::Windows::Forms::ComboBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -1420,11 +1511,33 @@ private: System::Windows::Forms::TextBox^  currIndexTextBox;
 			this->currIndexTextBox->Size = System::Drawing::Size(135, 26);
 			this->currIndexTextBox->TabIndex = 43;
 			// 
+			// authororeditorDropdownComboBox
+			// 
+			this->authororeditorDropdownComboBox->FormattingEnabled = true;
+			this->authororeditorDropdownComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"author", L"editor" });
+			this->authororeditorDropdownComboBox->Location = System::Drawing::Point(1070, 352);
+			this->authororeditorDropdownComboBox->Name = L"authororeditorDropdownComboBox";
+			this->authororeditorDropdownComboBox->Size = System::Drawing::Size(121, 28);
+			this->authororeditorDropdownComboBox->TabIndex = 44;
+			this->authororeditorDropdownComboBox->Visible = false;
+			// 
+			// chapterandorpageDropdownComboBox
+			// 
+			this->chapterandorpageDropdownComboBox->FormattingEnabled = true;
+			this->chapterandorpageDropdownComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"chapter", L"page" });
+			this->chapterandorpageDropdownComboBox->Location = System::Drawing::Point(1070, 432);
+			this->chapterandorpageDropdownComboBox->Name = L"chapterandorpageDropdownComboBox";
+			this->chapterandorpageDropdownComboBox->Size = System::Drawing::Size(121, 28);
+			this->chapterandorpageDropdownComboBox->TabIndex = 45;
+			this->chapterandorpageDropdownComboBox->Visible = false;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->Controls->Add(this->chapterandorpageDropdownComboBox);
+			this->Controls->Add(this->authororeditorDropdownComboBox);
 			this->Controls->Add(this->currIndexTextBox);
 			this->Controls->Add(this->sourceTypeTextBox);
 			this->Controls->Add(this->keyField);
