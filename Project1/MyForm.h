@@ -813,6 +813,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^  saveChangeButton;
 private: System::Windows::Forms::Button^  cancelButton;
 private: System::Windows::Forms::TextBox^  keyField;
+private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
 	protected:
 
 	protected:
@@ -971,6 +972,7 @@ private: System::Windows::Forms::TextBox^  keyField;
 			this->saveChangeButton = (gcnew System::Windows::Forms::Button());
 			this->cancelButton = (gcnew System::Windows::Forms::Button());
 			this->keyField = (gcnew System::Windows::Forms::TextBox());
+			this->searchTextBox = (gcnew System::Windows::Forms::ToolStripTextBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -978,14 +980,14 @@ private: System::Windows::Forms::TextBox^  keyField;
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->dateiToolStripMenuItem,
-					this->helpButton, this->searchButton
+					this->helpButton, this->searchButton, this->searchTextBox
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(9, 3, 0, 3);
-			this->menuStrip1->Size = System::Drawing::Size(1203, 35);
+			this->menuStrip1->Size = System::Drawing::Size(1203, 37);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -996,7 +998,7 @@ private: System::Windows::Forms::TextBox^  keyField;
 					this->speichernToolStripMenuItem, this->ladenToolStripMenuItem, this->exportToolStripMenuItem
 			});
 			this->dateiToolStripMenuItem->Name = L"dateiToolStripMenuItem";
-			this->dateiToolStripMenuItem->Size = System::Drawing::Size(65, 29);
+			this->dateiToolStripMenuItem->Size = System::Drawing::Size(65, 31);
 			this->dateiToolStripMenuItem->Text = L"Datei";
 			// 
 			// neuToolStripMenuItem
@@ -1031,14 +1033,14 @@ private: System::Windows::Forms::TextBox^  keyField;
 			// 
 			this->helpButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
 			this->helpButton->Name = L"helpButton";
-			this->helpButton->Size = System::Drawing::Size(32, 29);
+			this->helpButton->Size = System::Drawing::Size(32, 31);
 			this->helpButton->Text = L"\?";
 			// 
 			// searchButton
 			// 
 			this->searchButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
 			this->searchButton->Name = L"searchButton";
-			this->searchButton->Size = System::Drawing::Size(49, 29);
+			this->searchButton->Size = System::Drawing::Size(49, 31);
 			this->searchButton->Text = L"🔍";
 			// 
 			// lastButton
@@ -1378,6 +1380,13 @@ private: System::Windows::Forms::TextBox^  keyField;
 			this->keyField->ReadOnly = true;
 			this->keyField->Size = System::Drawing::Size(329, 26);
 			this->keyField->TabIndex = 41;
+			// 
+			// searchTextBox
+			// 
+			this->searchTextBox->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
+			this->searchTextBox->Name = L"searchTextBox";
+			this->searchTextBox->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->searchTextBox->Size = System::Drawing::Size(100, 31);
 			// 
 			// MyForm
 			// 
