@@ -82,6 +82,14 @@ namespace Project1 {
 			if (currSource->variant != nullSource) {
 				// TODO für weitere Felder ausführen (bei optionalen Feldern logik einführen, dass von links nach recht, von oben nach unten populiert wird, dazwischen keine leeren Felder, da sieht kacke aus)
 				//erstes feld populieren
+
+				// Sourcetype ausgeben
+				String^ sTypeString;
+				char buff[20];
+				readSourcetype(currSource->variant, buff);
+
+				charToString(buff, &sTypeString);
+				sourceTypeTextBox->Text = sTypeString;
 				
 				// Name
 				String^ name;
@@ -814,6 +822,7 @@ namespace Project1 {
 private: System::Windows::Forms::Button^  cancelButton;
 private: System::Windows::Forms::TextBox^  keyField;
 private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
+private: System::Windows::Forms::TextBox^  sourceTypeTextBox;
 	protected:
 
 	protected:
@@ -936,6 +945,7 @@ private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
 			this->exportToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->helpButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->searchButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->searchTextBox = (gcnew System::Windows::Forms::ToolStripTextBox());
 			this->lastButton = (gcnew System::Windows::Forms::Button());
 			this->changeButton = (gcnew System::Windows::Forms::Button());
 			this->deleteButton = (gcnew System::Windows::Forms::Button());
@@ -972,7 +982,7 @@ private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
 			this->saveChangeButton = (gcnew System::Windows::Forms::Button());
 			this->cancelButton = (gcnew System::Windows::Forms::Button());
 			this->keyField = (gcnew System::Windows::Forms::TextBox());
-			this->searchTextBox = (gcnew System::Windows::Forms::ToolStripTextBox());
+			this->sourceTypeTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -1042,6 +1052,13 @@ private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
 			this->searchButton->Name = L"searchButton";
 			this->searchButton->Size = System::Drawing::Size(49, 31);
 			this->searchButton->Text = L"🔍";
+			// 
+			// searchTextBox
+			// 
+			this->searchTextBox->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
+			this->searchTextBox->Name = L"searchTextBox";
+			this->searchTextBox->RightToLeft = System::Windows::Forms::RightToLeft::No;
+			this->searchTextBox->Size = System::Drawing::Size(100, 31);
 			// 
 			// lastButton
 			// 
@@ -1381,18 +1398,20 @@ private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
 			this->keyField->Size = System::Drawing::Size(329, 26);
 			this->keyField->TabIndex = 41;
 			// 
-			// searchTextBox
+			// sourceTypeTextBox
 			// 
-			this->searchTextBox->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
-			this->searchTextBox->Name = L"searchTextBox";
-			this->searchTextBox->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->searchTextBox->Size = System::Drawing::Size(100, 31);
+			this->sourceTypeTextBox->Location = System::Drawing::Point(134, 63);
+			this->sourceTypeTextBox->Name = L"sourceTypeTextBox";
+			this->sourceTypeTextBox->ReadOnly = true;
+			this->sourceTypeTextBox->Size = System::Drawing::Size(202, 26);
+			this->sourceTypeTextBox->TabIndex = 42;
 			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->Controls->Add(this->sourceTypeTextBox);
 			this->Controls->Add(this->keyField);
 			this->Controls->Add(this->cancelButton);
 			this->Controls->Add(this->saveChangeButton);
