@@ -1,6 +1,4 @@
 ﻿  MyForm.cpp
 s:\ifo3\ifo3\project1\myform.cpp(7): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  MyForm1.cpp
-  Generating Code...
   DBFuncs.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Project1.vcxproj -> S:\IFO3\IFO3\x64\Debug\Project1.exe

@@ -83,6 +83,10 @@ namespace Project1 {
 				// TODO für weitere Felder ausführen (bei optionalen Feldern logik einführen, dass von links nach recht, von oben nach unten populiert wird, dazwischen keine leeren Felder, da sieht kacke aus)
 				//erstes feld populieren
 
+				// index ausgeben
+				String^ indexString = String::Format("{0:D}/{1:D}", currEntry + 1, db->entries);
+				currIndexTextBox->Text = indexString;
+
 				// Sourcetype ausgeben
 				String^ sTypeString;
 				char buff[20];
@@ -823,6 +827,7 @@ private: System::Windows::Forms::Button^  cancelButton;
 private: System::Windows::Forms::TextBox^  keyField;
 private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
 private: System::Windows::Forms::TextBox^  sourceTypeTextBox;
+private: System::Windows::Forms::TextBox^  currIndexTextBox;
 	protected:
 
 	protected:
@@ -983,6 +988,7 @@ private: System::Windows::Forms::TextBox^  sourceTypeTextBox;
 			this->cancelButton = (gcnew System::Windows::Forms::Button());
 			this->keyField = (gcnew System::Windows::Forms::TextBox());
 			this->sourceTypeTextBox = (gcnew System::Windows::Forms::TextBox());
+			this->currIndexTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -1406,11 +1412,20 @@ private: System::Windows::Forms::TextBox^  sourceTypeTextBox;
 			this->sourceTypeTextBox->Size = System::Drawing::Size(202, 26);
 			this->sourceTypeTextBox->TabIndex = 42;
 			// 
+			// currIndexTextBox
+			// 
+			this->currIndexTextBox->Location = System::Drawing::Point(1009, 63);
+			this->currIndexTextBox->Name = L"currIndexTextBox";
+			this->currIndexTextBox->ReadOnly = true;
+			this->currIndexTextBox->Size = System::Drawing::Size(135, 26);
+			this->currIndexTextBox->TabIndex = 43;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->Controls->Add(this->currIndexTextBox);
 			this->Controls->Add(this->sourceTypeTextBox);
 			this->Controls->Add(this->keyField);
 			this->Controls->Add(this->cancelButton);
