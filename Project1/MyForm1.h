@@ -66,7 +66,7 @@ namespace Project1 {
 
 	private: System::Windows::Forms::Button^  inbookButton;
 
-	private: System::Windows::Forms::Button^  variantcountButton;
+
 
 	private: System::Windows::Forms::Button^  techreportButton;
 
@@ -99,7 +99,6 @@ namespace Project1 {
 			this->incollectionButton = (gcnew System::Windows::Forms::Button());
 			this->manualButton = (gcnew System::Windows::Forms::Button());
 			this->inbookButton = (gcnew System::Windows::Forms::Button());
-			this->variantcountButton = (gcnew System::Windows::Forms::Button());
 			this->techreportButton = (gcnew System::Windows::Forms::Button());
 			this->unpublishedButton = (gcnew System::Windows::Forms::Button());
 			this->proceedingsButton = (gcnew System::Windows::Forms::Button());
@@ -187,16 +186,9 @@ namespace Project1 {
 			this->inbookButton->UseVisualStyleBackColor = true;
 			this->inbookButton->Click += gcnew System::EventHandler(this, &MyForm1::inbook_Click);
 			// 
-			// variantcountButton
-			// 
-			this->variantcountButton->Location = System::Drawing::Point(141, 205);
-			this->variantcountButton->Name = L"variantcountButton";
-			this->variantcountButton->Size = System::Drawing::Size(75, 23);
-			this->variantcountButton->TabIndex = 13;
-			this->variantcountButton->Text = L"variantcount";
-			this->variantcountButton->UseVisualStyleBackColor = true;
-			this->variantcountButton->Click += gcnew System::EventHandler(this, &MyForm1::variantcount_Click);
-			// 
+
+
+
 			// techreportButton
 			// 
 			this->techreportButton->Location = System::Drawing::Point(141, 176);
@@ -251,8 +243,11 @@ namespace Project1 {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+
+
 			this->ClientSize = System::Drawing::Size(284, 261);
-			this->Controls->Add(this->variantcountButton);
+
+
 			this->Controls->Add(this->techreportButton);
 			this->Controls->Add(this->unpublishedButton);
 			this->Controls->Add(this->proceedingsButton);
@@ -276,7 +271,8 @@ namespace Project1 {
 		}
 #pragma endregion
 
-
+// jeweils neue Quelle mit gewähltem Quellentypen anlegen
+// -> zurück ins erste Fenster
 private: System::Void articleButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], article);
 	db->entries += 1;  
@@ -381,8 +377,6 @@ private: System::Void unpublished_Click(System::Object^  sender, System::EventAr
 	this->Close();
 }
 
-private: System::Void variantcount_Click(System::Object^  sender, System::EventArgs^  e) {
-}
 private: System::Void MyForm1_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 };
