@@ -41,7 +41,7 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm
 
 	Source* currSource = &db->sources[currIndex];
 
-	while (sourceExists(currSource) && currIndex < 1000) {
+	while (sourceExists(currSource) && currIndex < db->entries) {
 		int i;
 		int j;
 		int chosenField = -1;
@@ -90,7 +90,7 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm
 			}
 		}
 
-		currIndex++;
+		currIndex += 1;
 		currSource = &db->sources[currIndex];
 	}
 
@@ -98,7 +98,7 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm
 
 	// Suchergebnisse analog zur normalen Ausgabe ausgeben
 	if (results <= 0 ) {
-		MessageBox::Show("Keine Ergebnisse gefunden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		//MessageBox::Show("Keine Ergebnisse gefunden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 	}
 	else {
 		memcpy(sResults->searchResults, searchResults, sizeof(searchResults));

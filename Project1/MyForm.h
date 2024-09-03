@@ -70,6 +70,7 @@ namespace Project1 {
 			for (int i = 0; i < 1000; i++) { searchResults->searchResults[i] = NULL; }  // leere Quellen vorbereiten
 
 			searchResults->entries = 0;
+			searchIndex = 0;
 
 			output(currEntry, false);
 		}
@@ -99,7 +100,9 @@ namespace Project1 {
 				//erstes feld populieren
 
 				// index ausgeben
-				String^ indexString = String::Format("{0:D}/{1:D}", currEntry + 1, db->entries);
+				int currNum = (*isSearching) ? searchIndex : currEntry + 1;
+				int totalNum = (*isSearching) ? searchResults->entries : db->entries;
+				String^ indexString = String::Format("{0:D}/{1:D}", currNum, totalNum);
 				currIndexTextBox->Text = indexString;
 
 				// Sourcetype ausgeben
@@ -922,6 +925,7 @@ namespace Project1 {
 		DataBank* db;
 		bool isInited;
 		SearchResults* searchResults;
+		int searchIndex;
 	public: 
 		bool* newSorceCreated;
 		bool* isSearching;
@@ -934,6 +938,8 @@ private: System::Windows::Forms::TextBox^  currIndexTextBox;
 private: System::Windows::Forms::ComboBox^  authororeditorDropdownComboBox;
 
 private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
+private: System::Windows::Forms::Label^  suchtLabel;
+
 
 	protected:
 		int currEntry;
@@ -944,12 +950,6 @@ private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
 		/// </summary>
 		~MyForm()
 		{
-			// Alloziierten Speicherplatz freigeben
-			//TODO, warum nix funzt?
-			//free(db);
-			//free(searchResults);
-			//free(newSorceCreated);
-			//free(isSearching);
 			if (components)
 			{
 				delete components;
@@ -1102,6 +1102,7 @@ private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
 			this->currIndexTextBox = (gcnew System::Windows::Forms::TextBox());
 			this->authororeditorDropdownComboBox = (gcnew System::Windows::Forms::ComboBox());
 			this->chapterandorpageDropdownComboBox = (gcnew System::Windows::Forms::ComboBox());
+			this->suchtLabel = (gcnew System::Windows::Forms::Label());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -1554,11 +1555,23 @@ private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
 			this->chapterandorpageDropdownComboBox->TabIndex = 45;
 			this->chapterandorpageDropdownComboBox->Visible = false;
 			// 
+			// suchtLabel
+			// 
+			this->suchtLabel->AutoSize = true;
+			this->suchtLabel->Location = System::Drawing::Point(879, 69);
+			this->suchtLabel->Name = L"suchtLabel";
+			this->suchtLabel->Size = System::Drawing::Size(111, 20);
+			this->suchtLabel->TabIndex = 46;
+			this->suchtLabel->Text = L"Suchergebnis:";
+			this->suchtLabel->Visible = false;
+			this->suchtLabel->VisibleChanged += gcnew System::EventHandler(this, &MyForm::suchtLabel_VisibleChanged);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1203, 909);
+			this->Controls->Add(this->suchtLabel);
 			this->Controls->Add(this->chapterandorpageDropdownComboBox);
 			this->Controls->Add(this->authororeditorDropdownComboBox);
 			this->Controls->Add(this->currIndexTextBox);
@@ -1640,10 +1653,36 @@ private: System::Void exportToolStripMenuItem_Click(System::Object^  sender, Sys
 
 // TODO abfangen, ob in ändern modu? -> nutzer hinweisen erst zu speichern / möglichkeit cancel? bieten
 private: System::Void nextButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (isSearching && searchResults->entries > 0) {
+		for (int j = 0; j < db->entries; j++) {
+			currEntry = (currEntry >= db->entries - 1) ? 0 : currEntry + 1;
+			for (int i = 0; i < searchResults->entries; i++) {
+				if (&db->sources[currEntry] == searchResults->searchResults[i]) {
+					searchIndex = i + 1;
+					output(currEntry, false);
+					return;
+				}
+			}
+			
+		}
+	}
 	currEntry = (currEntry >= db->entries-1) ? 0 : currEntry + 1;
 	output(currEntry, false);
 }
 private: System::Void lastButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	if (isSearching && searchResults->entries > 0) {
+		for (int j = 0; j < db->entries; j++) {
+			currEntry = (currEntry <= 0) ? db->entries - 1 : currEntry - 1;
+			for (int i = 0; i < searchResults->entries; i++) {
+				if (&db->sources[currEntry] == searchResults->searchResults[i]) {
+					searchIndex = i+1;
+					output(currEntry, false);
+					return;
+				}
+			}
+
+		}
+	}
 	currEntry = (currEntry <= 0) ? db->entries-1 : currEntry - 1;
 	output(currEntry, false);
 }
@@ -1695,12 +1734,36 @@ private: System::Void deleteButton_Click(System::Object^  sender, System::EventA
 	output(currEntry, false);
 }
 private: System::Void searchButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	Form^ searchForm = gcnew MyForm2(db, searchResults, isSearching);
+	Form^ searchForm = gcnew MyForm2(db, searchResults, isSearching, suchtLabel);
 	searchForm->Show();
 	// TODO
 	// irgendwie den Nutzer zwinden auf eine der Pfeiltasten zu drücken, damit Suchergebnisse auch angezeigt werden...
 	// alles ausblenden? mit Hinweis -> Taste drücken?
 	// suche doch in eine combobox quetschen?
+}
+private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {
+	// Hacky callback from search Form to trigger new output on search completion
+	// import "MyForm.h" im zweiten Skript sorgt für Unmengen an Fehlern...
+	// -> hier ein "toller" work-around
+	if (suchtLabel->Visible == true && isInited && isSearching) { 
+		currEntry = 0;
+		if (isSearching && searchResults->entries > 0) {
+			for (int j = 0; j < db->entries; j++) {
+				currEntry = (currEntry >= db->entries - 1) ? 0 : currEntry + 1;
+				for (int i = 0; i < searchResults->entries; i++) {
+					if (&db->sources[currEntry] == searchResults->searchResults[i]) {
+						searchIndex = i + 1;
+						output(currEntry, false);
+						return;
+					}
+				}
+
+			}
+		}
+	}
+	else if (suchtLabel->Visible == false && isInited) {
+		output(currEntry, false);
+	}
 }
 };
 }

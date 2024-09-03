@@ -29,22 +29,31 @@ namespace Project1 {
 			//
 		}
 
-		MyForm2(DataBank* _db, SearchResults* _sRes, bool* _searching) {
+		MyForm2(DataBank* _db, SearchResults* _sRes, bool* _searching, Label^ _label) {
 			InitializeComponent();
 			db = _db;
 			sRes = _sRes;
 			searching = _searching;
+			label = _label;
 		}
 
 	protected:
 		DataBank* db;
 		SearchResults* sRes;
 		bool* searching;
+		Label^ label;
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
 		~MyForm2()
 		{
+			*searching = false;
+			label->Visible = false;
+
+			stopSearchButton->Visible = false;
+
+			sRes->entries = 0;
+			for (int i = 0; i < 1000; i++) { sRes->searchResults[i] == NULL; }
 			if (components)
 			{
 				delete components;
@@ -146,14 +155,24 @@ namespace Project1 {
 		char buff[30];
 		StringToChar(buff, textBox1->Text);
 		searchDB(db, sRes, searchOptionsComboBox->SelectedIndex, buff);
-		*searching = true;
-		stopSearchButton->Visible = true;
+
+		if (sRes->entries > 0) {
+			*searching = true;
+			stopSearchButton->Visible = true;
+			// callback triggern...
+			label->Visible = true;
+		}
+		else {
+			MessageBox::Show("Keine Ergebnisse gefunden...", "Warning", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		}
 	}
 private: System::Void stopSearchButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	*searching = false;
+	label->Visible = false;
 	
 	stopSearchButton->Visible = false;
 
+	sRes->entries = 0;
 	for (int i = 0; i < 1000; i++) { sRes->searchResults[i] == NULL; }
 }
 };
