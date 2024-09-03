@@ -39,13 +39,14 @@ namespace Project1 {
 				return;
 			}
 
-			for (int i = 0; i < 1000; i++) { setNullSource(&db->sources[i]); }  // leere Quellen vorbereiten
+			for (int i = 0; i < 1000; i++) { (&db->sources[i]); }  // leere Quellen vorbereiten
 
 			db->entries = 0;
 
 			// Datenbank automatisch laden
 			if (loadDB(db)) { // Laden erfolgreich
-				MessageBox::Show("Quellenverzeichnis erfolgreich geladen. Es gibt %i Quellen...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				// nicht nutzerfreundlich, deswegen erstmal weg
+				//MessageBox::Show("Quellenverzeichnis erfolgreich geladen. Es gibt %i Quellen...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			}
 			else { // Fehler beim Laden
 				MessageBox::Show("Datenbank konnte nicht automatisch geladen werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
@@ -75,20 +76,7 @@ namespace Project1 {
 			output(currEntry, false);
 		}
 
-		// overloading um spezifische Quellen auszugeben
-		// vllt überflüssig
-		MyForm(DataBank* suppliedDB, int index, bool isEdit)
-		{
-			InitializeComponent();
-
-			db = suppliedDB;
-
-			output(index, isEdit);
-
-			isInited = true;
-			*newSorceCreated = false;
-		}
-
+		// util um Ausgabefelder zu populieren
 		void output(int index, bool isEditable) {
 			Source* currSource = &db->sources[index];
 
@@ -96,10 +84,7 @@ namespace Project1 {
 			resetFields();
 
 			if (currSource->variant != nullSource) {
-				// TODO für weitere Felder ausführen (bei optionalen Feldern logik einführen, dass von links nach recht, von oben nach unten populiert wird, dazwischen keine leeren Felder, da sieht kacke aus)
-				//erstes feld populieren
-
-				// index ausgeben
+				// index ausgeben/anzeigen
 				int currNum = (*isSearching) ? searchIndex : currEntry + 1;
 				int totalNum = (*isSearching) ? searchResults->entries : db->entries;
 				String^ indexString = String::Format("{0:D}/{1:D}", currNum, totalNum);
@@ -113,26 +98,30 @@ namespace Project1 {
 				charToString(buff, &sTypeString);
 				sourceTypeTextBox->Text = sTypeString;
 				
-				// Name
+				// Schlüssel ausgeben
 				String^ name;
 				charToString(currSource->key, &name);
 				keyField->Text = name;
 				keyField->ReadOnly = !isEditable;
 
+				// Leere Felder rausfiltern
 				if (currSource->fields[0].type != empty) {
 					value1->Visible = true;
 					field1->Visible = true;
 
+					// inhalt des Feldes populieren
 					String^ tmp;
 					charToString(currSource->fields[0].content, &tmp);
 					value1->Text = tmp;
 
+					// art des Feldes populieren
 					char buff[20];
 					readFieldtype(currSource->fields[0].type, buff);
 
 					charToString(buff, &tmp);
 					field1->Text = tmp;
 
+					// inhalt mögl. veränderbar
 					value1->ReadOnly = !isEditable;
 				}
 				else {
@@ -140,6 +129,7 @@ namespace Project1 {
 					field1->Visible = false;
 				}
 
+				// wiederholen für alle anderen Felder, da iterierbare Liste aus den Feldern viel zu komplex anzulegen
 				if (currSource->fields[1].type != empty) {
 					value2->Visible = true;
 					field2->Visible = true;
@@ -250,6 +240,7 @@ namespace Project1 {
 					- inbook 0:authororeditor; 2:chapterandorpages
 					- book 0:authororeditor
 				*/
+				// sonderfall mit variablen Felderbezeichnungen abfangen
 				if (isEditable && currSource->variant == book) {
 					// put Dropdown at location of output field
 					authororeditorDropdownComboBox->Visible = true;
@@ -316,6 +307,9 @@ namespace Project1 {
 				// Optionale Felder ausgeben
 				int optFieldIndex = 0;
 
+				// erstmal alle ausblenden, falls sie nicht verändert werden
+				// -> keine leeren Felder anzeigen
+				// (Ausgabe sieht sonst "zersprengt" aus)
 				if (!isEditable) {
 					// Set visibility to false for _field1 through _field8
 					_field1->Visible = false;
@@ -343,14 +337,17 @@ namespace Project1 {
 					_value8->Visible = false;
 
 					// alle leeren vor dem nächsten nicht leeren überspringen
+					// wir wollen keine leeren optionalen Felder ausgeben -> sieht nicht aus
 					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
 						optFieldIndex++;
-
+						// wenn ´kein Feld inhalt hat, dann sind wir gleich fertig
 						if (optFieldIndex >= 8) { return; }
 					}
+					// wir haben eine legitime Ausgabe, also erstmal ein Feld anzeigen
 					_field1->Visible = true;
 					_value1->Visible = true;
 
+					// wie bei zwingenden Feldern ausgeben...
 					String^ tmp;
 					charToString(currSource->optFields[optFieldIndex].content, &tmp);
 					_value1->Text = tmp;
@@ -363,7 +360,7 @@ namespace Project1 {
 					optFieldIndex++;
 
 					// _field2
-					// alle leeren vor dem nächsten nicht leeren überspringen
+					// hier dann immer wieder das Gleiche...
 					while (!fieldHasContent(&currSource->optFields[optFieldIndex])) {
 						optFieldIndex++;
 
@@ -502,6 +499,8 @@ namespace Project1 {
 					_field8->Text = tmp;
 					optFieldIndex++;
 				}
+				// beim editieren wollen wir auf alle Felder zugreifen können...
+				// ausgabe genau wie bei zwingenden
 				else {
 					// _field 1
 					if (currSource->optFields[0].type != empty) {
@@ -682,7 +681,8 @@ namespace Project1 {
 			}
 
 			else { // kein Inhalt in der Quelle
-				// alle ausgabe felder verstecken, ein neues einblenden als placeholder
+				// hier sollten wir nie hinkommen, außer wenn alle Datensätze gelöscht werden
+				// Leere dem Nutzer darstellen
 				field1->Text = "keine Daten vorhanden";
 				field2->Text = "keine Daten vorhanden";
 				field3->Text = "keine Daten vorhanden";
@@ -715,11 +715,14 @@ namespace Project1 {
 			}
 		}
 
+		// speichern der geänderten Daten
 		int saveToSource() {
 			// TODO extend to filter out faulty/empty non-optional field entries
 			Source* currSource = &db->sources[currEntry];
 
 			// save key
+			// muss inhalt haben
+			if (!keyField->Text->Length > 0) { return 0; }
 			StringToChar(currSource->key, keyField->Text);
 
 			// save needed fields
@@ -727,6 +730,8 @@ namespace Project1 {
 			if (fieldValid(currField) && value1->Text->Length > 0) {
 				StringToChar(currField->content, value1->Text);
 			}
+			// user-input muss hier existieren, das Feld ist notwendig -> muss einen Wert haben wenn nicht empty
+			else if (fieldValid(currField)) { return 0; }
 			
 			if (currSource->variant == book || currSource->variant == inbook) {
 				switch (authororeditorDropdownComboBox->SelectedIndex) {
@@ -746,12 +751,15 @@ namespace Project1 {
 			if (fieldValid(currField) && value2->Text->Length > 0) {
 				StringToChar(currField->content, value2->Text);
 			}
+			else if (fieldValid(currField)) { return 0; }
 
 			currField = &currSource->fields[2];
 			if (fieldValid(currField) && value3->Text->Length > 0) {
 				StringToChar(currField->content, value3->Text);
 			}
+			else if (fieldValid(currField)) { return 0; }
 
+			// sonderfall -> dropdown ausgabe ersetzt aktuellen FieldType
 			if (currSource->variant == inbook) {
 				switch (chapterandorpageDropdownComboBox->SelectedIndex) {
 				case 0:
@@ -770,16 +778,19 @@ namespace Project1 {
 			if (fieldValid(currField) && value4->Text->Length > 0) {
 				StringToChar(currField->content, value4->Text);
 			}
+			else if (fieldValid(currField)) { return 0; }
 
 			currField = &currSource->fields[4];
 			if (fieldValid(currField) && value5->Text->Length > 0) {
 				StringToChar(currField->content, value5->Text);
 			}
+			else if (fieldValid(currField)) { return 0; }
 
 			currField = &currSource->fields[5];
 			if (fieldValid(currField) && value6->Text->Length > 0) {
 				StringToChar(currField->content, value6->Text);
 			}
+			else if (fieldValid(currField)) { return 0; }
 
 			// opt fields speichern
 			// _field1
@@ -829,12 +840,10 @@ namespace Project1 {
 			if (fieldValid(currField) && _value8->Text->Length > 0) {
 				StringToChar(currField->content, _value8->Text);
 			}
-
-			// TODO extend for optFields
 			return 1;
 		}
 		
-		// TODO fill all other fields
+		// util zum Leeren
 		void resetFields() {
 			field1->Text = "";
 			field1->ReadOnly = true;
@@ -1614,7 +1623,7 @@ private: System::Windows::Forms::Label^  suchtLabel;
 			this->Controls->Add(this->lastButton);
 			this->Controls->Add(this->menuStrip1);
 			this->Name = L"MyForm";
-			this->Text = L"Quellenverwaltung";
+			this->Text = L"BibTex Verwaltung";
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->VisibleChanged += gcnew System::EventHandler(this, &MyForm::MyForm_VisibleChanged);
 			this->menuStrip1->ResumeLayout(false);
@@ -1626,32 +1635,32 @@ private: System::Windows::Forms::Label^  suchtLabel;
 		}
 #pragma endregion
 
-
+// Bedienungsanleitung öffnen
 private: System::Void toolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
 	// TODO einbindung pdf machen/testen?
 	System::String^ pdfPath = "Bedienungsanleitung.pdf";
 	System::Diagnostics::Process::Start(pdfPath);
 }
-
+// in datei speichern
 private: System::Void speichernToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (saveDB(db)) {
 		MessageBox::Show("Erfolgreich gespeichert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 }
-
+// aus datei laden
 private: System::Void ladenToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (loadDB(db)) {
 		MessageBox::Show("Erfolgreich geladen", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 }
-
+// exportieren starten
 private: System::Void exportToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (exportDB(db)) {
 		MessageBox::Show("Erfolgreich exportiert", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 }
 
-// TODO abfangen, ob in ändern modu? -> nutzer hinweisen erst zu speichern / möglichkeit cancel? bieten
+// wie nachfolgende Methode, nur vorwärts
 private: System::Void nextButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (isSearching && searchResults->entries > 0) {
 		for (int j = 0; j < db->entries; j++) {
@@ -1669,7 +1678,9 @@ private: System::Void nextButton_Click(System::Object^  sender, System::EventArg
 	currEntry = (currEntry >= db->entries-1) ? 0 : currEntry + 1;
 	output(currEntry, false);
 }
+// rückwärts blättern
 private: System::Void lastButton_Click(System::Object^  sender, System::EventArgs^  e) {
+	// wenn wir grade suchen, solange weiter gehen, bis aktuelle Quelle in den Suchergebnissen vorhanden ist
 	if (isSearching && searchResults->entries > 0) {
 		for (int j = 0; j < db->entries; j++) {
 			currEntry = (currEntry <= 0) ? db->entries - 1 : currEntry - 1;
@@ -1683,9 +1694,11 @@ private: System::Void lastButton_Click(System::Object^  sender, System::EventArg
 
 		}
 	}
+	// wrap-around
 	currEntry = (currEntry <= 0) ? db->entries-1 : currEntry - 1;
 	output(currEntry, false);
 }
+// ändern der aktuellen Quelle starten
 private: System::Void changeButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	output(currEntry, true);
 	saveChangeButton->Visible = true;
@@ -1693,17 +1706,21 @@ private: System::Void changeButton_Click(System::Object^  sender, System::EventA
 	cancelButton->Visible = true;
 }
 private: System::Void saveChangeButton_Click(System::Object^  sender, System::EventArgs^  e) {
-	// wieder in Ausgabe wechseln
 	if (this->saveToSource()) {
+		// wieder in Ausgabe wechseln
 		output(currEntry, false);
 		saveChangeButton->Visible = false;
 		changeButton->Visible = true;
 		cancelButton->Visible = false;
 	}
+	// nicht alles ausgefüllt
+	else { MessageBox::Show("Zwingende Felder müssen alle Inhalt haben", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information); }
 }
+// neues Fenster öffnen -> Auswahl neuer Quellentyp
 private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	Form^ f2 = gcnew MyForm1(this, db, newSorceCreated);
 	f2->Show();
+	// dies erstmal ausblenden, wird dann über das andere wieder geöffnet
 	this->Visible = false;
 }
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
@@ -1719,27 +1736,28 @@ private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::Eve
 		// Speicher Button anzeigen
 		saveChangeButton->Visible = true;
 		changeButton->Visible = false;
+		// leeres key feld kompensieren
+		keyField->Text = "";
 	}
 }
+//ändern abbrechen -> nix neues speichern, wieder nnormale ausgabe
 private: System::Void cancelButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	output(currEntry, false);
 	saveChangeButton->Visible = false;
 	changeButton->Visible = true;
 	cancelButton->Visible = false;
 }
+// aktuelle Quelle löschen
 private: System::Void deleteButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	deleteEntry(db, currEntry);
 	if (currEntry >= db->entries) { currEntry -= 1; }
 	if (currEntry < 0) { currEntry = (db->entries <= 0)? 0 : db->entries - 1; }
 	output(currEntry, false);
 }
+// starten des Suchfensters
 private: System::Void searchButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	Form^ searchForm = gcnew MyForm2(db, searchResults, isSearching, suchtLabel);
 	searchForm->Show();
-	// TODO
-	// irgendwie den Nutzer zwinden auf eine der Pfeiltasten zu drücken, damit Suchergebnisse auch angezeigt werden...
-	// alles ausblenden? mit Hinweis -> Taste drücken?
-	// suche doch in eine combobox quetschen?
 }
 private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {
 	// Hacky callback from search Form to trigger new output on search completion
@@ -1761,6 +1779,7 @@ private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System:
 			}
 		}
 	}
+	// Hier suche beenden
 	else if (suchtLabel->Visible == false && isInited) {
 		output(currEntry, false);
 	}

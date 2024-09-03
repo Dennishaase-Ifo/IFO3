@@ -161,7 +161,7 @@ void setNullSource(Source* source) {  // klares Setzen der "leeren" Quellen
 	source->optFields[6].type = empty;
 	source->optFields[7].type = empty;
 	source->variant = nullSource;  // Einfach auszulesende ID für undefinierte Quellenstruktur
-	source->key[0] = EOF;
+	strcpy(source->key, "");
 }
 
 // Neues Element an Datenbank anhängen
