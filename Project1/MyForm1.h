@@ -66,7 +66,7 @@ namespace Project1 {
 
 	private: System::Windows::Forms::Button^  inbookButton;
 
-	private: System::Windows::Forms::Button^  variantcountButton;
+
 
 	private: System::Windows::Forms::Button^  techreportButton;
 
@@ -99,7 +99,6 @@ namespace Project1 {
 			this->incollectionButton = (gcnew System::Windows::Forms::Button());
 			this->manualButton = (gcnew System::Windows::Forms::Button());
 			this->inbookButton = (gcnew System::Windows::Forms::Button());
-			this->variantcountButton = (gcnew System::Windows::Forms::Button());
 			this->techreportButton = (gcnew System::Windows::Forms::Button());
 			this->unpublishedButton = (gcnew System::Windows::Forms::Button());
 			this->proceedingsButton = (gcnew System::Windows::Forms::Button());
@@ -193,17 +192,6 @@ namespace Project1 {
 			this->inbookButton->UseVisualStyleBackColor = true;
 			this->inbookButton->Click += gcnew System::EventHandler(this, &MyForm1::inbook_Click);
 			// 
-			// variantcountButton
-			// 
-			this->variantcountButton->Location = System::Drawing::Point(212, 315);
-			this->variantcountButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
-			this->variantcountButton->Name = L"variantcountButton";
-			this->variantcountButton->Size = System::Drawing::Size(112, 35);
-			this->variantcountButton->TabIndex = 13;
-			this->variantcountButton->Text = L"variantcount";
-			this->variantcountButton->UseVisualStyleBackColor = true;
-			this->variantcountButton->Click += gcnew System::EventHandler(this, &MyForm1::variantcount_Click);
-			// 
 			// techreportButton
 			// 
 			this->techreportButton->Location = System::Drawing::Point(212, 271);
@@ -264,7 +252,6 @@ namespace Project1 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(426, 402);
-			this->Controls->Add(this->variantcountButton);
 			this->Controls->Add(this->techreportButton);
 			this->Controls->Add(this->unpublishedButton);
 			this->Controls->Add(this->proceedingsButton);
@@ -393,13 +380,6 @@ private: System::Void unpublished_Click(System::Object^  sender, System::EventAr
 	this->Close();
 }
 
-private: System::Void variantcount_Click(System::Object^  sender, System::EventArgs^  e) {
-	initSource(&db->sources[db->entries], variantcount);
-	db->entries += 1;
-	*newSourceMarker = true;
-	mainForm->Show();
-	this->Close();
-}
 private: System::Void MyForm1_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 };

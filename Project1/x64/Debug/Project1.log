@@ -1,7 +1,9 @@
 ﻿  MyForm.cpp
 s:\ifo3\ifo3\project1\myform2.h(56): warning C4553: '==': result of expression not used; did you intend '='?
 s:\ifo3\ifo3\project1\myform2.h(176): warning C4553: '==': result of expression not used; did you intend '='?
-s:\ifo3\ifo3\project1\myform.h(725): warning C4804: '>': unsafe use of type 'bool' in operation
+s:\ifo3\ifo3\project1\myform.h(727): warning C4804: '>': unsafe use of type 'bool' in operation
 s:\ifo3\ifo3\project1\myform.cpp(7): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  MyForm1.cpp
+  Generating Code...
   DBFuncs.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   Project1.vcxproj -> S:\IFO3\IFO3\x64\Debug\Project1.exe
