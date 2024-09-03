@@ -81,7 +81,9 @@ namespace Project1 {
 			Source* currSource = &db->sources[index];
 
 			// Alles erstmal blank zurücksetzen
-			resetFields();
+			resetFields(); 
+
+			if (db->entries <= 0) { return; }
 
 			if (currSource->variant != nullSource) {
 				// index ausgeben/anzeigen
