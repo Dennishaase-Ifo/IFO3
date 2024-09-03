@@ -8,6 +8,7 @@
 #include <string.h>
 #include <iostream>
 #include <cliext/adapter>
+#include <cctype>
 
 using namespace System::Windows::Forms;
 
@@ -21,6 +22,7 @@ int DBinput(DataBank *db, Source* newSourc) {
 
 	if (initSource(currSource, chosenType)) { // Falls Quelle mit Feldern und Typ angelegt werden konnte, wollen wir reinschreiben
 		return appendDB(db, *currSource);  // fertige Quelle einfügen
+
 	}
 
 	// neue quelle anzeigen und in ändern modus wechseln
@@ -46,9 +48,25 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm
 		int j;
 		int chosenField = -1;
 
+		for (int i = 0; searchTerm[i] != '\0'; i++) {
+			searchTerm[i] = std::tolower(searchTerm[i]);
+		}
+
+
+
+
+
+
 		switch (choice) {  // unterscheidung der Suchoptionen
 		case 0:  // nach Schlüssel
-			if (strstr(currSource->key, searchTerm) != NULL) {  // Falls kein Pointer zu einem Vorkommen des Suchterms gefunden werden kann
+
+			char kleinkey[50];
+
+			for (int i = 0; currSource->key[i] != '\0'; i++) {
+				kleinkey[i] = std::tolower(static_cast<unsigned char>(currSource->key[i]));
+			}
+
+			if (strstr(kleinkey, searchTerm) != NULL) {  // Falls kein Pointer zu einem Vorkommen des Suchterms gefunden werden kann
 				searchResults[results] = currSource;  // Pointer zu treffer speichern
 				results++;
 			}
@@ -82,8 +100,15 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm
 					break;
 				}
 			}
+
+			char kleincontent[100];
+
+			for (int i = 0; searchedField->content[i] != '\0'; i++) {
+				kleincontent[i] = std::tolower(static_cast<unsigned char>(searchedField->content[i]));
+			}
+
 			if (searchedField != NULL) { // Falls Feld gefunden suchbegriff überprüfen
-				if (strstr(searchedField->content, searchTerm) != NULL) {
+				if (strstr(kleincontent, searchTerm) != NULL) {
 					searchResults[results] = currSource;
 					results++;
 				}
@@ -181,12 +206,25 @@ int exportDB(DataBank* db) {
 	return 1;  // Erfolg!
 }
 
+
+
 void deleteEntry(DataBank* db, int index) {  
-	if (index < db->entries && index >= 0) {  // Überprüfen, ob eine gültige Stelle ausgewählt ist
-		for (int i = index; i < db->entries; i++) {  // jeweils den inhalt des nächsten Eintrages an die aktuelle Stelle kopieren
-			memcpy(&db->sources[i], &db->sources[i + 1], sizeof(Source));
+
+
+	DialogResult result = MessageBox::Show("Datensatz wirklich löschen?", "Löschen", MessageBoxButtons::OKCancel, MessageBoxIcon::Question);
+
+	if (result == DialogResult::OK) {
+
+		if (index < db->entries && index >= 0) {  // Überprüfen, ob eine gültige Stelle ausgewählt ist
+			for (int i = index; i < db->entries; i++) {  // jeweils den inhalt des nächsten Eintrages an die aktuelle Stelle kopieren
+				memcpy(&db->sources[i], &db->sources[i + 1], sizeof(Source));
+			}
+			db->entries--;  // Anzahl Einträge um 1 verringern
 		}
-		db->entries--;  // Anzahl Einträge um 1 verringern
+		else { MessageBox::Show("Ung\x81ltige Auswahl", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning); }
+
+
 	}
-	else { MessageBox::Show("Ung\x81ltige Auswahl", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning); }
+
+
 }
