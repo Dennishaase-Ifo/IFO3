@@ -941,7 +941,7 @@ namespace Project1 {
 	private: System::Windows::Forms::Button^  saveChangeButton;
 private: System::Windows::Forms::Button^  cancelButton;
 private: System::Windows::Forms::TextBox^  keyField;
-private: System::Windows::Forms::ToolStripTextBox^  searchTextBox;
+
 private: System::Windows::Forms::TextBox^  sourceTypeTextBox;
 private: System::Windows::Forms::TextBox^  currIndexTextBox;
 private: System::Windows::Forms::ComboBox^  authororeditorDropdownComboBox;
@@ -1070,7 +1070,6 @@ private: System::Windows::Forms::Label^  suchtLabel;
 			this->exportToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->helpButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->searchButton = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->searchTextBox = (gcnew System::Windows::Forms::ToolStripTextBox());
 			this->lastButton = (gcnew System::Windows::Forms::Button());
 			this->changeButton = (gcnew System::Windows::Forms::Button());
 			this->deleteButton = (gcnew System::Windows::Forms::Button());
@@ -1119,14 +1118,14 @@ private: System::Windows::Forms::Label^  suchtLabel;
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(24, 24);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->dateiToolStripMenuItem,
-					this->helpButton, this->searchButton, this->searchTextBox
+					this->helpButton, this->searchButton
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(9, 3, 0, 3);
-			this->menuStrip1->Size = System::Drawing::Size(1203, 37);
+			this->menuStrip1->Size = System::Drawing::Size(1203, 35);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -1137,34 +1136,34 @@ private: System::Windows::Forms::Label^  suchtLabel;
 					this->speichernToolStripMenuItem, this->ladenToolStripMenuItem, this->exportToolStripMenuItem
 			});
 			this->dateiToolStripMenuItem->Name = L"dateiToolStripMenuItem";
-			this->dateiToolStripMenuItem->Size = System::Drawing::Size(65, 31);
+			this->dateiToolStripMenuItem->Size = System::Drawing::Size(65, 29);
 			this->dateiToolStripMenuItem->Text = L"Datei";
 			// 
 			// neuToolStripMenuItem
 			// 
 			this->neuToolStripMenuItem->Name = L"neuToolStripMenuItem";
-			this->neuToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->neuToolStripMenuItem->Size = System::Drawing::Size(252, 30);
 			this->neuToolStripMenuItem->Text = L"Neu";
 			this->neuToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::neuToolStripMenuItem_Click);
 			// 
 			// speichernToolStripMenuItem
 			// 
 			this->speichernToolStripMenuItem->Name = L"speichernToolStripMenuItem";
-			this->speichernToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->speichernToolStripMenuItem->Size = System::Drawing::Size(252, 30);
 			this->speichernToolStripMenuItem->Text = L"Speichern";
 			this->speichernToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::speichernToolStripMenuItem_Click);
 			// 
 			// ladenToolStripMenuItem
 			// 
 			this->ladenToolStripMenuItem->Name = L"ladenToolStripMenuItem";
-			this->ladenToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->ladenToolStripMenuItem->Size = System::Drawing::Size(252, 30);
 			this->ladenToolStripMenuItem->Text = L"Laden";
 			this->ladenToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ladenToolStripMenuItem_Click);
 			// 
 			// exportToolStripMenuItem
 			// 
 			this->exportToolStripMenuItem->Name = L"exportToolStripMenuItem";
-			this->exportToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->exportToolStripMenuItem->Size = System::Drawing::Size(252, 30);
 			this->exportToolStripMenuItem->Text = L"Export";
 			this->exportToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exportToolStripMenuItem_Click);
 			// 
@@ -1172,23 +1171,16 @@ private: System::Windows::Forms::Label^  suchtLabel;
 			// 
 			this->helpButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
 			this->helpButton->Name = L"helpButton";
-			this->helpButton->Size = System::Drawing::Size(32, 31);
+			this->helpButton->Size = System::Drawing::Size(32, 29);
 			this->helpButton->Text = L"\?";
 			// 
 			// searchButton
 			// 
 			this->searchButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
 			this->searchButton->Name = L"searchButton";
-			this->searchButton->Size = System::Drawing::Size(49, 31);
+			this->searchButton->Size = System::Drawing::Size(49, 29);
 			this->searchButton->Text = L"🔍";
 			this->searchButton->Click += gcnew System::EventHandler(this, &MyForm::searchButton_Click);
-			// 
-			// searchTextBox
-			// 
-			this->searchTextBox->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
-			this->searchTextBox->Name = L"searchTextBox";
-			this->searchTextBox->RightToLeft = System::Windows::Forms::RightToLeft::No;
-			this->searchTextBox->Size = System::Drawing::Size(100, 31);
 			// 
 			// lastButton
 			// 

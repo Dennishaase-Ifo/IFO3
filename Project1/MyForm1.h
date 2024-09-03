@@ -287,7 +287,8 @@ namespace Project1 {
 		}
 #pragma endregion
 
-
+// jeweils neue Quelle mit gewähltem Quellentypen anlegen
+// -> zurück ins erste Fenster
 private: System::Void articleButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	initSource(&db->sources[db->entries], article);
 	db->entries += 1;  
@@ -393,6 +394,11 @@ private: System::Void unpublished_Click(System::Object^  sender, System::EventAr
 }
 
 private: System::Void variantcount_Click(System::Object^  sender, System::EventArgs^  e) {
+	initSource(&db->sources[db->entries], variantcount);
+	db->entries += 1;
+	*newSourceMarker = true;
+	mainForm->Show();
+	this->Close();
 }
 private: System::Void MyForm1_Load(System::Object^  sender, System::EventArgs^  e) {
 }
