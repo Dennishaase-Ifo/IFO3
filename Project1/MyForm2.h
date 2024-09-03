@@ -92,25 +92,28 @@ namespace Project1 {
 			// 
 			this->searchOptionsComboBox->FormattingEnabled = true;
 			this->searchOptionsComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Schlüssel", L"Autor", L"Titel" });
-			this->searchOptionsComboBox->Location = System::Drawing::Point(95, 121);
+			this->searchOptionsComboBox->Location = System::Drawing::Point(63, 79);
+			this->searchOptionsComboBox->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->searchOptionsComboBox->Name = L"searchOptionsComboBox";
-			this->searchOptionsComboBox->Size = System::Drawing::Size(121, 28);
+			this->searchOptionsComboBox->Size = System::Drawing::Size(82, 21);
 			this->searchOptionsComboBox->TabIndex = 0;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(91, 41);
+			this->label1->Location = System::Drawing::Point(61, 27);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(226, 20);
+			this->label1->Size = System::Drawing::Size(154, 13);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Wonach möchten Sie suchen\?";
 			// 
 			// startSearchButton
 			// 
-			this->startSearchButton->Location = System::Drawing::Point(107, 217);
+			this->startSearchButton->Location = System::Drawing::Point(71, 141);
+			this->startSearchButton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->startSearchButton->Name = L"startSearchButton";
-			this->startSearchButton->Size = System::Drawing::Size(94, 45);
+			this->startSearchButton->Size = System::Drawing::Size(63, 29);
 			this->startSearchButton->TabIndex = 2;
 			this->startSearchButton->Text = L"suchen";
 			this->startSearchButton->UseVisualStyleBackColor = true;
@@ -118,16 +121,18 @@ namespace Project1 {
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(322, 123);
+			this->textBox1->Location = System::Drawing::Point(215, 80);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(181, 26);
+			this->textBox1->Size = System::Drawing::Size(122, 20);
 			this->textBox1->TabIndex = 3;
 			// 
 			// stopSearchButton
 			// 
-			this->stopSearchButton->Location = System::Drawing::Point(385, 217);
+			this->stopSearchButton->Location = System::Drawing::Point(257, 141);
+			this->stopSearchButton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->stopSearchButton->Name = L"stopSearchButton";
-			this->stopSearchButton->Size = System::Drawing::Size(94, 45);
+			this->stopSearchButton->Size = System::Drawing::Size(63, 29);
 			this->stopSearchButton->TabIndex = 4;
 			this->stopSearchButton->Text = L"beenden";
 			this->stopSearchButton->UseVisualStyleBackColor = true;
@@ -136,14 +141,17 @@ namespace Project1 {
 			// 
 			// MyForm2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(587, 296);
+			this->ClientSize = System::Drawing::Size(391, 192);
 			this->Controls->Add(this->stopSearchButton);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->startSearchButton);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->searchOptionsComboBox);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->MaximizeBox = false;
 			this->Name = L"MyForm2";
 			this->Text = L"MyForm2";
 			this->ResumeLayout(false);

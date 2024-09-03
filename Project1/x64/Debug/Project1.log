@@ -1,6 +1,12 @@
-﻿  MyForm.cpp
-s:\ifo3\ifo3\project1\myform2.h(56): warning C4553: '==': result of expression not used; did you intend '='?
-s:\ifo3\ifo3\project1\myform2.h(176): warning C4553: '==': result of expression not used; did you intend '='?
-s:\ifo3\ifo3\project1\myform.cpp(7): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  DBFuncs.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  Project1.vcxproj -> S:\IFO3\IFO3\x64\Debug\Project1.exe
+﻿  DBFuncs.cpp
+c:\users\thore\desktop\ifo3\project1\dbfuncs.cpp(36): warning C4101: "searchFor": Unreferenzierte lokale Variable
+c:\users\thore\desktop\ifo3\project1\dbfuncs.cpp(48): warning C4101: "j": Unreferenzierte lokale Variable
+c:\users\thore\desktop\ifo3\project1\dbfuncs.cpp(137): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
+c:\users\thore\desktop\ifo3\project1\dbfuncs.cpp(153): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
+c:\users\thore\desktop\ifo3\project1\dbfuncs.cpp(170): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
+c:\users\thore\desktop\ifo3\project1\dbfuncs.cpp(23): warning C4700: Die nicht initialisierte lokale Variable "chosenType" wurde verwendet.
+  DBFuncs.obj : MSIL-Modulgefunden; inkrementelles Verknüpfen wird für MSIL deaktiviert; vollständiger Link wird durchgeführt
+  Project1.vcxproj -> C:\Users\thore\Desktop\IFO3\x64\Debug\Project1.exe
