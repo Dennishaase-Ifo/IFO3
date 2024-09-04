@@ -36,7 +36,9 @@ namespace Project1 {
 	private: 
 		DataBank* db;
 		Form^ mainForm;
-		bool* newSourceMarker;
+	private: System::Windows::Forms::Label^  label1;
+
+			 bool* newSourceMarker;
 
 	protected:
 		/// <summary>
@@ -91,6 +93,7 @@ namespace Project1 {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm1::typeid));
 			this->articleButton = (gcnew System::Windows::Forms::Button());
 			this->bookletButton = (gcnew System::Windows::Forms::Button());
 			this->bookButton = (gcnew System::Windows::Forms::Button());
@@ -104,13 +107,17 @@ namespace Project1 {
 			this->proceedingsButton = (gcnew System::Windows::Forms::Button());
 			this->phdthesisButton = (gcnew System::Windows::Forms::Button());
 			this->miscButton = (gcnew System::Windows::Forms::Button());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// articleButton
 			// 
-			this->articleButton->Location = System::Drawing::Point(60, 33);
+			this->articleButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->articleButton->Location = System::Drawing::Point(80, 41);
+			this->articleButton->Margin = System::Windows::Forms::Padding(4);
 			this->articleButton->Name = L"articleButton";
-			this->articleButton->Size = System::Drawing::Size(75, 23);
+			this->articleButton->Size = System::Drawing::Size(100, 28);
 			this->articleButton->TabIndex = 0;
 			this->articleButton->Text = L"article";
 			this->articleButton->UseVisualStyleBackColor = true;
@@ -118,9 +125,12 @@ namespace Project1 {
 			// 
 			// bookletButton
 			// 
-			this->bookletButton->Location = System::Drawing::Point(141, 33);
+			this->bookletButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bookletButton->Location = System::Drawing::Point(188, 41);
+			this->bookletButton->Margin = System::Windows::Forms::Padding(4);
 			this->bookletButton->Name = L"bookletButton";
-			this->bookletButton->Size = System::Drawing::Size(75, 23);
+			this->bookletButton->Size = System::Drawing::Size(100, 28);
 			this->bookletButton->TabIndex = 2;
 			this->bookletButton->Text = L"booklet";
 			this->bookletButton->UseVisualStyleBackColor = true;
@@ -128,19 +138,24 @@ namespace Project1 {
 			// 
 			// bookButton
 			// 
-			this->bookButton->Location = System::Drawing::Point(60, 62);
-			this->bookButton->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->bookButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->bookButton->Location = System::Drawing::Point(80, 76);
+			this->bookButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->bookButton->Name = L"bookButton";
-			this->bookButton->Size = System::Drawing::Size(75, 23);
+			this->bookButton->Size = System::Drawing::Size(100, 28);
 			this->bookButton->TabIndex = 14;
 			this->bookButton->Text = L"book";
 			this->bookButton->Click += gcnew System::EventHandler(this, &MyForm1::book_Click);
 			// 
 			// conferenceButton
 			// 
-			this->conferenceButton->Location = System::Drawing::Point(141, 62);
+			this->conferenceButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->conferenceButton->Location = System::Drawing::Point(188, 76);
+			this->conferenceButton->Margin = System::Windows::Forms::Padding(4);
 			this->conferenceButton->Name = L"conferenceButton";
-			this->conferenceButton->Size = System::Drawing::Size(75, 23);
+			this->conferenceButton->Size = System::Drawing::Size(100, 28);
 			this->conferenceButton->TabIndex = 3;
 			this->conferenceButton->Text = L"conference";
 			this->conferenceButton->UseVisualStyleBackColor = true;
@@ -148,9 +163,12 @@ namespace Project1 {
 			// 
 			// masterthesisButton
 			// 
-			this->masterthesisButton->Location = System::Drawing::Point(141, 120);
+			this->masterthesisButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->masterthesisButton->Location = System::Drawing::Point(188, 148);
+			this->masterthesisButton->Margin = System::Windows::Forms::Padding(4);
 			this->masterthesisButton->Name = L"masterthesisButton";
-			this->masterthesisButton->Size = System::Drawing::Size(75, 23);
+			this->masterthesisButton->Size = System::Drawing::Size(100, 28);
 			this->masterthesisButton->TabIndex = 7;
 			this->masterthesisButton->Text = L"masterthesis";
 			this->masterthesisButton->UseVisualStyleBackColor = true;
@@ -158,9 +176,12 @@ namespace Project1 {
 			// 
 			// incollectionButton
 			// 
-			this->incollectionButton->Location = System::Drawing::Point(141, 91);
+			this->incollectionButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->incollectionButton->Location = System::Drawing::Point(188, 112);
+			this->incollectionButton->Margin = System::Windows::Forms::Padding(4);
 			this->incollectionButton->Name = L"incollectionButton";
-			this->incollectionButton->Size = System::Drawing::Size(75, 23);
+			this->incollectionButton->Size = System::Drawing::Size(100, 28);
 			this->incollectionButton->TabIndex = 6;
 			this->incollectionButton->Text = L"incollection";
 			this->incollectionButton->UseVisualStyleBackColor = true;
@@ -168,9 +189,12 @@ namespace Project1 {
 			// 
 			// manualButton
 			// 
-			this->manualButton->Location = System::Drawing::Point(60, 120);
+			this->manualButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->manualButton->Location = System::Drawing::Point(80, 148);
+			this->manualButton->Margin = System::Windows::Forms::Padding(4);
 			this->manualButton->Name = L"manualButton";
-			this->manualButton->Size = System::Drawing::Size(75, 23);
+			this->manualButton->Size = System::Drawing::Size(100, 28);
 			this->manualButton->TabIndex = 5;
 			this->manualButton->Text = L"manual";
 			this->manualButton->UseVisualStyleBackColor = true;
@@ -178,22 +202,25 @@ namespace Project1 {
 			// 
 			// inbookButton
 			// 
-			this->inbookButton->Location = System::Drawing::Point(60, 91);
+			this->inbookButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->inbookButton->Location = System::Drawing::Point(80, 112);
+			this->inbookButton->Margin = System::Windows::Forms::Padding(4);
 			this->inbookButton->Name = L"inbookButton";
-			this->inbookButton->Size = System::Drawing::Size(75, 23);
+			this->inbookButton->Size = System::Drawing::Size(100, 28);
 			this->inbookButton->TabIndex = 4;
 			this->inbookButton->Text = L"inbook";
 			this->inbookButton->UseVisualStyleBackColor = true;
 			this->inbookButton->Click += gcnew System::EventHandler(this, &MyForm1::inbook_Click);
 			// 
-
-
-
 			// techreportButton
 			// 
-			this->techreportButton->Location = System::Drawing::Point(141, 176);
+			this->techreportButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->techreportButton->Location = System::Drawing::Point(188, 217);
+			this->techreportButton->Margin = System::Windows::Forms::Padding(4);
 			this->techreportButton->Name = L"techreportButton";
-			this->techreportButton->Size = System::Drawing::Size(75, 23);
+			this->techreportButton->Size = System::Drawing::Size(100, 28);
 			this->techreportButton->TabIndex = 12;
 			this->techreportButton->Text = L"techreport";
 			this->techreportButton->UseVisualStyleBackColor = true;
@@ -201,9 +228,12 @@ namespace Project1 {
 			// 
 			// unpublishedButton
 			// 
-			this->unpublishedButton->Location = System::Drawing::Point(60, 205);
+			this->unpublishedButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->unpublishedButton->Location = System::Drawing::Point(80, 252);
+			this->unpublishedButton->Margin = System::Windows::Forms::Padding(4);
 			this->unpublishedButton->Name = L"unpublishedButton";
-			this->unpublishedButton->Size = System::Drawing::Size(75, 23);
+			this->unpublishedButton->Size = System::Drawing::Size(100, 28);
 			this->unpublishedButton->TabIndex = 11;
 			this->unpublishedButton->Text = L"unpublished";
 			this->unpublishedButton->UseVisualStyleBackColor = true;
@@ -211,9 +241,12 @@ namespace Project1 {
 			// 
 			// proceedingsButton
 			// 
-			this->proceedingsButton->Location = System::Drawing::Point(60, 176);
+			this->proceedingsButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->proceedingsButton->Location = System::Drawing::Point(80, 217);
+			this->proceedingsButton->Margin = System::Windows::Forms::Padding(4);
 			this->proceedingsButton->Name = L"proceedingsButton";
-			this->proceedingsButton->Size = System::Drawing::Size(75, 23);
+			this->proceedingsButton->Size = System::Drawing::Size(100, 28);
 			this->proceedingsButton->TabIndex = 10;
 			this->proceedingsButton->Text = L"proceedings";
 			this->proceedingsButton->UseVisualStyleBackColor = true;
@@ -221,9 +254,12 @@ namespace Project1 {
 			// 
 			// phdthesisButton
 			// 
-			this->phdthesisButton->Location = System::Drawing::Point(141, 147);
+			this->phdthesisButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->phdthesisButton->Location = System::Drawing::Point(188, 181);
+			this->phdthesisButton->Margin = System::Windows::Forms::Padding(4);
 			this->phdthesisButton->Name = L"phdthesisButton";
-			this->phdthesisButton->Size = System::Drawing::Size(75, 23);
+			this->phdthesisButton->Size = System::Drawing::Size(100, 28);
 			this->phdthesisButton->TabIndex = 9;
 			this->phdthesisButton->Text = L"phdthesis";
 			this->phdthesisButton->UseVisualStyleBackColor = true;
@@ -231,23 +267,37 @@ namespace Project1 {
 			// 
 			// miscButton
 			// 
-			this->miscButton->Location = System::Drawing::Point(60, 147);
+			this->miscButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->miscButton->Location = System::Drawing::Point(80, 181);
+			this->miscButton->Margin = System::Windows::Forms::Padding(4);
 			this->miscButton->Name = L"miscButton";
-			this->miscButton->Size = System::Drawing::Size(75, 23);
+			this->miscButton->Size = System::Drawing::Size(100, 28);
 			this->miscButton->TabIndex = 8;
 			this->miscButton->Text = L"misc";
 			this->miscButton->UseVisualStyleBackColor = true;
 			this->miscButton->Click += gcnew System::EventHandler(this, &MyForm1::misc_Click);
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1.Image")));
+			this->label1->Location = System::Drawing::Point(76, 9);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(238, 20);
+			this->label1->TabIndex = 15;
+			this->label1->Text = L"Wählen Sie eine Quellenart";
+			this->label1->Click += gcnew System::EventHandler(this, &MyForm1::label1_Click);
+			// 
 			// MyForm1
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-
-
-			this->ClientSize = System::Drawing::Size(284, 261);
-
-
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->ClientSize = System::Drawing::Size(379, 321);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->techreportButton);
 			this->Controls->Add(this->unpublishedButton);
 			this->Controls->Add(this->proceedingsButton);
@@ -262,11 +312,13 @@ namespace Project1 {
 			this->Controls->Add(this->bookletButton);
 			this->Controls->Add(this->articleButton);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->MaximizeBox = false;
 			this->Name = L"MyForm1";
-			this->Text = L"Auswahl Quellentyp";
+			this->Text = L"Auswahl Quellenangabe";
 			this->Load += gcnew System::EventHandler(this, &MyForm1::MyForm1_Load);
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
@@ -378,6 +430,10 @@ private: System::Void unpublished_Click(System::Object^  sender, System::EventAr
 }
 
 private: System::Void MyForm1_Load(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void textBox1_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }

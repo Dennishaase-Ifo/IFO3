@@ -950,7 +950,26 @@ private: System::Windows::Forms::ComboBox^  authororeditorDropdownComboBox;
 
 private: System::Windows::Forms::ComboBox^  chapterandorpageDropdownComboBox;
 private: System::Windows::Forms::Label^  suchtLabel;
-private: System::Windows::Forms::Label^  seperationline;
+
+private: System::Windows::Forms::PictureBox^  pictureBox1;
+private: System::Windows::Forms::PictureBox^  pictureBox2;
+private: System::Windows::Forms::Label^  label1;
+private: System::Windows::Forms::Label^  label2;
+private: System::Windows::Forms::PictureBox^  pictureBox3;
+private: System::Windows::Forms::ToolTip^  toolTip1;
+private: System::Windows::Forms::ToolTip^  toolTip5;
+private: System::Windows::Forms::ToolTip^  toolTip6;
+private: System::Windows::Forms::ToolTip^  toolTip4;
+private: System::Windows::Forms::ToolTip^  toolTip2;
+private: System::Windows::Forms::ToolTip^  toolTip3;
+private: System::Windows::Forms::ToolTip^  toolTip10;
+private: System::Windows::Forms::ToolTip^  toolTip9;
+private: System::Windows::Forms::ToolTip^  toolTip11;
+private: System::Windows::Forms::ToolTip^  toolTip8;
+private: System::Windows::Forms::ToolTip^  toolTip7;
+private: System::Windows::Forms::ToolTip^  toolTip12;
+
+
 
 
 	protected:
@@ -1065,6 +1084,8 @@ private: System::Windows::Forms::Label^  seperationline;
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(MyForm::typeid));
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->dateiToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->neuToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -1113,8 +1134,27 @@ private: System::Windows::Forms::Label^  seperationline;
 			this->authororeditorDropdownComboBox = (gcnew System::Windows::Forms::ComboBox());
 			this->chapterandorpageDropdownComboBox = (gcnew System::Windows::Forms::ComboBox());
 			this->suchtLabel = (gcnew System::Windows::Forms::Label());
-			this->seperationline = (gcnew System::Windows::Forms::Label());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->toolTip1 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip2 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip3 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip4 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip5 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip6 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip7 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip8 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip9 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip10 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip11 = (gcnew System::Windows::Forms::ToolTip(this->components));
+			this->toolTip12 = (gcnew System::Windows::Forms::ToolTip(this->components));
 			this->menuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -1125,12 +1165,10 @@ private: System::Windows::Forms::Label^  seperationline;
 					this->helpButton, this->searchButton
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
+			this->menuStrip1->MinimumSize = System::Drawing::Size(0, 45);
 			this->menuStrip1->Name = L"menuStrip1";
-
-
-			this->menuStrip1->Size = System::Drawing::Size(802, 24);
-
-
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(8, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(1069, 45);
 			this->menuStrip1->TabIndex = 1;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -1140,434 +1178,472 @@ private: System::Windows::Forms::Label^  seperationline;
 				this->neuToolStripMenuItem,
 					this->speichernToolStripMenuItem, this->ladenToolStripMenuItem, this->exportToolStripMenuItem
 			});
+			this->dateiToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->dateiToolStripMenuItem->Name = L"dateiToolStripMenuItem";
-
-
-			this->dateiToolStripMenuItem->Size = System::Drawing::Size(46, 20);
-
-
+			this->dateiToolStripMenuItem->Size = System::Drawing::Size(62, 41);
 			this->dateiToolStripMenuItem->Text = L"Datei";
+			this->dateiToolStripMenuItem->ToolTipText = L"Aktion auswählen";
 			// 
 			// neuToolStripMenuItem
 			// 
 			this->neuToolStripMenuItem->Name = L"neuToolStripMenuItem";
-
-
-			this->neuToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-
-
+			this->neuToolStripMenuItem->Size = System::Drawing::Size(161, 28);
 			this->neuToolStripMenuItem->Text = L"Neu";
+			this->neuToolStripMenuItem->ToolTipText = L"Eintrag hinzufügen";
 			this->neuToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::neuToolStripMenuItem_Click);
 			// 
 			// speichernToolStripMenuItem
 			// 
-
-
-			this->speichernToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-
-
+			this->speichernToolStripMenuItem->Name = L"speichernToolStripMenuItem";
+			this->speichernToolStripMenuItem->Size = System::Drawing::Size(161, 28);
 			this->speichernToolStripMenuItem->Text = L"Speichern";
+			this->speichernToolStripMenuItem->ToolTipText = L"Einträge speichern";
 			this->speichernToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::speichernToolStripMenuItem_Click);
 			// 
 			// ladenToolStripMenuItem
 			// 
 			this->ladenToolStripMenuItem->Name = L"ladenToolStripMenuItem";
-
-
-			this->ladenToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-
-
+			this->ladenToolStripMenuItem->Size = System::Drawing::Size(161, 28);
 			this->ladenToolStripMenuItem->Text = L"Laden";
+			this->ladenToolStripMenuItem->ToolTipText = L"Einträge laden";
 			this->ladenToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ladenToolStripMenuItem_Click);
 			// 
 			// exportToolStripMenuItem
 			// 
 			this->exportToolStripMenuItem->Name = L"exportToolStripMenuItem";
-
-
-			this->exportToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-
-
+			this->exportToolStripMenuItem->Size = System::Drawing::Size(161, 28);
 			this->exportToolStripMenuItem->Text = L"Export";
+			this->exportToolStripMenuItem->ToolTipText = L"Einträge exportieren";
 			this->exportToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exportToolStripMenuItem_Click);
 			// 
 			// helpButton
 			// 
 			this->helpButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
+			this->helpButton->Font = (gcnew System::Drawing::Font(L"Segoe UI", 13.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->helpButton->Name = L"helpButton";
-
-
-			this->helpButton->Size = System::Drawing::Size(24, 20);
-
+			this->helpButton->Size = System::Drawing::Size(35, 41);
 			this->helpButton->Text = L"\?";
+			this->helpButton->ToolTipText = L"Hilfe";
 			// 
 			// searchButton
 			// 
 			this->searchButton->Alignment = System::Windows::Forms::ToolStripItemAlignment::Right;
+			this->searchButton->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"searchButton.Image")));
 			this->searchButton->Name = L"searchButton";
-
-
-			this->searchButton->Size = System::Drawing::Size(31, 20);
-
-
-			this->searchButton->Text = L"🔍";
+			this->searchButton->Size = System::Drawing::Size(36, 41);
+			this->searchButton->ToolTipText = L"nach Einträgen suchen";
 			this->searchButton->Click += gcnew System::EventHandler(this, &MyForm::searchButton_Click);
 			// 
 			// lastButton
 			// 
-			this->lastButton->Location = System::Drawing::Point(153, 494);
-			this->lastButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->lastButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lastButton->Location = System::Drawing::Point(184, 649);
+			this->lastButton->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->lastButton->Name = L"lastButton";
-			this->lastButton->Size = System::Drawing::Size(112, 35);
+			this->lastButton->Size = System::Drawing::Size(149, 43);
 			this->lastButton->TabIndex = 2;
-			this->lastButton->Text = L"<---";
+			this->lastButton->Text = L"<";
+			this->toolTip1->SetToolTip(this->lastButton, L"Gehe zur vorherigen Seite");
 			this->lastButton->UseVisualStyleBackColor = true;
 			this->lastButton->Click += gcnew System::EventHandler(this, &MyForm::lastButton_Click);
 			// 
 			// changeButton
 			// 
-			this->changeButton->Location = System::Drawing::Point(276, 492);
-			this->changeButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->changeButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->changeButton->Location = System::Drawing::Point(363, 649);
+			this->changeButton->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->changeButton->Name = L"changeButton";
-			this->changeButton->Size = System::Drawing::Size(112, 35);
+			this->changeButton->Size = System::Drawing::Size(149, 43);
 			this->changeButton->TabIndex = 3;
 			this->changeButton->Text = L"Ändern";
+			this->toolTip5->SetToolTip(this->changeButton, L"Eintrag ändern");
 			this->changeButton->UseVisualStyleBackColor = true;
 			this->changeButton->Click += gcnew System::EventHandler(this, &MyForm::changeButton_Click);
 			// 
 			// deleteButton
 			// 
-			this->deleteButton->Location = System::Drawing::Point(398, 492);
-			this->deleteButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->deleteButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->deleteButton->Location = System::Drawing::Point(546, 649);
+			this->deleteButton->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->deleteButton->Name = L"deleteButton";
-			this->deleteButton->Size = System::Drawing::Size(112, 35);
+			this->deleteButton->Size = System::Drawing::Size(149, 43);
 			this->deleteButton->TabIndex = 4;
 			this->deleteButton->Text = L"Löschen";
+			this->toolTip6->SetToolTip(this->deleteButton, L"Eintrag löschen");
 			this->deleteButton->UseVisualStyleBackColor = true;
 			this->deleteButton->Click += gcnew System::EventHandler(this, &MyForm::deleteButton_Click);
 			// 
 			// nextButton
 			// 
-			this->nextButton->Location = System::Drawing::Point(520, 491);
-			this->nextButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->nextButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->nextButton->Location = System::Drawing::Point(728, 649);
+			this->nextButton->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->nextButton->Name = L"nextButton";
-			this->nextButton->Size = System::Drawing::Size(112, 35);
+			this->nextButton->Size = System::Drawing::Size(149, 43);
 			this->nextButton->TabIndex = 5;
-			this->nextButton->Text = L"--->";
+			this->nextButton->Text = L">";
+			this->toolTip4->SetToolTip(this->nextButton, L"Gehe zur nächsten Seite");
 			this->nextButton->UseVisualStyleBackColor = true;
 			this->nextButton->Click += gcnew System::EventHandler(this, &MyForm::nextButton_Click);
 			// 
 			// field1
 			// 
-			this->field1->Location = System::Drawing::Point(89, 89);
-			this->field1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->field1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->field1->Location = System::Drawing::Point(119, 180);
+			this->field1->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->field1->Name = L"field1";
 			this->field1->ReadOnly = true;
-			this->field1->Size = System::Drawing::Size(123, 20);
+			this->field1->Size = System::Drawing::Size(163, 22);
 			this->field1->TabIndex = 9;
 			// 
 			// field2
 			// 
-			this->field2->Location = System::Drawing::Point(89, 131);
-			this->field2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->field2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->field2->Location = System::Drawing::Point(119, 228);
+			this->field2->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->field2->Name = L"field2";
 			this->field2->ReadOnly = true;
-			this->field2->Size = System::Drawing::Size(123, 20);
+			this->field2->Size = System::Drawing::Size(163, 22);
 			this->field2->TabIndex = 10;
 			// 
 			// field3
 			// 
-			this->field3->Location = System::Drawing::Point(89, 172);
-			this->field3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->field3->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->field3->Location = System::Drawing::Point(119, 277);
+			this->field3->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->field3->Name = L"field3";
 			this->field3->ReadOnly = true;
-			this->field3->Size = System::Drawing::Size(123, 20);
+			this->field3->Size = System::Drawing::Size(163, 22);
 			this->field3->TabIndex = 11;
 			// 
 			// value1
 			// 
-			this->value1->Location = System::Drawing::Point(239, 89);
-			this->value1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->value1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->value1->Location = System::Drawing::Point(319, 180);
+			this->value1->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->value1->Name = L"value1";
 			this->value1->ReadOnly = true;
-			this->value1->Size = System::Drawing::Size(123, 20);
+			this->value1->Size = System::Drawing::Size(163, 22);
 			this->value1->TabIndex = 12;
 			// 
 			// value2
 			// 
-			this->value2->Location = System::Drawing::Point(239, 131);
-			this->value2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->value2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->value2->Location = System::Drawing::Point(319, 228);
+			this->value2->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->value2->Name = L"value2";
 			this->value2->ReadOnly = true;
-			this->value2->Size = System::Drawing::Size(123, 20);
+			this->value2->Size = System::Drawing::Size(163, 22);
 			this->value2->TabIndex = 13;
 			// 
 			// value3
 			// 
-			this->value3->Location = System::Drawing::Point(239, 172);
-			this->value3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->value3->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->value3->Location = System::Drawing::Point(319, 277);
+			this->value3->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->value3->Name = L"value3";
 			this->value3->ReadOnly = true;
-			this->value3->Size = System::Drawing::Size(123, 20);
+			this->value3->Size = System::Drawing::Size(163, 22);
 			this->value3->TabIndex = 14;
 			// 
 			// value6
 			// 
-			this->value6->Location = System::Drawing::Point(580, 172);
-			this->value6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->value6->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->value6->Location = System::Drawing::Point(773, 277);
+			this->value6->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->value6->Name = L"value6";
 			this->value6->ReadOnly = true;
-			this->value6->Size = System::Drawing::Size(123, 20);
+			this->value6->Size = System::Drawing::Size(163, 22);
 			this->value6->TabIndex = 20;
 			// 
 			// value5
 			// 
-			this->value5->Location = System::Drawing::Point(580, 131);
-			this->value5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->value5->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->value5->Location = System::Drawing::Point(773, 228);
+			this->value5->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->value5->Name = L"value5";
 			this->value5->ReadOnly = true;
-			this->value5->Size = System::Drawing::Size(123, 20);
+			this->value5->Size = System::Drawing::Size(163, 22);
 			this->value5->TabIndex = 19;
 			// 
 			// value4
 			// 
-			this->value4->Location = System::Drawing::Point(580, 89);
-			this->value4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->value4->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->value4->Location = System::Drawing::Point(773, 180);
+			this->value4->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->value4->Name = L"value4";
 			this->value4->ReadOnly = true;
-			this->value4->Size = System::Drawing::Size(123, 20);
+			this->value4->Size = System::Drawing::Size(163, 22);
 			this->value4->TabIndex = 18;
 			// 
 			// field6
 			// 
-			this->field6->Location = System::Drawing::Point(430, 172);
-			this->field6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->field6->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->field6->Location = System::Drawing::Point(573, 277);
+			this->field6->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->field6->Name = L"field6";
 			this->field6->ReadOnly = true;
-			this->field6->Size = System::Drawing::Size(123, 20);
+			this->field6->Size = System::Drawing::Size(163, 22);
 			this->field6->TabIndex = 17;
+			this->field6->TextChanged += gcnew System::EventHandler(this, &MyForm::field6_TextChanged);
 			// 
 			// field5
 			// 
-			this->field5->Location = System::Drawing::Point(430, 131);
-			this->field5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->field5->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->field5->Location = System::Drawing::Point(573, 228);
+			this->field5->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->field5->Name = L"field5";
 			this->field5->ReadOnly = true;
-			this->field5->Size = System::Drawing::Size(123, 20);
+			this->field5->Size = System::Drawing::Size(163, 22);
 			this->field5->TabIndex = 16;
 			// 
 			// field4
 			// 
-			this->field4->Location = System::Drawing::Point(430, 89);
-			this->field4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->field4->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->field4->Location = System::Drawing::Point(573, 180);
+			this->field4->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->field4->Name = L"field4";
 			this->field4->ReadOnly = true;
-			this->field4->Size = System::Drawing::Size(123, 20);
+			this->field4->Size = System::Drawing::Size(163, 22);
 			this->field4->TabIndex = 15;
 			// 
 			// _value3
 			// 
-			this->_value3->Location = System::Drawing::Point(239, 357);
-			this->_value3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value3->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value3->Location = System::Drawing::Point(319, 504);
+			this->_value3->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value3->Name = L"_value3";
 			this->_value3->ReadOnly = true;
-			this->_value3->Size = System::Drawing::Size(123, 20);
+			this->_value3->Size = System::Drawing::Size(163, 22);
 			this->_value3->TabIndex = 26;
 			// 
 			// _value2
 			// 
-			this->_value2->Location = System::Drawing::Point(239, 316);
-			this->_value2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value2->Location = System::Drawing::Point(319, 459);
+			this->_value2->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value2->Name = L"_value2";
 			this->_value2->ReadOnly = true;
-			this->_value2->Size = System::Drawing::Size(123, 20);
+			this->_value2->Size = System::Drawing::Size(163, 22);
 			this->_value2->TabIndex = 25;
 			// 
 			// _value1
 			// 
-			this->_value1->Location = System::Drawing::Point(239, 274);
-			this->_value1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value1->Location = System::Drawing::Point(319, 413);
+			this->_value1->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value1->Name = L"_value1";
 			this->_value1->ReadOnly = true;
-			this->_value1->Size = System::Drawing::Size(123, 20);
+			this->_value1->Size = System::Drawing::Size(163, 22);
 			this->_value1->TabIndex = 24;
 			// 
 			// _field3
 			// 
-			this->_field3->Location = System::Drawing::Point(89, 357);
-			this->_field3->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field3->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field3->Location = System::Drawing::Point(119, 504);
+			this->_field3->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field3->Name = L"_field3";
 			this->_field3->ReadOnly = true;
-			this->_field3->Size = System::Drawing::Size(123, 20);
+			this->_field3->Size = System::Drawing::Size(163, 22);
 			this->_field3->TabIndex = 23;
 			// 
 			// _field2
 			// 
-			this->_field2->Location = System::Drawing::Point(89, 316);
-			this->_field2->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field2->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field2->Location = System::Drawing::Point(119, 459);
+			this->_field2->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field2->Name = L"_field2";
 			this->_field2->ReadOnly = true;
-			this->_field2->Size = System::Drawing::Size(123, 20);
+			this->_field2->Size = System::Drawing::Size(163, 22);
 			this->_field2->TabIndex = 22;
 			// 
 			// _field1
 			// 
-			this->_field1->Location = System::Drawing::Point(89, 274);
-			this->_field1->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field1->Location = System::Drawing::Point(119, 413);
+			this->_field1->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field1->Name = L"_field1";
 			this->_field1->ReadOnly = true;
-			this->_field1->Size = System::Drawing::Size(123, 20);
+			this->_field1->Size = System::Drawing::Size(163, 22);
 			this->_field1->TabIndex = 21;
 			// 
 			// _value4
 			// 
-			this->_value4->Location = System::Drawing::Point(239, 404);
-			this->_value4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value4->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value4->Location = System::Drawing::Point(319, 550);
+			this->_value4->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value4->Name = L"_value4";
 			this->_value4->ReadOnly = true;
-			this->_value4->Size = System::Drawing::Size(123, 20);
+			this->_value4->Size = System::Drawing::Size(163, 22);
 			this->_value4->TabIndex = 30;
 			// 
 			// _field4
 			// 
-			this->_field4->Location = System::Drawing::Point(89, 404);
-			this->_field4->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field4->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field4->Location = System::Drawing::Point(119, 550);
+			this->_field4->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field4->Name = L"_field4";
 			this->_field4->ReadOnly = true;
-			this->_field4->Size = System::Drawing::Size(123, 20);
+			this->_field4->Size = System::Drawing::Size(163, 22);
 			this->_field4->TabIndex = 27;
 			// 
 			// _value8
 			// 
-			this->_value8->Location = System::Drawing::Point(580, 404);
-			this->_value8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value8->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value8->Location = System::Drawing::Point(773, 550);
+			this->_value8->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value8->Name = L"_value8";
 			this->_value8->ReadOnly = true;
-			this->_value8->Size = System::Drawing::Size(123, 20);
+			this->_value8->Size = System::Drawing::Size(163, 22);
 			this->_value8->TabIndex = 38;
 			// 
 			// _field8
 			// 
-			this->_field8->Location = System::Drawing::Point(430, 404);
-			this->_field8->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field8->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field8->Location = System::Drawing::Point(573, 550);
+			this->_field8->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field8->Name = L"_field8";
 			this->_field8->ReadOnly = true;
-			this->_field8->Size = System::Drawing::Size(123, 20);
+			this->_field8->Size = System::Drawing::Size(163, 22);
 			this->_field8->TabIndex = 37;
 			// 
 			// _value7
 			// 
-			this->_value7->Location = System::Drawing::Point(580, 357);
-			this->_value7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value7->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value7->Location = System::Drawing::Point(773, 504);
+			this->_value7->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value7->Name = L"_value7";
 			this->_value7->ReadOnly = true;
-			this->_value7->Size = System::Drawing::Size(123, 20);
+			this->_value7->Size = System::Drawing::Size(163, 22);
 			this->_value7->TabIndex = 36;
 			// 
 			// _value6
 			// 
-			this->_value6->Location = System::Drawing::Point(580, 316);
-			this->_value6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value6->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value6->Location = System::Drawing::Point(773, 459);
+			this->_value6->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value6->Name = L"_value6";
 			this->_value6->ReadOnly = true;
-			this->_value6->Size = System::Drawing::Size(123, 20);
+			this->_value6->Size = System::Drawing::Size(163, 22);
 			this->_value6->TabIndex = 35;
 			// 
 			// _value5
 			// 
-			this->_value5->Location = System::Drawing::Point(580, 274);
-			this->_value5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_value5->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_value5->Location = System::Drawing::Point(773, 413);
+			this->_value5->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_value5->Name = L"_value5";
 			this->_value5->ReadOnly = true;
-			this->_value5->Size = System::Drawing::Size(123, 20);
+			this->_value5->Size = System::Drawing::Size(163, 22);
 			this->_value5->TabIndex = 34;
 			// 
 			// _field7
 			// 
-			this->_field7->Location = System::Drawing::Point(430, 357);
-			this->_field7->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field7->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field7->Location = System::Drawing::Point(573, 504);
+			this->_field7->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field7->Name = L"_field7";
 			this->_field7->ReadOnly = true;
-			this->_field7->Size = System::Drawing::Size(123, 20);
+			this->_field7->Size = System::Drawing::Size(163, 22);
 			this->_field7->TabIndex = 33;
 			// 
 			// _field6
 			// 
-			this->_field6->Location = System::Drawing::Point(430, 316);
-			this->_field6->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field6->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field6->Location = System::Drawing::Point(573, 459);
+			this->_field6->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field6->Name = L"_field6";
 			this->_field6->ReadOnly = true;
-			this->_field6->Size = System::Drawing::Size(123, 20);
+			this->_field6->Size = System::Drawing::Size(163, 22);
 			this->_field6->TabIndex = 32;
 			// 
 			// _field5
 			// 
-			this->_field5->Location = System::Drawing::Point(430, 274);
-			this->_field5->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->_field5->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->_field5->Location = System::Drawing::Point(573, 413);
+			this->_field5->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->_field5->Name = L"_field5";
 			this->_field5->ReadOnly = true;
-			this->_field5->Size = System::Drawing::Size(123, 20);
+			this->_field5->Size = System::Drawing::Size(163, 22);
 			this->_field5->TabIndex = 31;
 			// 
 			// saveChangeButton
 			// 
-			this->saveChangeButton->Location = System::Drawing::Point(276, 492);
-			this->saveChangeButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->saveChangeButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->saveChangeButton->Location = System::Drawing::Point(363, 649);
+			this->saveChangeButton->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->saveChangeButton->Name = L"saveChangeButton";
-			this->saveChangeButton->Size = System::Drawing::Size(112, 35);
+			this->saveChangeButton->Size = System::Drawing::Size(149, 43);
 			this->saveChangeButton->TabIndex = 39;
 			this->saveChangeButton->Text = L"Speichern";
+			this->toolTip2->SetToolTip(this->saveChangeButton, L"Änderungen speichern");
 			this->saveChangeButton->UseVisualStyleBackColor = true;
 			this->saveChangeButton->Visible = false;
 			this->saveChangeButton->Click += gcnew System::EventHandler(this, &MyForm::saveChangeButton_Click);
 			// 
 			// cancelButton
 			// 
-			this->cancelButton->Location = System::Drawing::Point(398, 492);
-			this->cancelButton->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
+			this->cancelButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->cancelButton->Location = System::Drawing::Point(546, 649);
+			this->cancelButton->Margin = System::Windows::Forms::Padding(5, 6, 5, 6);
 			this->cancelButton->Name = L"cancelButton";
-			this->cancelButton->Size = System::Drawing::Size(112, 35);
+			this->cancelButton->Size = System::Drawing::Size(149, 43);
 			this->cancelButton->TabIndex = 40;
 			this->cancelButton->Text = L"Abbrechen";
+			this->toolTip3->SetToolTip(this->cancelButton, L"Änderungen verwerfen");
 			this->cancelButton->UseVisualStyleBackColor = true;
 			this->cancelButton->Visible = false;
 			this->cancelButton->Click += gcnew System::EventHandler(this, &MyForm::cancelButton_Click);
 			// 
 			// keyField
 			// 
-			this->keyField->Location = System::Drawing::Point(291, 41);
-			this->keyField->Margin = System::Windows::Forms::Padding(2);
+			this->keyField->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->keyField->Location = System::Drawing::Point(319, 121);
+			this->keyField->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->keyField->Name = L"keyField";
 			this->keyField->ReadOnly = true;
-			this->keyField->Size = System::Drawing::Size(221, 20);
+			this->keyField->Size = System::Drawing::Size(251, 22);
 			this->keyField->TabIndex = 41;
+			this->toolTip10->SetToolTip(this->keyField, L"Schlüsselwort");
 			// 
 			// sourceTypeTextBox
 			// 
-			this->sourceTypeTextBox->Location = System::Drawing::Point(89, 41);
-			this->sourceTypeTextBox->Margin = System::Windows::Forms::Padding(2);
+			this->sourceTypeTextBox->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->sourceTypeTextBox->Location = System::Drawing::Point(119, 121);
+			this->sourceTypeTextBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->sourceTypeTextBox->Name = L"sourceTypeTextBox";
 			this->sourceTypeTextBox->ReadOnly = true;
-			this->sourceTypeTextBox->Size = System::Drawing::Size(136, 20);
+			this->sourceTypeTextBox->Size = System::Drawing::Size(163, 22);
 			this->sourceTypeTextBox->TabIndex = 42;
+			this->toolTip9->SetToolTip(this->sourceTypeTextBox, L"Art der Literatur");
 			// 
 			// currIndexTextBox
 			// 
-			this->currIndexTextBox->Location = System::Drawing::Point(673, 41);
-			this->currIndexTextBox->Margin = System::Windows::Forms::Padding(2);
+			this->currIndexTextBox->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->currIndexTextBox->Location = System::Drawing::Point(974, 67);
+			this->currIndexTextBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->currIndexTextBox->Name = L"currIndexTextBox";
 			this->currIndexTextBox->ReadOnly = true;
-			this->currIndexTextBox->Size = System::Drawing::Size(91, 20);
+			this->currIndexTextBox->Size = System::Drawing::Size(85, 22);
 			this->currIndexTextBox->TabIndex = 43;
+			this->toolTip11->SetToolTip(this->currIndexTextBox, L"Seitenanzahl");
 			// 
 			// authororeditorDropdownComboBox
 			// 
 			this->authororeditorDropdownComboBox->FormattingEnabled = true;
 			this->authororeditorDropdownComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"author", L"editor" });
-			this->authororeditorDropdownComboBox->Location = System::Drawing::Point(713, 229);
-			this->authororeditorDropdownComboBox->Margin = System::Windows::Forms::Padding(2);
+			this->authororeditorDropdownComboBox->Location = System::Drawing::Point(951, 275);
+			this->authororeditorDropdownComboBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->authororeditorDropdownComboBox->Name = L"authororeditorDropdownComboBox";
-			this->authororeditorDropdownComboBox->Size = System::Drawing::Size(82, 21);
+			this->authororeditorDropdownComboBox->Size = System::Drawing::Size(108, 24);
 			this->authororeditorDropdownComboBox->TabIndex = 44;
 			this->authororeditorDropdownComboBox->Visible = false;
 			// 
@@ -1575,39 +1651,89 @@ private: System::Windows::Forms::Label^  seperationline;
 			// 
 			this->chapterandorpageDropdownComboBox->FormattingEnabled = true;
 			this->chapterandorpageDropdownComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"chapter", L"page" });
-			this->chapterandorpageDropdownComboBox->Location = System::Drawing::Point(713, 281);
-			this->chapterandorpageDropdownComboBox->Margin = System::Windows::Forms::Padding(2);
+			this->chapterandorpageDropdownComboBox->Location = System::Drawing::Point(951, 413);
+			this->chapterandorpageDropdownComboBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->chapterandorpageDropdownComboBox->Name = L"chapterandorpageDropdownComboBox";
-			this->chapterandorpageDropdownComboBox->Size = System::Drawing::Size(82, 21);
+			this->chapterandorpageDropdownComboBox->Size = System::Drawing::Size(108, 24);
 			this->chapterandorpageDropdownComboBox->TabIndex = 45;
 			this->chapterandorpageDropdownComboBox->Visible = false;
 			// 
 			// suchtLabel
 			// 
 			this->suchtLabel->AutoSize = true;
-			this->suchtLabel->Location = System::Drawing::Point(586, 45);
-			this->suchtLabel->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->suchtLabel->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->suchtLabel->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"suchtLabel.Image")));
+			this->suchtLabel->Location = System::Drawing::Point(847, 67);
 			this->suchtLabel->Name = L"suchtLabel";
-			this->suchtLabel->Size = System::Drawing::Size(75, 13);
+			this->suchtLabel->Size = System::Drawing::Size(112, 17);
 			this->suchtLabel->TabIndex = 46;
 			this->suchtLabel->Text = L"Suchergebnis:";
 			this->suchtLabel->Visible = false;
 			this->suchtLabel->VisibleChanged += gcnew System::EventHandler(this, &MyForm::suchtLabel_VisibleChanged);
 			// 
-			// seperationline
+			// pictureBox1
 			// 
-			this->seperationline->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->seperationline->Location = System::Drawing::Point(89, 223);
-			this->seperationline->Name = L"seperationline";
-			this->seperationline->Size = System::Drawing::Size(614, 2);
-			this->seperationline->TabIndex = 47;
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(-11, 613);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(1084, 158);
+			this->pictureBox1->TabIndex = 48;
+			this->pictureBox1->TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(0, 339);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(1069, 268);
+			this->pictureBox2->TabIndex = 49;
+			this->pictureBox2->TabStop = false;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1.Image")));
+			this->label1->Location = System::Drawing::Point(456, 362);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(148, 20);
+			this->label1->TabIndex = 50;
+			this->label1->Text = L"Optionale Felder";
+			this->toolTip8->SetToolTip(this->label1, L"Optionale Felder sind freiwillig");
+			this->label1->Click += gcnew System::EventHandler(this, &MyForm::label1_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label2.Image")));
+			this->label2->Location = System::Drawing::Point(446, 67);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(177, 20);
+			this->label2->TabIndex = 51;
+			this->label2->Text = L"Erforderliche Felder";
+			this->toolTip7->SetToolTip(this->label2, L"Es müssen alle erforderlichen Felder ausgefüllt werden");
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(-11, 36);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(1084, 297);
+			this->pictureBox3->TabIndex = 52;
+			this->pictureBox3->TabStop = false;
 			// 
 			// MyForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(802, 591);
-			this->Controls->Add(this->seperationline);
+			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->ClientSize = System::Drawing::Size(1069, 727);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->suchtLabel);
 			this->Controls->Add(this->chapterandorpageDropdownComboBox);
 			this->Controls->Add(this->authororeditorDropdownComboBox);
@@ -1649,8 +1775,11 @@ private: System::Windows::Forms::Label^  seperationline;
 			this->Controls->Add(this->changeButton);
 			this->Controls->Add(this->lastButton);
 			this->Controls->Add(this->menuStrip1);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->pictureBox2);
+			this->Controls->Add(this->pictureBox3);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->MaximizeBox = false;
 			this->Name = L"MyForm";
 			this->Text = L"BibTex Verwaltung";
@@ -1658,6 +1787,9 @@ private: System::Windows::Forms::Label^  seperationline;
 			this->VisibleChanged += gcnew System::EventHandler(this, &MyForm::MyForm_VisibleChanged);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1812,6 +1944,10 @@ private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System:
 	else if (suchtLabel->Visible == false && isInited) {
 		output(currEntry, false);
 	}
+}
+private: System::Void field6_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
