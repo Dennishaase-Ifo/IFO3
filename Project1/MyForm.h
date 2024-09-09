@@ -1840,7 +1840,7 @@ private: System::Void nextButton_Click(System::Object^  sender, System::EventArg
 	output(currEntry, false);
 }
 // rückwärts blättern
-private: System::Void lastButton_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void lastButton_Click(System::Object^  sender, System::EventArgs^  e) {	
 	// wenn wir grade suchen, solange weiter gehen, bis aktuelle Quelle in den Suchergebnissen vorhanden ist
 	if (isSearching && searchResults->entries > 0) {
 		for (int j = 0; j < db->entries; j++) {
@@ -1865,6 +1865,8 @@ private: System::Void changeButton_Click(System::Object^  sender, System::EventA
 	saveChangeButton->Visible = true;
 	changeButton->Visible = false;
 	cancelButton->Visible = true;
+	nextButton->Visible = false;
+	lastButton->Visible = false;
 }
 private: System::Void saveChangeButton_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (this->saveToSource()) {
@@ -1873,6 +1875,8 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 		saveChangeButton->Visible = false;
 		changeButton->Visible = true;
 		cancelButton->Visible = false;
+		nextButton->Visible = true;
+		lastButton->Visible = true;
 	}
 	// nicht alles ausgefüllt
 	else { MessageBox::Show("Zwingende Felder müssen alle Inhalt haben", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information); }
@@ -1897,6 +1901,8 @@ private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::Eve
 		// Speicher Button anzeigen
 		saveChangeButton->Visible = true;
 		changeButton->Visible = false;
+		nextButton->Visible = false;
+		lastButton->Visible = false;
 		// leeres key feld kompensieren
 		keyField->Text = "";
 	}
@@ -1914,6 +1920,8 @@ private: System::Void deleteButton_Click(System::Object^  sender, System::EventA
 	if (currEntry >= db->entries) { currEntry -= 1; }
 	if (currEntry < 0) { currEntry = (db->entries <= 0)? 0 : db->entries - 1; }
 	output(currEntry, false);
+	nextButton->Visible = true;
+	lastButton->Visible = true;
 }
 // starten des Suchfensters
 private: System::Void searchButton_Click(System::Object^  sender, System::EventArgs^  e) {

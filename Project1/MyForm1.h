@@ -46,6 +46,8 @@ namespace Project1 {
 		/// </summary>
 		~MyForm1()
 		{
+			*newSourceMarker = false;
+			mainForm->Show();
 			if (components)
 			{
 				delete components;
