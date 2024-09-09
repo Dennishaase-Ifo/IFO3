@@ -2046,6 +2046,8 @@ private: System::Void cancelButton_Click(System::Object^  sender, System::EventA
 	saveChangeButton->Visible = false;
 	changeButton->Visible = true;
 	cancelButton->Visible = false;
+	nextButton->Visible = true;
+	lastButton->Visible = true;
 }
 // aktuelle Quelle löschen
 private: System::Void deleteButton_Click(System::Object^  sender, System::EventArgs^  e) {

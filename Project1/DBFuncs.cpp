@@ -60,10 +60,10 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm
 		switch (choice) {  // unterscheidung der Suchoptionen
 		case 0:  // nach Schlüssel
 
-			char kleinkey[50];
+			char kleinkey[50]; // Assuming the key is no longer than 49 characters
 
-			for (int i = 0; currSource->key[i] != '\0'; i++) {
-				kleinkey[i] = std::tolower(static_cast<unsigned char>(currSource->key[i]));
+			for (int i = 0; i < 50; i++) {
+				kleinkey[i] = tolower((unsigned char)currSource->key[i]);
 			}
 
 			if (strstr(kleinkey, searchTerm) != NULL) {  // Falls kein Pointer zu einem Vorkommen des Suchterms gefunden werden kann
@@ -103,8 +103,9 @@ void searchDB(DataBank* db, SearchResults *sResults, int choice, char searchTerm
 
 			char kleincontent[100];
 
-			for (int i = 0; searchedField->content[i] != '\0'; i++) {
-				kleincontent[i] = std::tolower(static_cast<unsigned char>(searchedField->content[i]));
+
+			for (int i = 0; i < 50; i++) {
+				kleincontent[i] = tolower((unsigned char)searchedField->content[i]);
 			}
 
 			if (searchedField != NULL) { // Falls Feld gefunden suchbegriff überprüfen

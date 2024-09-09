@@ -2,7 +2,7 @@
   Project1.MyForm1.resources - Embedded, ContainedInManifestFile, 
   Project1.MyForm2.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
-Assembly Project1, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
+Assembly Project1, Version=0.0.*, Culture=Invariante Sprache (Invariantes Land): 
 	hash=SHA1, flags=PublicKey
 Assembly mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
