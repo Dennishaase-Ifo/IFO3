@@ -109,35 +109,36 @@ namespace Project1 {
 			// searchOptionsComboBox
 			// 
 			this->searchOptionsComboBox->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->searchOptionsComboBox->FormattingEnabled = true;
+			this->searchOptionsComboBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->searchOptionsComboBox->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Schlüssel", L"Autor", L"Titel" });
-			this->searchOptionsComboBox->Location = System::Drawing::Point(110, 88);
+			this->searchOptionsComboBox->Location = System::Drawing::Point(42, 82);
 			this->searchOptionsComboBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->searchOptionsComboBox->Name = L"searchOptionsComboBox";
-			this->searchOptionsComboBox->Size = System::Drawing::Size(108, 24);
+			this->searchOptionsComboBox->Size = System::Drawing::Size(121, 33);
 			this->searchOptionsComboBox->TabIndex = 0;
 			this->toolTip1->SetToolTip(this->searchOptionsComboBox, L"Wählen Sie wonach Sie suchen möchten");
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, static_cast<System::Drawing::FontStyle>((System::Drawing::FontStyle::Bold | System::Drawing::FontStyle::Underline)),
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->label1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"label1.Image")));
-			this->label1->Location = System::Drawing::Point(123, 21);
+			this->label1->Location = System::Drawing::Point(37, 20);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(262, 20);
+			this->label1->Size = System::Drawing::Size(361, 29);
 			this->label1->TabIndex = 1;
 			this->label1->Text = L"Wonach möchten Sie suchen\?";
 			// 
 			// startSearchButton
 			// 
-			this->startSearchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->startSearchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->startSearchButton->Location = System::Drawing::Point(150, 180);
+			this->startSearchButton->Location = System::Drawing::Point(48, 169);
 			this->startSearchButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->startSearchButton->Name = L"startSearchButton";
-			this->startSearchButton->Size = System::Drawing::Size(84, 36);
+			this->startSearchButton->Size = System::Drawing::Size(139, 45);
 			this->startSearchButton->TabIndex = 2;
 			this->startSearchButton->Text = L"Suchen";
 			this->toolTip4->SetToolTip(this->startSearchButton, L"Eintrag suchen");
@@ -147,21 +148,23 @@ namespace Project1 {
 			// textBox1
 			// 
 			this->textBox1->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->textBox1->Location = System::Drawing::Point(251, 90);
+			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->textBox1->Location = System::Drawing::Point(217, 82);
 			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(161, 22);
+			this->textBox1->Size = System::Drawing::Size(181, 30);
 			this->textBox1->TabIndex = 3;
 			this->toolTip2->SetToolTip(this->textBox1, L"Geben Sie den Suchbegriff ein");
 			// 
 			// stopSearchButton
 			// 
-			this->stopSearchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->stopSearchButton->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->stopSearchButton->Location = System::Drawing::Point(274, 180);
+			this->stopSearchButton->Location = System::Drawing::Point(241, 169);
 			this->stopSearchButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->stopSearchButton->Name = L"stopSearchButton";
-			this->stopSearchButton->Size = System::Drawing::Size(84, 36);
+			this->stopSearchButton->Size = System::Drawing::Size(138, 45);
 			this->stopSearchButton->TabIndex = 4;
 			this->stopSearchButton->Text = L"Beenden";
 			this->toolTip4->SetToolTip(this->stopSearchButton, L"Suche beenden");
@@ -173,26 +176,28 @@ namespace Project1 {
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(-1, -1);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(522, 159);
+			this->pictureBox1->Size = System::Drawing::Size(587, 143);
 			this->pictureBox1->TabIndex = 5;
 			this->pictureBox1->TabStop = false;
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(-1, 164);
+			this->pictureBox2->Location = System::Drawing::Point(-9, 149);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(537, 86);
+			this->pictureBox2->Size = System::Drawing::Size(604, 108);
 			this->pictureBox2->TabIndex = 6;
 			this->pictureBox2->TabStop = false;
 			// 
 			// MyForm2
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(9, 20);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(521, 236);
+			this->ClientSize = System::Drawing::Size(445, 237);
 			this->Controls->Add(this->stopSearchButton);
 			this->Controls->Add(this->textBox1);
 			this->Controls->Add(this->startSearchButton);
