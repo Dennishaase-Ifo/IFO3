@@ -1,7 +1,12 @@
-﻿  MyForm.cpp
-c:\users\thore\desktop\ifo3\project1\myform2.h(63): warning C4553: "==": Ergebnis des Ausdrucks nicht verwendet. War "=" gemeint?
-c:\users\thore\desktop\ifo3\project1\myform2.h(249): warning C4553: "==": Ergebnis des Ausdrucks nicht verwendet. War "=" gemeint?
-c:\users\thore\desktop\ifo3\project1\myform.h(727): warning C4804: ">": unsichere Verwendung des Typs "bool" in einer Operation
-c:\users\thore\desktop\ifo3\project1\myform.cpp(7): warning C4829: Möglicherweise falsche Parameter für Main-Funktion. Verwenden Sie eventuell "int main(Platform::Array<Platform::String^>^ args)".
+﻿  DBFuncs.cpp
+c:\users\thore\desktop\ifo3\ifo3\project1\dbfuncs.cpp(36): warning C4101: "searchFor": Unreferenzierte lokale Variable
+c:\users\thore\desktop\ifo3\ifo3\project1\dbfuncs.cpp(48): warning C4101: "j": Unreferenzierte lokale Variable
+c:\users\thore\desktop\ifo3\ifo3\project1\dbfuncs.cpp(138): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
+c:\users\thore\desktop\ifo3\ifo3\project1\dbfuncs.cpp(154): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
+c:\users\thore\desktop\ifo3\ifo3\project1\dbfuncs.cpp(171): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.17763.0\ucrt\stdio.h(208): note: Siehe Deklaration von "fopen"
+c:\users\thore\desktop\ifo3\ifo3\project1\dbfuncs.cpp(23): warning C4700: Die nicht initialisierte lokale Variable "chosenType" wurde verwendet.
   DBFuncs.obj : MSIL-Modulgefunden; inkrementelles Verknüpfen wird für MSIL deaktiviert; vollständiger Link wird durchgeführt
-  Project1.vcxproj -> C:\Users\thore\Desktop\IFO3\x64\Debug\Project1.exe
+  Project1.vcxproj -> C:\Users\thore\Desktop\IFO3\IFO3\x64\Debug\Project1.exe

@@ -1987,6 +1987,8 @@ private: System::Void lastButton_Click(System::Object^  sender, System::EventArg
 			}
 
 		}
+
+
 	}
 	// wrap-around
 	currEntry = (currEntry <= 0) ? db->entries-1 : currEntry - 1;
@@ -2067,6 +2069,13 @@ private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System:
 	// Hacky callback from search Form to trigger new output on search completion
 	// import "MyForm.h" im zweiten Skript sorgt für Unmengen an Fehlern...
 	// -> hier ein "toller" work-around
+
+
+	changeButton->Visible = false;
+	deleteButton->Visible = false;
+	dateiToolStripMenuItem->Visible = false;
+	searchButton->Visible = false;
+
 	if (suchtLabel->Visible == true && isInited && isSearching) { 
 		currEntry = 0;
 		if (isSearching && searchResults->entries > 0) {
@@ -2077,16 +2086,42 @@ private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System:
 						searchIndex = i + 1;
 						output(currEntry, false);
 						return;
+
 					}
+
+					
+					
 				}
 
+
 			}
+
+
 		}
+
+
 	}
+
+
+
 	// Hier suche beenden
 	else if (suchtLabel->Visible == false && isInited) {
 		output(currEntry, false);
+
+
+		changeButton->Visible = true;
+		deleteButton->Visible = true;
+		dateiToolStripMenuItem->Visible = true;
+		searchButton->Visible = true;
+
 	}
+
+
+
 }
+
 };
+
+
+
 }

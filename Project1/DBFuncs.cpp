@@ -136,7 +136,7 @@ int saveDB(DataBank* db) {
 	FILE* fp;
 
 	if ((fp = fopen("Quellenverzeichnis.dat", "wb")) == NULL) {  // Versuchen Datei zu öffnen
-		MessageBox::Show("Datei konnte nicht ge\x94\\ffnet werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		MessageBox::Show(L"Datei konnte nicht geöffnet werden...", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		return 0;
 	}
 
@@ -152,7 +152,7 @@ int loadDB(DataBank* db) {
 	system("cls");
 
 	if ((fp = fopen("Quellenverzeichnis.dat", "rb")) == NULL) {  // Versuchen Datei zu öffnen
-		MessageBox::Show("Datei konnte nicht ge\x94\\ffnet werden...", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+		MessageBox::Show(L"Datei konnte nicht geöffnet werden...", L"Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 		return 0;
 	}
 
