@@ -176,10 +176,49 @@ int exportDB(DataBank* db) {
 	for (int i = 0; i < db->entries; i++) {  // durch alle Einträge iterieren
 		Source* currSource = &db->sources[i];  // aktuellen Eintrag merken
 		char currSourceType[20];
-			
+
 		readSourcetype(currSource->variant, currSourceType);  // Art der Quelle auslesen
 
-		fprintf(fp, "@%s {%s,\n", currSourceType, currSource->key);  // Erste Zeile vom .bib Format
+		char keyohneSonderzeichen[50];
+
+		for (int i = 0; i < 50; i++) {
+
+			if (currSource->key[i] == ' ') {
+				keyohneSonderzeichen[i] = '_';
+			}
+
+			else
+			{
+
+				if (currSource->key[i] == ',') {
+					keyohneSonderzeichen[i] = '.';
+				}
+
+				else {
+
+					if (currSource->key[i] == '%') {
+						keyohneSonderzeichen[i] = '_';
+					}
+
+					else {
+
+						if (currSource->key[i] == '{' || currSource->key[i] == '}') {
+							keyohneSonderzeichen[i] = '_';
+						}
+
+						else {
+
+							keyohneSonderzeichen[i] = currSource->key[i];
+
+						}
+					}
+				}
+			}
+		}
+
+	
+
+		fprintf(fp, "@%s {%s,\n", currSourceType, keyohneSonderzeichen);  // Erste Zeile vom .bib Format
 
 		// Notwendige Felder ausgeben
 		int m = 0; // iterationsparameter
@@ -202,7 +241,7 @@ int exportDB(DataBank* db) {
 	}
 
 	fclose(fp);
-	MessageBox::Show("Exportieren erfolgreich!", "Error", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+	MessageBox::Show("Exportieren erfolgreich", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
 	return 1;  // Erfolg!
 }

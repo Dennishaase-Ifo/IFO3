@@ -1675,7 +1675,7 @@ private: System::Windows::Forms::Label^  label5;
 			this->saveChangeButton->Name = L"saveChangeButton";
 			this->saveChangeButton->Size = System::Drawing::Size(112, 35);
 			this->saveChangeButton->TabIndex = 39;
-			this->saveChangeButton->Text = L"Speichern";
+			this->saveChangeButton->Text = L"Annehmen";
 			this->toolTip2->SetToolTip(this->saveChangeButton, L"Änderungen speichern");
 			this->saveChangeButton->UseVisualStyleBackColor = true;
 			this->saveChangeButton->Visible = false;
