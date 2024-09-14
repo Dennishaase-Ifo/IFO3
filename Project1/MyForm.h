@@ -1744,6 +1744,7 @@ private: System::Windows::Forms::Label^  label5;
 			this->authororeditorDropdownComboBox->Location = System::Drawing::Point(1, 183);
 			this->authororeditorDropdownComboBox->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->authororeditorDropdownComboBox->Name = L"authororeditorDropdownComboBox";
+			this->authororeditorDropdownComboBox->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->authororeditorDropdownComboBox->Size = System::Drawing::Size(82, 24);
 			this->authororeditorDropdownComboBox->TabIndex = 44;
 			this->authororeditorDropdownComboBox->Visible = false;
@@ -1757,6 +1758,7 @@ private: System::Windows::Forms::Label^  label5;
 			this->chapterandorpageDropdownComboBox->Location = System::Drawing::Point(1, 223);
 			this->chapterandorpageDropdownComboBox->Margin = System::Windows::Forms::Padding(2, 1, 2, 1);
 			this->chapterandorpageDropdownComboBox->Name = L"chapterandorpageDropdownComboBox";
+			this->chapterandorpageDropdownComboBox->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
 			this->chapterandorpageDropdownComboBox->Size = System::Drawing::Size(82, 24);
 			this->chapterandorpageDropdownComboBox->TabIndex = 45;
 			this->chapterandorpageDropdownComboBox->Visible = false;
@@ -2013,17 +2015,22 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 	// nicht alles ausgefüllt
 	else { MessageBox::Show("Zwingende Felder müssen alle Inhalt haben", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information); }
 }
-// neues Fenster öffnen -> Auswahl neuer Quellentyp
-private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
-	Form^ f2 = gcnew MyForm1(this, db, newSorceCreated);
-	f2->Show();
-	// dies erstmal ausblenden, wird dann über das andere wieder geöffnet
-	this->Visible = false;
 
-	dateiToolStripMenuItem->Visible = false;
-	searchButton->Visible = false;
 
-}
+		 // neues Fenster öffnen -> Auswahl neuer Quellentyp
+		 private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Form^ f2 = gcnew MyForm1(this, db, newSorceCreated);
+			 f2->Show();
+
+			 // dies erstmal ausblenden, wird dann über das andere wieder geöffnet
+			 this->Visible = false;
+
+			 dateiToolStripMenuItem->Visible = false;
+			 searchButton->Visible = false;
+		 }
+
+
+
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
 private: System::Void MyForm_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {

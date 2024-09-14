@@ -122,8 +122,8 @@ namespace Project1 {
 			this->searchOptionsComboBox->Name = L"searchOptionsComboBox";
 			this->searchOptionsComboBox->Size = System::Drawing::Size(82, 24);
 			this->searchOptionsComboBox->TabIndex = 0;
-			this->searchOptionsComboBox->SelectedIndex = 0;
 			this->toolTip1->SetToolTip(this->searchOptionsComboBox, L"Wählen Sie wonach Sie suchen möchten");
+			searchOptionsComboBox->SelectedIndex = 0;
 			// 
 			// label1
 			// 

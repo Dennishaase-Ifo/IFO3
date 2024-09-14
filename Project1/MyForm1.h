@@ -319,7 +319,7 @@ namespace Project1 {
 			this->Controls->Add(this->bookButton);
 			this->Controls->Add(this->bookletButton);
 			this->Controls->Add(this->articleButton);
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedDialog;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->MaximizeBox = false;
 			this->Name = L"MyForm1";
 			this->ShowIcon = false;
