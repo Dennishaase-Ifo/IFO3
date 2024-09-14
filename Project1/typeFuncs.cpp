@@ -46,6 +46,15 @@ int initSource(Source* DBEntry, Sourcetype variant) {
 
 		DBEntry->variant = conference;
 	}
+	else if (variant == inproceedings) {
+		Field reqFields[] = { {author, ""}, {title, ""}, {booktitle, ""}, {year, ""}, {empty, ""}, {empty, ""} };
+		Field optFields[] = { {editor, ""}, {pages, ""}, {organization, ""}, {publisher, ""}, {address, ""}, {month, ""}, {note, ""}, {empty, ""} };
+
+		memcpy(DBEntry->fields, reqFields, sizeof(DBEntry->fields));
+		memcpy(DBEntry->optFields, optFields, sizeof(DBEntry->optFields));
+
+		DBEntry->variant = inproceedings;
+	}
 	else if (variant == inbook) {
 		Field reqFields[] = { {authororeditor, ""}, {title, ""}, {chapterandorpages, ""}, {publisher, ""}, {year, ""}, {empty, ""} };
 		Field optFields[] = { {volume, ""}, {series, ""}, {address, ""}, {edition, ""}, {month, ""}, {note, ""}, {empty, ""}, {empty, ""} };

@@ -21,6 +21,10 @@ int readSourcetype(Sourcetype type, char saveLocation[13]) {
 		strcpy(saveLocation, "conference");
 		break;
 
+	case inproceedings:
+		strcpy(saveLocation, "inproceedings");
+		break;
+
 	case inbook:
 		strcpy(saveLocation, "inbook");
 		break;

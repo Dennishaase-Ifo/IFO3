@@ -10,6 +10,7 @@ typedef enum {  // Arten von Quellen zur besseren Lesbarkeit und eindeutigkeit (
 	book,
 	booklet,
 	conference,
+	inproceedings,
 	inbook,
 	incollection,
 	manual,

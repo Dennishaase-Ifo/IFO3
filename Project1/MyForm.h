@@ -2007,6 +2007,8 @@ private: System::Void saveChangeButton_Click(System::Object^  sender, System::Ev
 		cancelButton->Visible = false;
 		nextButton->Visible = true;
 		lastButton->Visible = true;
+		dateiToolStripMenuItem->Visible = true;
+		searchButton->Visible = true;
 	}
 	// nicht alles ausgefüllt
 	else { MessageBox::Show("Zwingende Felder müssen alle Inhalt haben", "Information", MessageBoxButtons::OK, MessageBoxIcon::Information); }
@@ -2017,6 +2019,10 @@ private: System::Void neuToolStripMenuItem_Click(System::Object^  sender, System
 	f2->Show();
 	// dies erstmal ausblenden, wird dann über das andere wieder geöffnet
 	this->Visible = false;
+
+	dateiToolStripMenuItem->Visible = false;
+	searchButton->Visible = false;
+
 }
 private: System::Void MyForm_Load(System::Object^  sender, System::EventArgs^  e) {
 }
@@ -2045,6 +2051,8 @@ private: System::Void cancelButton_Click(System::Object^  sender, System::EventA
 	cancelButton->Visible = false;
 	nextButton->Visible = true;
 	lastButton->Visible = true;
+	dateiToolStripMenuItem->Visible = true;
+	searchButton->Visible = true;
 }
 // aktuelle Quelle löschen
 private: System::Void deleteButton_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -2054,6 +2062,10 @@ private: System::Void deleteButton_Click(System::Object^  sender, System::EventA
 	output(currEntry, false);
 	nextButton->Visible = true;
 	lastButton->Visible = true;
+	dateiToolStripMenuItem->Visible = true;
+	searchButton->Visible = true;
+	saveChangeButton->Visible = false;
+	changeButton->Visible = true;
 }
 // starten des Suchfensters
 private: System::Void searchButton_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -2062,6 +2074,7 @@ private: System::Void searchButton_Click(System::Object^  sender, System::EventA
 	searchForm->FormClosing += gcnew FormClosingEventHandler(this, &MyForm::OnSearchFormClosing);
 	searchForm->Show();
 	dateiToolStripMenuItem->Visible = false;
+	searchButton->Visible = false;
 }
 
 
@@ -2071,6 +2084,7 @@ private: System::Void searchButton_Click(System::Object^  sender, System::EventA
 		 {
 
 			 dateiToolStripMenuItem->Visible = true;
+			 searchButton->Visible = true;
 
 		 }
 
@@ -2117,10 +2131,8 @@ private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System:
 	else if (suchtLabel->Visible == false && isInited) {
 		output(currEntry, false);
 
-
 		changeButton->Visible = true;
 		deleteButton->Visible = true;
-		dateiToolStripMenuItem->Visible = true;
 		searchButton->Visible = true;
 
 	}
