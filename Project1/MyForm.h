@@ -1194,7 +1194,7 @@ private: System::Windows::Forms::Label^  label5;
 			// neuToolStripMenuItem
 			// 
 			this->neuToolStripMenuItem->Name = L"neuToolStripMenuItem";
-			this->neuToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->neuToolStripMenuItem->Size = System::Drawing::Size(137, 22);
 			this->neuToolStripMenuItem->Text = L"Neu";
 			this->neuToolStripMenuItem->ToolTipText = L"Eintrag hinzufügen";
 			this->neuToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::neuToolStripMenuItem_Click);
@@ -1202,7 +1202,7 @@ private: System::Windows::Forms::Label^  label5;
 			// speichernToolStripMenuItem
 			// 
 			this->speichernToolStripMenuItem->Name = L"speichernToolStripMenuItem";
-			this->speichernToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->speichernToolStripMenuItem->Size = System::Drawing::Size(137, 22);
 			this->speichernToolStripMenuItem->Text = L"Speichern";
 			this->speichernToolStripMenuItem->ToolTipText = L"Einträge speichern";
 			this->speichernToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::speichernToolStripMenuItem_Click);
@@ -1210,7 +1210,7 @@ private: System::Windows::Forms::Label^  label5;
 			// ladenToolStripMenuItem
 			// 
 			this->ladenToolStripMenuItem->Name = L"ladenToolStripMenuItem";
-			this->ladenToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->ladenToolStripMenuItem->Size = System::Drawing::Size(137, 22);
 			this->ladenToolStripMenuItem->Text = L"Laden";
 			this->ladenToolStripMenuItem->ToolTipText = L"Einträge laden";
 			this->ladenToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::ladenToolStripMenuItem_Click);
@@ -1218,7 +1218,7 @@ private: System::Windows::Forms::Label^  label5;
 			// exportToolStripMenuItem
 			// 
 			this->exportToolStripMenuItem->Name = L"exportToolStripMenuItem";
-			this->exportToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->exportToolStripMenuItem->Size = System::Drawing::Size(137, 22);
 			this->exportToolStripMenuItem->Text = L"Export";
 			this->exportToolStripMenuItem->ToolTipText = L"Einträge exportieren";
 			this->exportToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyForm::exportToolStripMenuItem_Click);
@@ -1232,6 +1232,7 @@ private: System::Windows::Forms::Label^  label5;
 			this->helpButton->Size = System::Drawing::Size(27, 34);
 			this->helpButton->Text = L"\?";
 			this->helpButton->ToolTipText = L"Hilfe";
+			this->helpButton->Click += gcnew System::EventHandler(this, &MyForm::helpButton_Click_1);
 			// 
 			// searchButton
 			// 
@@ -1929,12 +1930,6 @@ private: System::Windows::Forms::Label^  label5;
 		}
 #pragma endregion
 
-// Bedienungsanleitung öffnen
-private: System::Void toolStripMenuItem1_Click(System::Object^  sender, System::EventArgs^  e) {
-	// TODO einbindung pdf machen/testen?
-	System::String^ pdfPath = "Bedienungsanleitung.pdf";
-	System::Diagnostics::Process::Start(pdfPath);
-}
 // in datei speichern
 private: System::Void speichernToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
 	if (saveDB(db)) {
@@ -2062,9 +2057,24 @@ private: System::Void deleteButton_Click(System::Object^  sender, System::EventA
 }
 // starten des Suchfensters
 private: System::Void searchButton_Click(System::Object^  sender, System::EventArgs^  e) {
+
 	Form^ searchForm = gcnew MyForm2(db, searchResults, isSearching, suchtLabel);
+	searchForm->FormClosing += gcnew FormClosingEventHandler(this, &MyForm::OnSearchFormClosing);
 	searchForm->Show();
+	dateiToolStripMenuItem->Visible = false;
 }
+
+
+
+		 //Überwachen wann das Suchfenster geschlossen wird
+		 void MyForm::OnSearchFormClosing(Object^ sender, FormClosingEventArgs^ e)
+		 {
+
+			 dateiToolStripMenuItem->Visible = true;
+
+		 }
+
+
 private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {
 	// Hacky callback from search Form to trigger new output on search completion
 	// import "MyForm.h" im zweiten Skript sorgt für Unmengen an Fehlern...
@@ -2073,7 +2083,6 @@ private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System:
 
 	changeButton->Visible = false;
 	deleteButton->Visible = false;
-	dateiToolStripMenuItem->Visible = false;
 	searchButton->Visible = false;
 
 	if (suchtLabel->Visible == true && isInited && isSearching) { 
@@ -2120,6 +2129,13 @@ private: System::Void suchtLabel_VisibleChanged(System::Object^  sender, System:
 
 }
 
+		 //Handbuch öffnen
+private: System::Void helpButton_Click_1(System::Object^  sender, System::EventArgs^  e) {
+
+	System::String^ pdfPath = "Handbuch_V2.pdf";
+	System::Diagnostics::Process::Start(pdfPath);
+
+}
 };
 
 
