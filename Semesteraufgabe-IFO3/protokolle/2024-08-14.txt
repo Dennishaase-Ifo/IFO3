@@ -1,0 +1,11 @@
+Protokoll IFO3_06
+Datum: 14.08.2024
+Anwesenheit: Dennis; Lena; Thore; Maxim; Jona; Felix 
+Themen: 
+- Wichtigsten Funktionen ermittelt (entscheidend für unser Programm)
+- Design Vorschläge in Visual Studio umgesetzt 
+- Mockup erstellt (Bedienungsidee erarbeitet) 
+- Anforderungsanalyse 
+- USE-Case und Ablaufdiagramme 
+
+Im Anschluss Sprint Review 

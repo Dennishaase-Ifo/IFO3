@@ -1,0 +1,20 @@
+Sprint Review_02
+Anwesenheit: Jona; Thore; Maxim; Dennis; Lena; Felix
+Datum: 30.08.2024
+
+Themen:
+- Design fertiggestellt
+- Zweites Fenster für Auswahl der Datentypen erstellt 
+- Pop Up fester Entwicklung
+- Testbeschreibung abgeschlossen (Priorisierung etc.)
+Verbesserungen:
+- Code Unterstützung
+- Zugriffserleichterung 
+
+Plan für den nächsten Sprint
+- Sprintende: 05.09.2024
+- Handbuch schreiben
+- Letzten Funktionen fertigstellen
+- Programm testen 
+
+
