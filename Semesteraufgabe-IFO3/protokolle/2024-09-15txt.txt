@@ -1,0 +1,12 @@
+Protokoll IFO3_09
+Datum: 15.09.2024
+Anwesenheit: Dennis; Thore; Lena; Jona; Maxim; Felix
+
+Themen:
+- Handbuch fertiggestellt
+- Vollständiges testen des Programmes 
+o Siehe Test im Draft und im Bugs Kanban 
+- Datensätzen erstellt 
+- Bugs wurden gefixt
+o Siehe Bugs Kanban
+

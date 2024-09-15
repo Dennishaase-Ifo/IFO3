@@ -1,0 +1,19 @@
+Protokoll IFO3:
+10.07.2024
+Anwesenheit: Maxim Walther; Lena Rathjen; Thore Reinholz; Jona Weinrich; Dennis Haase; Felix Müller
+Rollenzuteilung: 
+Product owner: Maxim
+Scammaster: Felix
+Entwicklung: Dennis; Jona; Lena; Thore
+
+Themen:
+- Einführung Github (Ordnerstruktur) Einbindung 
+- Aufgabestellung verstehen 
+
+- V-Modell als Notiz zum 1. Sprint
+- UML-Diagramm erstellen -> Aufgabe
+- Abgabe 15.09.2024
+
+Termin:
+- Kick-off Meeting Samstagabend
+- Weekly Mittwoch
