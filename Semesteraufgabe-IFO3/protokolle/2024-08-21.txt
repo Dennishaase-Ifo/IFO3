@@ -1,9 +1,0 @@
-Protokoll IFO3_07
-Datum:21.08.2024
-Anwesenheit: Thore; Lena; Dennis; Maxim; Jona; Felix
-
-Thema:
-- Backend in Arbeit fast fertig
-- Anfangen GUI bauen 
-- Auseinandersetzung mit den Datensätzen
-- Brain storm über mögliche Fehler 
